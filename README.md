@@ -6,16 +6,16 @@
 
 # Nome do projeto
 
-## Nome do grupo
+## Phoenix
 
 ## Integrantes: 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 1</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 2</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 3</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 4</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 5</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 6</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 7</a>
+- <a href="https://www.linkedin.com/in/eduardo-simonis-ferrari/">Eduardo Simonis Seabra Martins Ferrari</a>
+- <a href="https://www.linkedin.com/in/gabriel-demacedosantos/">Gabriel de Macedo Santos</a>
+- <a href="https://www.linkedin.com/in/giovana-katsuki-murata-503a94264">Giovana Katsuki Murata</a> 
+- <a href="https://www.linkedin.com/in/samy-flaksberg/">Samy Flaksberg</a> 
+- <a href="https://www.linkedin.com/in/joão-paulo-santos-872753264/">João Paulo Santos</a>
+- <a href="https://www.linkedin.com/in/anna-aragao/">Anna Carolina Silva Aragão</a> 
+- <a href="https://www.linkedin.com/in/gustavo-gouveia-583185271/">Gustavo Gouveia</a>
 
 ## 📝 Descrição
 
