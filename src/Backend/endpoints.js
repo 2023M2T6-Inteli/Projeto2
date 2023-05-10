@@ -39,17 +39,17 @@ app.post("/professor",  urlencodedParser,(req, res) => {
 
 // PUT /professor
 app.put("/professor/:id", urlencodedParser, (req, res) => {
-    const {nome_professor, email, senha, cargo, celular, cep, idade} = req.body
+    const {nome_professor, email, senha, cargo, celular, cep, idade} = req.body // Recebendo o corpo da requisição e guardando nas respectivas constantes.
 
     // Pegando os dados do backend
-    let db = new sqlite3.Database(DBPATH)
-    const query = "UPDATE professor SET nome_professor = ?, email = ?, senha = ?, cargo = ?, celular = ?, cep = ?, idade = ? WHERE id_professor = ?"
+    let db = new sqlite3.Database(DBPATH) // Abrindo o banco
+    const query = "UPDATE professor SET nome_professor = ?, email = ?, senha = ?, cargo = ?, celular = ?, cep = ?, idade = ? WHERE id_professor = ?" // Fazendo a query
 
-    db.run(query, [nome_professor, email, senha, cargo, celular, cep, idade, req.params.id_professor], (error) => {
-        if (error) {
-            throw new Error(error)
+    db.run(query, [nome_professor, email, senha, cargo, celular, cep, idade, req.params.id_professor], (error) => { // Rodando a query
+        if (error) { // Verificando se há erros
+            throw new Error(error) // Caso haja, trava o sistema de requisição e traz informações sobre o erro.
         }
-        return res.status(200).json({
+        return res.status(200).json({ 
             title: "Professor atualizado com sucesso."
         })
     })
@@ -68,8 +68,27 @@ app.get("/professor", urlencodedParser, (req, res) => {
         }
 
         return res.status(200).json({
-            title: "Pofessor pegado com sucesso.",
+            title: "Professor pegado com sucesso.",
             professor: rows
+        })
+    })
+})
+
+// POST aluno; Adcionando alunos.
+app.post("/aluno", (req, res) => {
+
+    const {nome_aluno, situacao, forcas, defasagens} = req.body
+
+    let db = new sqlite3.Database(DBPATH)
+
+    const query = "INSERT INTO aluno(nome_aluno = ?, situacao = ?, forcas = ?, desafagens = ?)"
+
+    db.run(query, [nome_aluno, situacao, forcas, defasagens], (error) =>{
+        if(error) {
+            throw new Error(error)
+        }
+        return res.status(201).json({
+            title: "Aluno criado com sucesso."
         })
     })
 })
@@ -89,6 +108,8 @@ app.get("/aluno/:id_aluno", urlencodedParser, (req, res) => {
     })
 })
 
+
+// PUT id_aluno; Atualizando os dados dos alunos
 app.put("/aluno/:id_aluno", urlencodedParser, (req, res) => {
     let db = new sqlite3.Database(DBPATH)
 
@@ -101,7 +122,37 @@ app.put("/aluno/:id_aluno", urlencodedParser, (req, res) => {
             throw new Error(error);
         }
         return res.status(200).json({
-            title: "Aluno atualizado com sucesso."
+            title: "Aluno atualizado com sucesso.   "
+        })
+    })
+})
+
+// DELETE aluno; Deletando um determinado aluno da base de dados.
+app.delete("/aluno/:id_aluno", (req, res) => {
+    let db = new sqlite3.Database(DBPATH)
+
+    const query_1 = "SELECT rowid, * FROM aluno WHERE rowid = ?" // query de verificação.
+    
+    db.get(query_1, [req.params.id_aluno], (err, rows) => { // Executando a query de verificação.
+        if(err) {
+            throw new Error(err)
+        }
+
+        if(!rows) {
+            return res.status(404).json({
+                title: "Usuário não encontrado. Impossivel deletar."
+            })
+        }
+    })
+
+    const query = "DELETE FROM aluno WHERE rowid = ?" // query de execução.
+
+    db.run(query, [req.params.id_aluno], (error) => { // Executando a query de execução.
+        if(error){
+            throw new Error(error)
+        }
+        return res.status(200).json({
+            title: "Usuário deletado com sucesso."
         })
     })
 })
