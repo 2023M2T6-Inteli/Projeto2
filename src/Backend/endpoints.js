@@ -38,7 +38,7 @@ app.post("/professor",  urlencodedParser,(req, res) => {
 })
 
 // PUT /professor
-app.put("/professor/:id", urlencodedParser, (req, res) => {
+app.put("/professor/:id_professor", urlencodedParser, (req, res) => {
     const {nome_professor, email, senha, cargo, celular, cep, idade} = req.body // Recebendo o corpo da requisição e guardando nas respectivas constantes.
 
     // Pegando os dados do backend
@@ -56,7 +56,7 @@ app.put("/professor/:id", urlencodedParser, (req, res) => {
 })
 
 // get /professor:id_professor
-app.get("/professor", urlencodedParser, (req, res) => {
+app.get("/professor/:id_professor", urlencodedParser, (req, res) => {
     
     let db = new sqlite3.Database(DBPATH)
 
@@ -81,7 +81,7 @@ app.post("/aluno", (req, res) => {
 
     let db = new sqlite3.Database(DBPATH)
 
-    const query = "INSERT INTO aluno(nome_aluno = ?, situacao = ?, forcas = ?, desafagens = ?)"
+    const query = "INSERT INTO aluno(nome_aluno, situacao , forcas, defasagens) VALUES (?, ?, ?, ?)"
 
     db.run(query, [nome_aluno, situacao, forcas, defasagens], (error) =>{
         if(error) {
@@ -97,14 +97,18 @@ app.post("/aluno", (req, res) => {
 app.get("/aluno/:id_aluno", urlencodedParser, (req, res) => {
     let db = new sqlite3.Database(DBPATH)
 
-    const query_select = "SELECT id_aluno, * FROM aluno WHERE id_aluno = ?"
+    const query_select = "SELECT * FROM aluno WHERE id_aluno = ?"
+
+    const id_aluno = req.params.id_aluno;
     
-    db.get(query_select, (error, rows) => {
-        throw new Error(error);
+    db.all(query_select, [id_aluno], (error, rows) => {
+        if (error){
+            throw new Error(error);
+        }
+        return res.status(200).json({
+            title: "Aluno retornado com sucesso.",
+            aluno: rows
     })
-    return res.status(200).json({
-        title: "Aluno retornado com sucesso.",
-        aluno: rows
     })
 })
 
@@ -115,14 +119,16 @@ app.put("/aluno/:id_aluno", urlencodedParser, (req, res) => {
 
     const {nome_aluno, situacao, forcas, defasagens} = req.body
 
-    const query = "UPDATE aluno SET nome_aluno = ?, situacao = ?, forcas = ?, desafagens = ? WHERE id_aluno = ?"
+    const query = "UPDATE aluno SET nome_aluno = ?, situacao = ?, forcas = ?, defasagens = ? WHERE id_aluno = ?"
 
-    db.run(query, [nome_aluno, situacao, forcas, defasagens], (error) => {
+    const id_aluno = req.params.id_aluno;
+
+    db.run(query, [nome_aluno, situacao, forcas, defasagens, id_aluno], (error) => {
         if(error) {
             throw new Error(error);
         }
         return res.status(200).json({
-            title: "Aluno atualizado com sucesso.   "
+            title: "Aluno atualizado com sucesso."
         })
     })
 })
