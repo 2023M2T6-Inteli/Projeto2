@@ -164,6 +164,82 @@ app.delete("/aluno/:id_aluno", (req, res) => {
     });
 });
 
+app.post("/turma", (req, res) => {
+
+    const {nome_turma, turno, ano_turma, materias} = req.body;
+
+    let db = new sqlite3.Database(DBPATH);
+
+    const query = "INSERT INTO turma(nome_turma, turno, ano_turma, materias) VALUES (?, ?, ?, ?)";
+
+    db.run(query, [nome_turma, turno, ano_turma, materias], (error) =>{
+        if(error) {
+            throw new Error(error);
+        }
+        return res.status(201).json({
+            title: "Turma criada com sucesso."
+        });
+    });
+});
+
+app.get("/turma/:id_turma", urlencodedParser, (req, res) => {
+    let db = new sqlite3.Database(DBPATH);
+
+    const query_select = "SELECT * FROM turma WHERE id_turma = ?"
+
+    const id_turma = req.params.id_turma;
+    
+    db.all(query_select, [id_turma], (error, rows) => {
+        if (error){
+            throw new Error(error);
+        }
+        return res.status(200).json({
+            title: "Turma retornada com sucesso.",
+            turma: rows
+        });
+    });
+});
+
+app.post("/registro", (req, res) =>{
+    let db = new sqlite3.Database(DBPATH);
+
+    const {id_turma, id_aluno} = req.body;
+
+    const query = "INSERT INTO registro(id_turma, id_aluno) VALUES(?, ?)";
+
+    db.run(query, [id_turma, id_aluno], (error) => {
+        if(error) {
+            throw new Error(error);
+        };
+        return res.status(201).json({
+            title: "Registro criado com sucesso.",
+        });
+    });
+});
+
+app.get("/aluno/turno/:turno", (req, res) =>{
+    let db = new sqlite3.Database(DBPATH);
+
+    const turno = req.params.turno;
+
+    const query = `SELECT aluno.nome_aluno, turma.nome_turma
+    FROM aluno
+    JOIN registro ON registro.id_aluno = aluno.id_aluno
+    JOIN turma ON turma.id_turma = registro.id_turma
+    WHERE turma.turno = ?;
+    `;
+
+    db.all(query, [turno], (error, rows) => {
+        if (error){
+            throw new Error(error);
+        }
+        return res.status(200).json({
+            title: `Alunos do turno ${turno}`,
+            turma: rows
+        });
+    });
+});
+
 
 
 // Inicializando o servidor.
