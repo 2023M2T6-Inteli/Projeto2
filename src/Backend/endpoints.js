@@ -157,6 +157,33 @@ app.delete("/aluno/:id_aluno", (req, res) => {
     })
 })
 
+//POST /turma
+app.post("/turma", urlencodedParser, (req, res) => {
+    const {id_turma, nome_turma, turno, ano_turma, materias} = req.body
+
+    let db = new sqlite3.Database(DBPATH)
+    const query = "INSERT INTO turma(id_turma, nome_turma, turno, ano_turma, materias) VALUES (?, ?, ?, ?, ?)";
+
+    db.run(query, [id_turma, nome_turma, turno, ano_turma, materias], (error) => {
+        if (error) {
+            throw new Error (error)
+        }
+        return res.status(201).json ({
+            title: "Turma criada com sucesso"
+        })
+    })
+})
+
+// get /turma:id_turma
+app.get("/turma", urlencodedParser, (req, res) => {
+
+    let db = new sqlite3.Database(DBPATH)
+    const query = "SELECT id_turma, * FROM turma WHERE id_turma = ?"
+
+    db.get(query, [req.params.id_turma], (error, rows) => {
+        
+    })
+})
 
 const port = 3000
 
