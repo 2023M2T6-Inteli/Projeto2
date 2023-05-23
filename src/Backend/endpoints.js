@@ -22,7 +22,7 @@ const DBPATH = 'data/bd_nova_freire.db';
 
 // Criando endpoints
 // POST /professor
-app.post("/professor",  urlencodedParser,(req, res) => {
+app.post("/professor",  urlencodedParser,(req, res) => {                                       6
     const {nome_professor, email, senha, cargo, celular, cep, idade} = req.body; // Pegando os itens da requisição
 
     let db = new sqlite3.Database(DBPATH); // Abre o banco
