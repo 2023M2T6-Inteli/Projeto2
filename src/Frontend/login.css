@@ -1,5 +1,7 @@
 *{
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Inter', sans-serif;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 html, body {
@@ -17,7 +19,7 @@ html, body {
 }
 
 .logo {
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
   display: block;
   margin: 0 auto;
@@ -37,7 +39,7 @@ html, body {
   border: none;
   padding: 10px 20px;
   border-radius: 3px;
-  margin-top: 10px;
+  margin-top: 20px;
   float: right;
   margin-right: auto;
 }
@@ -48,17 +50,29 @@ html, body {
 }
 
 .links {
-  margin-top: 10px;
+  margin-top: -50px;
+  margin-right: 135px;
 }
 
-.links a {
-  margin-right: 10px;
-}
+
 
 form{
   width: 300px;
 }
 
 label{
-  margin-left: 12px;
+  margin-left: 8px;
+}
+
+@media screen and (max-width: 467px) {
+  .logo{
+    max-width: 70vw;
+  }
+  
+}
+
+@media screen and (min-width: 830px){
+  .logo{
+    max-width: 30vw;
+  }
 }
