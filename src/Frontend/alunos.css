@@ -1,0 +1,122 @@
+button{
+    display: block;
+    position: relative;
+    border: 0px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+div#menu{
+    background-color: #D9D9D9;
+    width: 20px;
+    height: 4px;
+    display: flex;
+    margin: 2px;
+}
+div#menu2{
+    background-color: #D9D9D9;
+    width: 20px;
+    height: 4px;
+    display: flex;
+    margin: 2px;
+}
+div#menu3{
+    background-color: #D9D9D9;
+    width: 20px;
+    height: 4px;
+    display: flex;
+    margin: 2px;
+}
+div#busca {
+    background-color:#D9D9D9 ;
+    width: 270px;
+    height: 16px;
+    display: flex;
+    margin-left: 40px;
+    margin-top: -19px;
+}
+div#busca input[type="text"] {
+    border: transparent;
+    background-color: #D9D9D9;
+    height: 14px;
+    width: 270px;
+  }
+  
+button#perfil{
+    margin-left: 320px;
+    margin-top: -22px;
+
+}
+img#circulo{
+    width: 36px;
+    height: auto;
+}
+
+a#turmas{
+    font-size: 140%;
+    margin-left: 40px;
+    margin-top: 400px;
+}
+
+section{
+    background-color: #D9D9D9;
+    width: 350px;
+    height: 700px;
+    display: flex;
+    margin: 15px;
+    margin-left: 8px;
+    padding: auto;
+}
+
+.nomes{
+    font-size: 100%;
+    margin-top: auto;
+    padding: 20px;
+    border: 10px;
+    margin: 10px;
+    
+}
+
+.situacao{
+    font-size: 100%;
+    margin-top: auto;
+    padding: 15px;
+    border: 10px;
+    margin: 10px;
+}
+.greenBall{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: green;
+}
+
+.redBall{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: red;
+
+}
+
+.yellowBall{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: yellow;
+}
+
+.progresoo{
+    font-size: 100%;
+    margin-top: auto;
+    padding: 15px;
+    border: 10px;
+    margin: 10px; 
+}
+
+div#porcentagem{
+    background-color: EFEFEF;
+    width: 30px;
+    
+}
