@@ -114,3 +114,9 @@ section{
     border: 10px;
     margin: 10px; 
 }
+
+div#porcentagem{
+    background-color: EFEFEF;
+    width: 30px;
+    
+}
