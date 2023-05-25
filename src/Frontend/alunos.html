@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="alunos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@400&display=swap" rel="stylesheet">
 
 </head>
 
@@ -18,9 +18,9 @@
         <aside>
             <div id="barraSuperior">                    <!-- barra menu lateral--> 
                 <button id="sidebar">
-                    <div id="menu"></div>
-                    <div id="menu2"> </div>
-                    <div id="menu3"></div>
+                    <div id="menu" class="barra"></div>
+                    <div id="menu2" class="barra"> </div>
+                    <div id="menu3" class="barra"></div>
                 </button>
 
             </div>
@@ -39,40 +39,119 @@
     <p id="turmas"> <u style="text-decoration-color: #FF1D5C">Turma 1</u> | Turma 2 | Turma 3<button class="mais">+</button></p>
 
     <section>
-        <ul class="nomes"> <strong>Nome</strong><button class="mais">+</button>      <!-- lista de nomes  --> 
-            <hr>
-            <li> Elisa Silva</li>
-            <hr>
-            <li> José Alencar</li>
-            <hr>
-            <li> Pedro Alencar </li>
-            <hr>
-            <li> José Agusto </li>
-        </ul>
-
-        <ul class="situacao"> <strong>Situação</strong>
-            <hr> 
-            <div class="greenBall"></div>
-            <hr> 
-            <div class="redBall"><br></div>
-            <hr>
-            <div class="yellowBall"></div>
-            <hr> 
-            <div class="redBall"><br></div>
-        </ul>
-
-        <ul class=" progresso "><strong> Progresso</strong>
-            <hr>
-            <div class="greenBar"><br></div>
-            <hr>
-            <div class="redBar"><br></div>
-            <hr>
-            <div class="yellowBar"><br></div>
-            <hr>
-            <div class="redBar"><br></div> 
-        </ul>
-
-        <div class="porcentagem"> </div>
+        <div class="row">
+            <div class="item">
+                <p class="nome"><strong>Nome</strong><button class="mais">+</button></p>
+                <div class="situacao"><strong>Situação</strong></div>
+                <div class="progresso">Progresso</div>
+            </div>
+            <div class="item">
+                <p class="nome">Elisa Silva</p>
+                <div class="situacao"><div class="greenBall"></div></div>
+                <div class="progresso"><div class="greenBar"></div></div>
+            </div>
+            <div class="item">
+                <p class="nome">John Doe</p>
+                <div class="situacao">
+                    <div class="greenBall"></div>
+                </div>
+                <div class="progresso">
+                    <div class="greenBar"></div>
+                </div>
+            </div>
+            
+            <div class="item">
+                <p class="nome">Jane Smith</p>
+                <div class="situacao">
+                    <div class="yellowBall"></div>
+                </div>
+                <div class="progresso">
+                    <div class="yellowBar"></div>
+                </div>
+            </div>
+            
+            <div class="item">
+                <p class="nome">Michael Johnson</p>
+                <div class="situacao">
+                    <div class="greenBall"></div>
+                </div>
+                <div class="progresso">
+                    <div class="greenBar"></div>
+                </div>
+            </div>
+            
+            <div class="item">
+                <p class="nome">Sarah Thompson</p>
+                <div class="situacao">
+                    <div class="yellowBall"></div>
+                </div>
+                <div class="progresso">
+                    <div class="yellowBar"></div>
+                </div>
+            </div>
+            
+            <div class="item">
+                <p class="nome">Alex Rodriguez</p>
+                <div class="situacao">
+                    <div class="redBall"></div>
+                </div>
+                <div class="progresso">
+                    <div class="redBar"></div>
+                </div>
+                <div class="item">
+                    <p class="nome">Emily Johnson</p>
+                    <div class="situacao">
+                        <div class="yellowBall"></div>
+                    </div>
+                    <div class="progresso">
+                        <div class="yellowBar"></div>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <p class="nome">Daniel Smith</p>
+                    <div class="situacao">
+                        <div class="greenBall"></div>
+                    </div>
+                    <div class="progresso">
+                        <div class="greenBar"></div>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <p class="nome">Olivia Davis</p>
+                    <div class="situacao">
+                        <div class="greenBall"></div>
+                    </div>
+                    <div class="progresso">
+                        <div class="greenBar"></div>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <p class="nome">Matthew Wilson</p>
+                    <div class="situacao">
+                        <div class="yellowBall"></div>
+                    </div>
+                    <div class="progresso">
+                        <div class="yellowBar"></div>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <p class="nome">Sophia Martinez</p>
+                    <div class="situacao">
+                        <div class="greenBall"></div>
+                    </div>
+                    <div class="progresso">
+                        <div class="greenBar"></div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+        </div>
     </section>
 
  
