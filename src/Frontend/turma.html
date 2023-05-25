@@ -7,9 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaFreire</title>
     <link rel="stylesheet" href="turma.css" />
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
     <div id="barraSuperior">
         <button>
@@ -17,18 +16,23 @@
             <div id="menu2"> </div>
             <div id="menu3"></div>
         </button>
-
-
         <div id="busca">
             <img src="../../imagens/lupa.png">
-
         </div>
         <button id="perfil">
             <img src="../../imagens/circulo perfil.png" id="circulo">
         </button>
     </div>
-
     <a id="turmas"> Turma 1 | Turma 2 | Turma 3 </a>
-</body>>
-
+</body>
+<section>
+    <br>
+    <canvas id="myChart"></canvas>
+    <canvas id="myChart2"></canvas>
+    <script src="../Backend/grafico.js"></script>
+</section>
+<footer class="footerContainer">
+    <p>Grupo Phoenix;&copy;2023 - Todos os direitos reservados.</p>
+    <p>Mantenedora - Nova Escola & Inteli</p>
+</footer>
 </html>
