@@ -32,6 +32,11 @@ new Chart(ctx1, {
     }]
   },
   options: {
+    legend: {
+        labels: {
+          boxWidth: 0,
+        }
+       },
     responsive: true,
     maintainAspectRatio: false,
     scales: {
