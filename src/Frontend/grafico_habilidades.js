@@ -37,6 +37,13 @@ new Chart(ctx2, {
       y: {
         beginAtZero: true
       }
+    },
+    plugins: {
+      legend: {
+        labels: {
+          boxWidth: 0
+        }
+       }
     }
   }
 });

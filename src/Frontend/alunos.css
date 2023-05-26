@@ -93,32 +93,38 @@ img#lupa{
 section{
     font-size: 17px;
     background-color: #D9D9D9;
-    width: 330px;
-    height: 500px;
+    width: 350px;
+    height: auto;
     display: flex;
     border-radius: 4px;
     margin-left: auto;
     margin-right: auto;
     overflow-y: auto;
+    text-align: center;
 }
 
 .nome,
 .situacao,
 .progresso{
-    padding: 16px;
     padding-top: 0px;
     padding-bottom: 0px;
     display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
-
-
+.item{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-left: auto;
+}
 
 
 
 .row{
     width: 330px;
     text-align: center;
+    
 }
 
 .mais{
@@ -139,8 +145,8 @@ section{
     border-radius: 100%;
     background-color: var(--green);
     display: inline-block;
-    position: relative;
-    top: 6px
+    
+    
 }
 
 .redBall{
@@ -149,6 +155,7 @@ section{
     border-radius: 100%;
     background-color: var(--red);
     display: inline-block;
+    
 }
 
 .yellowBall{
@@ -157,6 +164,7 @@ section{
     border-radius: 100%;
     background-color: var(--yellow);
     display: inline-block;
+    
 }
 
 .greenBar{
@@ -164,8 +172,7 @@ section{
     height: 15px;
     background-color: var(--green);
     display: inline-block;
-    position: relative;
-    top: 6px
+    
 }
 
 .redBar{
@@ -173,6 +180,7 @@ section{
     height: 15px;
     background-color: var(--red);
     display: inline-block;
+    
 }
 
 .yellowBar{
@@ -180,6 +188,7 @@ section{
     height: 15px;
     background-color: var(--yellow);
     display: inline-block;
+    
 }
 
 div#porcentagem{
