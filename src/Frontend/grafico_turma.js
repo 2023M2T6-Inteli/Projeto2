@@ -19,6 +19,8 @@ new Chart(ctx1, {
           return 'rgb(245, 83, 83)';
         }
       }),
+      borderWidth: 2,
+      borderColor: 'rgb(0,0,0)',
       pointBorderWidth: 6,
       pointBorderColor: nota1.map(nota => {
         if (nota >= 80) {

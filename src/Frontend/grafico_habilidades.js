@@ -35,7 +35,12 @@ new Chart(ctx2, {
     maintainAspectRatio: false,
     scales: {
       y: {
-        beginAtZero: true
+        beginAtZero: true,
+      },
+      x: {
+        grid: {
+          display: false
+        }
       }
     },
     plugins: {

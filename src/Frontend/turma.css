@@ -115,27 +115,25 @@ img#lupa{
     box-sizing: border-box;;
 }
 
+#grafico_defasagens{
+    width: 100px;
+}
 
-
-
+canvas{
+    margin-bottom: 30px;
+}
 
 .footerContainer{
+    color: #00000089;
+    text-align: center;
     position: relative;
     bottom: 0;
     right: 0;
     left: 0;
-    font-size: 10px;
     padding-bottom: 1rem;
-    width: 80%;
+    padding-top: 1rem;
+    width: 95%;
     margin: 0 auto;
+    font-size: 10px;
+    display: block;
   }
-  
-  .footerContainer {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .footerContainer p {
-    margin: 0;
-  }
-  
