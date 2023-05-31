@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Estabelece uma pré-conexão com o servidor de fontes do Google -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Estabelece uma pré-conexão com o servidor de fontes do Google -->
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@500&display=swap" rel="stylesheet"><!-- Importa a fonte Inter do Google Fonts -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="login.js"></script>
     <title>NovaFreire</title> <!-- Define o título da página como "NovaFreire" -->
 </head>
 
@@ -22,13 +24,13 @@
     <section class="container">
         <form>
             <label for="email">Login:</label> <!-- Rótulo para o campo de email -->
-            <input type="email" id="email" name="email" required class="input-field"> <!-- Campo de entrada para o email -->
+            <input type="email" id="email" name="email" required class="input-field" placeholder="email@email.com"> <!-- Campo de entrada para o email -->
             <br>
             <br>
             <label for="password">Senha:</label> <!-- Rótulo para o campo de senha -->
-            <input type="password" id="password" name="password" required class="input-field"> <!-- Campo de entrada para a senha -->
+            <input type="password" id="senha" name="password" required class="input-field"> <!-- Campo de entrada para a senha -->
             
-            <button type="submit" class="button-enter">Entrar</button> <!-- Botão de entrar -->
+            <button type="button" class="button-enter" id="enviar">Entrar</button> <!-- Botão de entrar -->
         </form>
         <div class="links">
             <br>
