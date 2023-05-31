@@ -1,28 +1,48 @@
-const ctx3 = document.getElementById('grafico_defasagens')
 
-const numero_alunos = [20,25,32]
-const habilidades_defasagens = ['EF05MA12', 'EF05MA06', 'EF05MA24']
+axios.get('/habilidades_defasagens') // MUDAR - retorna as 5 habilidades com maior defasagem
+  .then(response => {
+    var habilidades_defasagens = response.data;
 
-new Chart (ctx3, {
-    type: 'pie',
-    data: {
-        labels: habilidades_defasagens,
-        datasets: [{
-            label: 'Maiores defasagens da turma',
-            data: numero_alunos,
-            borderWidth: 0
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-            labels: {
-              boxWidth: 0
-            }
-        },
-        },
-      }
-});
+    axios.get('/habilidades_defasagens_nome') // MUDAR - retorna o nome das 5 habilidades
+      .then(response => {
+        var habilidades_defasagens_nome = response.data;
+
+        grafico_turma(habilidades_defasagens, habilidades_defasagens_nome);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+
+function grafico_turma(habilidades_defasagens, habilidades_defasagens_nome){
+
+  const ctx3 = document.getElementById('grafico_defasagens')
+
+  new Chart (ctx3, {
+      type: 'pie',
+      data: {
+          labels: habilidades_defasagens_nome,
+          datasets: [{
+              label: 'Maiores defasagens da turma',
+              data: habilidades_defasagens,
+              borderWidth: 0
+          }]
+      },
+      options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+              labels: {
+                boxWidth: 0
+              }
+          },
+          },
+        }
+  });
+}

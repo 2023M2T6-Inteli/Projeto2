@@ -1,54 +1,74 @@
-const ctx2 = document.getElementById('grafico_habilidades');
-const nota2 = [10, 40, 43, 60, 64, 75, 42, 31, 78, 94, 100, 54, 57];
-const habilidades = ['EF05MA1', 'EF05MA2', 'EF05MA3', 'EF05MA4', 'EF05MA5', 'EF05MA6', 'EF05MA7', 'EF05MA8', 'EF05MA9', 'EF05MA10', 'EF05MA11', 'EF05MA12', 'EF05MA13'];
+const axios = require('axios');
 
-new Chart(ctx2, {
-  type: 'bar',
-  data: {
-    labels: habilidades,
-    datasets: [{
-      label: '',
-      data: nota2,
-      borderWidth: 1,
-      backgroundColor: nota2.map(nota => {
-        if (nota >= 80) {
-          return green;
-        } else if (nota >= 50) {
-          return yellow;
-        } else {
-          return red;
-        }
-      }),
-      hoverBackgroundColor: nota2.map(nota => {
-        if (nota >= 80) {
-          return green;
-        } else if (nota >= 50) {
-          return yellow;
-        } else {
-          return red;
-        }
+axios.get('endpoint_habilidades_nota') // MUDAR - retorna média de notas da sala por habilidade
+  .then(response => {
+    var habilidades_nota = response.data;
+
+    axios.get('endpoint_habilidades_nome') // MUDAR - retorna nome das habilidades BNCC
+      .then(response => {
+        var habilidades_nome = response.data;
+
+        grafico_turma(habilidades_nome, habilidades_nota);
       })
-    }]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      y: {
-        beginAtZero: true,
+      .catch(error => {
+        console.log(error);
+      });
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+function grafico_turma(habilidades_nome, habilidades_nota) {
+  const ctx2 = document.getElementById('grafico_habilidades');
+
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: habilidades_nome,
+      datasets: [{
+        label: '',
+        data: habilidades_nota,
+        borderWidth: 1,
+        backgroundColor: habilidades_nota.map(nota => {
+          if (nota >= 80) {
+            return 'green';
+          } else if (nota >= 50) {
+            return 'yellow';
+          } else {
+            return 'red';
+          }
+        }),
+        hoverBackgroundColor: habilidades_nota.map(nota => {
+          if (nota >= 80) {
+            return 'green';
+          } else if (nota >= 50) {
+            return 'yellow';
+          } else {
+            return 'red';
+          }
+        })
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+        x: {
+          grid: {
+            display: false
+          }
+        }
       },
-      x: {
-        grid: {
-          display: false
+      plugins: {
+        legend: {
+          labels: {
+            boxWidth: 0
+          }
         }
       }
-    },
-    plugins: {
-      legend: {
-        labels: {
-          boxWidth: 0
-        }
-       }
     }
-  }
-});
+  });
+}
