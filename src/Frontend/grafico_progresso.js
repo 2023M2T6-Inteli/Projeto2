@@ -1,66 +1,65 @@
-// Get the canvas element
-var ctx4 = document.getElementById('grafico_progresso').getContext('2d');
 
-var nota_bncc = [20];
-// Define the data
-var data = {
-  labels: ['Percentage'],
-  datasets: [
-    {
-      data: nota_bncc,
-      backgroundColor: nota_bncc.map(nota => {
-        if (nota >= 80) {
-          return 'rgb(67, 166, 51)';
-        } else if (nota >= 50) {
-          return 'rgb(242, 164, 19)';
-        } else {
-          return 'rgb(245, 83, 83)';
-        }
-      }),
-      hoverBackgroundColor: nota_bncc.map(nota => {
-        if (nota >= 80) {
-          return 'rgb(67, 166, 51)';
-        } else if (nota >= 50) {
-          return 'rgb(242, 164, 19)';
-        } else {
-          return 'rgb(245, 83, 83)';
-        }
-      })
-    },
-    {
-      data: [100 - nota_bncc],
-      backgroundColor: '#D9D9D9',
-      hoverBackgroundColor: '#D9D9D9',
-    },
-  ],
-};
+const ctx4 = document.getElementById('grafico_progresso').getContext('2d');
 
-// Configure the options
-var options = {
-  responsive: true,
-  maintainAspectRatio: false,
-  indexAxis: 'y', // Set the axis to display as horizontal
-  scales: {
-    x: {
-      display: false,
-      stacked: true,
-    },
-    y: {
-      display: false,
-      stacked: true,
-    },
-  },
-  plugins: {
-    legend: {
-      display: false,
-    }
-  }
-};
+const nota_bncc = [80];
+
+const green = 'rgb(67, 166, 51)';
+const yellow = 'rgb(242, 164, 19)';
+const red = 'rgb(245, 83, 83)'
 
 new Chart(ctx4, {
   type: 'bar', 
-  data: data,
-  options: options,
+  data: {
+    labels: ['Percentage'],
+    datasets: [
+      {
+        data: nota_bncc,
+        backgroundColor: nota_bncc.map(nota => {
+          if (nota >= 80) {
+            return green;
+          } else if (nota >= 50) {
+            return yellow;
+          } else {
+            return red;
+          }
+        }),
+        hoverBackgroundColor: nota_bncc.map(nota => {
+          if (nota >= 80) {
+            return green;
+          } else if (nota >= 50) {
+            return yellow;
+          } else {
+            return red;
+          }
+        })
+      },
+      {
+        data: [100 - nota_bncc],
+        backgroundColor: '#D9D9D9',
+        hoverBackgroundColor: '#D9D9D9',
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    indexAxis: 'y', 
+    scales: {
+      x: {
+        display: false,
+        stacked: true,
+      },
+      y: {
+        display: false,
+        stacked: true,
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      }
+    }
+  }
 });
 
 window.onload = function(){
