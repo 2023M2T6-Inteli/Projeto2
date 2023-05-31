@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Nova Freire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@500&display=swap" rel="stylesheet">
+    <!-- Importa a fonte Inter do Google Fonts -->
+    <link rel="stylesheet" type="text/css" href="cadastro.css">
+</head>
+
+<body>
+    <hr class="linha_colorida">
+    <div class="texto_espacado">
+        <h1>Crie o seu cadastro</h1>
+        <p>Tenha na palma da sua mão os principais dados para ajudar os seus alunos de forma rápida, prática e eficiente
+        </p>
+        <label class="obrigatorio">Campos obrigatórios<span class="asterisco">*</span></label>
+        <br><br>
+        <label for="nome_completo">Nome Completo<span class="asterisco">*</span></label>
+        <input type="nome_completo" id="nome_completo" name="nome_completo" required class="input-field">
+        <br><br>
+        <label class="genero">Gênero<span class="asterisco">*</span></label>
+        <br>
+        <div class="button">
+            <input type="radio" id="genero-masculino" name="genero" value="masculino">
+            <label for="genero-masculino">M</label>
+        </div>
+
+        <div class="button">
+            <input type="radio" id="genero-feminino" name="genero" value="feminino">
+            <label for="genero-feminino">F</label>
+        </div>
+
+        <div class="button">
+            <input type="radio" id="genero-outro" name="genero" value="outro">
+            <label for="genero-outro">N/D</label>
+        </div>
+        <br><br>
+        <div class="data_de_nascimento">
+            <label for="data_nascimento">Data de Nascimento:<span class="asterisco">*</span></label>
+            <input type="text" id="data_nascimento" name="data_nascimento" placeholder="DD/MM/AAAA">
+            <button onclick="formatarData()">Verificar</button>
+        </div>
+        <br>
+        <div class="celular">
+            <label for="numero-celular">Número de Celular:<span class="asterisco">*</span></label>
+            <input type="tel" id="numero-celular" name="numero-celular" placeholder="(xx) xxxxx-xxxx">
+            <span id="error-message"></span>
+        </div>
+        <div class="email">
+            <label for="email">Email:<span class="asterisco">*</span></label>
+            <input type="email" id="email" name="email" placeholder="Digite seu email">
+        </div>
+        <div class="senha">
+            <label for="pin">Senha:<span class="asterisco">*</span></label>
+            <input type="password" id="pin" maxlength="4">
+            <button onclick="validarPIN()">Verificar PIN</button>
+            <p id="pin-feedback"></p>
+            <p>Escolha uma senha de 4 dígitos</p>
+        </div>
+    </div>
+</body>
+
+<script>
+    function formatarData() {
+        var input = document.getElementById('data_nascimento');
+        var data = input.value;
+
+        if (validarData(data)) {
+            var partes = data.split('/');
+            var dia = partes[0];
+            var mes = partes[1];
+            var ano = partes[2];
+            var dataFormatada = dia + '/' + mes + '/' + ano;
+
+            input.value = dataFormatada;
+        } else {
+            alert('Data de Nascimento inválida. Por favor, insira no formato DD/MM/AAAA.');
+        }
+    }
+
+    function validarData(data) {
+        var padrao = /^\d{2}\/\d{2}\/\d{4}$/;
+        return padrao.test(data);
+    }
+</script>
+
+<script>
+    var inputNumeroCelular = document.getElementById('numero-celular');
+    var errorMessage = document.getElementById('error-message');
+
+    inputNumeroCelular.addEventListener('input', function () {
+        var numeroCelular = inputNumeroCelular.value;
+        var quantidadeNumeros = numeroCelular.replace(/[^0-9]/g, '').length;
+
+        if (quantidadeNumeros !== 11) {
+            errorMessage.textContent = 'O número de celular deve ter 11 dígitos.';
+            inputNumeroCelular.classList.add('error');
+        } else {
+            errorMessage.textContent = '';
+            inputNumeroCelular.classList.remove('error');
+        }
+    });
+</script>
+<script>
+    function validarPIN() {
+        var pinInput = document.getElementById('pin');
+        var pin = pinInput.value;
+
+        if (pin.length !== 4 || isNaN(pin)) {
+            document.getElementById('pin-feedback').textContent = 'PIN inválido. Digite exatamente 4 dígitos numéricos.';
+            pinInput.classList.add('error');
+        } else {
+            document.getElementById('pin-feedback').textContent = 'PIN válido!';
+            pinInput.classList.remove('error');
+        }
+    }
+</script>
+
+</html>

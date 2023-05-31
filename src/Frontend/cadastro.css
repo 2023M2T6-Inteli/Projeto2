@@ -1,0 +1,133 @@
+/* fonte utlizada */
+* {
+    font-family: 'Nunito', sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.texto_espacado {
+    margin-top: 1%;
+    /* Cria um espaçamento na parte superior, fazendo com que o texto se sobreponha a elementos próximos */
+    padding-left: 5%;
+    /* Adiciona 15 pixels de espaçamento interno apenas na parte esquerda */
+    padding-right: 5%;
+    /* Adiciona 20 pixels de espaçamento interno apenas na parte direita */
+    font-size: 14px;
+}
+
+.linha_colorida {
+    margin: 0;
+    border: 0;
+    height: 60px;
+    /* Define a altura da linha */
+    background-color: #FF1D5C;
+    /* Define a cor da linha (neste exemplo, vermelho) */
+}
+
+.asterisco {
+    color: #ff0000;
+    /* Cor vermelha para o asterisco */
+}
+
+/* Define o estilo para os campos de entrada, com fundo cinza, sem borda e borda arredondada */
+.input-field {
+    background-color: #C1C1C1;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+
+.button {
+    display: inline-block;
+    margin-right: 10px;
+    /* Adiciona um espaçamento entre os botões */
+}
+
+.button input[type="radio"] {
+    display: none;
+    /* Oculta o input do rádio padrão */
+}
+
+.button label {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+    /* Define a cor de fundo dos botões */
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.button input[type="radio"]:checked+label {
+    background-color: #FF1D5C;
+    /* Define a cor de fundo do botão selecionado */
+    color: #fff;
+    /* Define a cor do texto do botão selecionado */
+}
+
+input[type="text"] {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #FF1D5C;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.celular {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="tel"] {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.email {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="email"] {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+
+.senha {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="password"] {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.error {
+    border-color: red;
+}
+
+
+
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
