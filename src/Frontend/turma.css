@@ -2,7 +2,7 @@
     --green:#43A633;
     --red:#F55353;
     --yellow:#F2A413;
-
+    --pink: #FF1D5C;
 }
 
 
@@ -33,7 +33,7 @@ button#perfil{
     display: flex;
     width: 30px;
     height: 30px;
-    background-color: #FF1D5C;
+    background-color: var(--pink);
     border-radius: 100%;
     padding-bottom: 5px;
 }
@@ -55,17 +55,22 @@ button#sidebar{
 
 div#busca {
     background-color:#D9D9D9 ;
-    width: 270px;
+    width: 71vw;
     height: 26px;
     display: flex;
     margin-left: 40px;
     margin-top: -55px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 div#busca input[type="text"] {
     border: transparent;
     background-color: #D9D9D9;
-    width: 270px;
+    width: 74vw;
+    border-radius: 3px;
+}
+
+input[type="text"]:focus{
+    outline-color: #ff1d5dbd;
 }
 
 button#perfil{
@@ -84,18 +89,14 @@ img#circulo{
     font-size: 18px;
     color: #484848;
     margin-top: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 35px;
     text-align: center;
-}
-
-img#lupa{
-    width: 30px;
 }
 
 
 
 .mais{
-    color: #FF1D5C; 
+    color: var(--pink); 
     display: inline;
     font-size: 30px;
     height: 30px;
@@ -136,9 +137,9 @@ img#lupa{
 
 #porcentagem{
     color: white;
-    position: absolute;
-    margin-bottom: -30px;
-    margin-left: 35px;
+    position: relative;
+    margin-bottom: -36px;
+    margin-left: 8vw;
     z-index: 2;
 }
 

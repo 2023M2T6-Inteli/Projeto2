@@ -43,7 +43,7 @@ new Chart(ctx1, {
     scales: {
       y: {
         beginAtZero: true
-      }
+      },
     },
     plugins: {
       legend: {

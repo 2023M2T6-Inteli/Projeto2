@@ -143,6 +143,25 @@ app.get("/aluno/:id_aluno", urlencodedParser, (req, res) => {
     });
 });
 
+// get/aluno/:id_aluno Selecionando todos os alunos e rebendo o nome.
+app.get("/aluno", urlencodedParser, (req, res) => {
+    let db = new sqlite3.Database(DBPATH)
+
+    const query_select = "SELECT nome FROM aluno"
+
+    const id_aluno = req.params.id_aluno;
+    
+    db.all(query_select, [id_aluno], (error, rows) => {
+        if (error){
+            throw new Error(error);
+        }
+        return res.status(200).json({
+            title: "Aluno retornado com sucesso.",
+            aluno: rows
+        });
+    });
+});
+
 
 // PUT id_aluno; Atualizando os dados dos alunos
 app.put("/aluno/:id_aluno", urlencodedParser, (req, res) => {
@@ -551,6 +570,8 @@ app.post("/avaliacao", (req, res) => {
     let db = new sqlite3.Database(DBPATH);
 
     const {tipo_avaliacao, periodo} = req.body;
+
+
 
     const query = "INSERT INTO avaliacao(tipo_avaliacao, periodo) VALUES (?, ?)";
 
