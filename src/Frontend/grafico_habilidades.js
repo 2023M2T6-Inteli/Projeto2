@@ -1,6 +1,6 @@
 const ctx2 = document.getElementById('grafico_habilidades');
-const nota2 = [10, 40, 60, 80, 90];
-const habilidades = ['H1', 'H2', 'H3', 'H4', 'H5'];
+const nota2 = [10, 40, 43, 60, 64, 75, 42, 31, 78, 94, 100, 54, 57];
+const habilidades = ['EF05MA1', 'EF05MA2', 'EF05MA3', 'EF05MA4', 'EF05MA5', 'EF05MA6', 'EF05MA7', 'EF05MA8', 'EF05MA9', 'EF05MA10', 'EF05MA11', 'EF05MA12', 'EF05MA13'];
 
 new Chart(ctx2, {
   type: 'bar',
@@ -12,20 +12,20 @@ new Chart(ctx2, {
       borderWidth: 1,
       backgroundColor: nota2.map(nota => {
         if (nota >= 80) {
-          return 'rgb(67, 166, 51)';
+          return green;
         } else if (nota >= 50) {
-          return 'rgb(242, 164, 19)';
+          return yellow;
         } else {
-          return 'rgb(245, 83, 83)';
+          return red;
         }
       }),
       hoverBackgroundColor: nota2.map(nota => {
         if (nota >= 80) {
-          return 'rgb(93, 206, 76)';
+          return green;
         } else if (nota >= 50) {
-          return 'rgb(255, 201, 4)';
+          return yellow;
         } else {
-          return 'rgb(255, 103, 103)';
+          return red;
         }
       })
     }]

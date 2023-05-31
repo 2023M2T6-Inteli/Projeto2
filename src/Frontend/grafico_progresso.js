@@ -1,11 +1,8 @@
-
 const ctx4 = document.getElementById('grafico_progresso').getContext('2d');
 
-const nota_bncc = [80];
+const nota_bncc = [60];
 
-const green = 'rgb(67, 166, 51)';
-const yellow = 'rgb(242, 164, 19)';
-const red = 'rgb(245, 83, 83)'
+
 
 new Chart(ctx4, {
   type: 'bar', 
