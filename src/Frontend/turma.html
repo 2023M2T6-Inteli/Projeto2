@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@400&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+    
+    
     <title>NovaFreire</title>
     <title>NovaFreire</title>
 </head>
@@ -38,11 +42,25 @@
 
     <p id="turmas"> <u style="text-decoration-color: #FF1D5C">Turma 1</u> | Turma 2 | Turma 3<button class="mais">+</button></p>
     <section>
-        <div style="height: 1200px;">
-            <div class="chart-container">
+            
+            <p class="chart-title">Média geral</p>
+            <div class="chart-container-turma">
                 <canvas id="grafico_turma"></canvas>
+            </div>
+              
+            <p class="chart-title">Habilidades</p>
+            <div class="chart-container-habilidades">
                 <canvas id="grafico_habilidades"></canvas>
+            </div>
+                
+            <p id="chart-title-defasagens" class="chart-title">Maiores defasagens da turma</p>
+            <div class="chart-container-defasagens">
                 <canvas id="grafico_defasagens"></canvas>
+            </div>
+            
+            <p id="chart-title-progresso" class="chart-title">Progresso BNCC</p>
+            <p id="porcentagem"></p>
+            <div class="chart-container-progresso">
                 <canvas id="grafico_progresso"></canvas>
             </div>
         </div>

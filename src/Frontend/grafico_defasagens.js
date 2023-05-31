@@ -23,10 +23,6 @@ new Chart (ctx3, {
               boxWidth: 0
             }
         },
-        title:{
-            display: true,
-            text: 'Maiores defasagens da turma'
-        }
         },
       }
 });

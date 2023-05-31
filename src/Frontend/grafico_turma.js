@@ -7,7 +7,7 @@ new Chart(ctx1, {
   data: {
     labels: datas,
     datasets: [{
-      label: 'Notas da sala',
+      label: '',
       data: nota1,
       borderWidth: 1,
       pointBackgroundColor: nota1.map(nota => {

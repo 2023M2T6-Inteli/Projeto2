@@ -7,7 +7,7 @@ new Chart(ctx2, {
   data: {
     labels: habilidades,
     datasets: [{
-      label: 'Média por habilidade',
+      label: '',
       data: nota2,
       borderWidth: 1,
       backgroundColor: nota2.map(nota => {
