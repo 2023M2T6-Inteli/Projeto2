@@ -1,5 +1,3 @@
-const axios = require('axios');
-
 axios.get('endpoint_habilidades_nota') // MUDAR - retorna média de notas da sala por habilidade
   .then(response => {
     var habilidades_nota = response.data;

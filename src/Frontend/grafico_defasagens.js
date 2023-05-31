@@ -1,4 +1,3 @@
-
 axios.get('/habilidades_defasagens') // MUDAR - retorna as 5 habilidades com maior defasagem
   .then(response => {
     var habilidades_defasagens = response.data;

@@ -1,5 +1,3 @@
-const axios = require('axios');
-
 axios.get('nota_bncc') // MUDAR - retorna média da turma em relação aos critérios da BNCC
   .then(response =>{
 

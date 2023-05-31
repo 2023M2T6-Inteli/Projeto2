@@ -1,5 +1,3 @@
-const axios = require('axios');
-
 const green = '#43A633';
 const yellow = '#F2A413';
 const red = '#F55353';
