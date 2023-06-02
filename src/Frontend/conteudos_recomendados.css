@@ -1,0 +1,131 @@
+:root {
+    --green: #43A633;
+    --red: #F55353;
+    --yellow: #F2A413;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+header {
+    margin-top: 10px;
+}
+
+button {
+    display: block;
+    position: relative;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+aside {
+    height: 60px;
+}
+
+button#perfil {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    background-color: #FF1D5C;
+    border-radius: 100%;
+    padding-bottom: 5px;
+}
+
+button#sidebar {
+    padding: 0;
+    padding-top: 5px;
+}
+
+.barra {
+    background-color: #D9D9D9;
+    width: 24px;
+    height: 5px;
+    margin: 2px;
+    margin-top: 3px;
+}
+
+div#busca {
+    background-color: #D9D9D9;
+    width: 270px;
+    height: 26px;
+    display: flex;
+    margin-left: 40px;
+    margin-top: -55px;
+    border-radius: 10px;
+}
+
+div#busca input[type="text"] {
+    border: none;
+    background-color: #D9D9D9;
+    width: 100%;
+}
+
+img#circulo {
+    width: 36px;
+    height: auto;
+}
+
+section {
+    font-size: 17px;
+    background-color: #D9D9D9;
+    width: 350px;
+    height: 750px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    grid-gap: 20px;
+    grid-template-areas:
+      "conteudo1 conteudo2"
+      "conteudo3 conteudo4";
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.conteudo-recomendado {
+    padding: 10px;
+    background-color: #F2F2F2;
+    border-radius: 4px;
+    height: 100%;
+}
+
+.conteudo-recomendado h3 {
+    font-size: 16px;
+    color: #484848;
+}
+
+.conteudo-recomendado p {
+    font-size: 14px;
+    color: #777777;
+}
+
+.conteudo-recomendado[style*="grid-area: conteudo1;"] {
+    grid-area: conteudo1;
+}
+
+.conteudo-recomendado[style*="grid-area: conteudo2;"] {
+    grid-area: conteudo2;
+}
+
+.conteudo-recomendado[style*="grid-area: conteudo3;"] {
+    grid-area: conteudo3;
+}
+
+.conteudo-recomendado[style*="grid-area: conteudo4;"] {
+    grid-area: conteudo4;
+}
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
