@@ -12,11 +12,13 @@
 </head>
 
 <body>
+    <!-- Linha colorida do header com os textos espaçados  -->
     <hr class="linha_colorida">
     <div class="texto_espacado">
         <h1>Crie o seu cadastro</h1>
         <p>Tenha na palma da sua mão os principais dados para ajudar os seus alunos de forma rápida, prática e eficiente
         </p>
+        <!-- Texto em label com asterisco  -->
         <label class="obrigatorio">Campos obrigatórios<span class="asterisco">*</span></label>
         <br><br>
         <label for="nome_completo">Nome Completo<span class="asterisco">*</span></label>
@@ -24,6 +26,7 @@
         <br><br>
         <label class="genero">Gênero<span class="asterisco">*</span></label>
         <br>
+         <!-- Botões circulares para escolha do gênero  -->
         <div class="button">
             <input type="radio" id="genero-masculino" name="genero" value="masculino">
             <label for="genero-masculino">M</label>
@@ -39,21 +42,25 @@
             <label for="genero-outro">N/D</label>
         </div>
         <br><br>
+        <!-- Adição da data de nascimento com verificação se o formato está correto  -->
         <div class="data_de_nascimento">
             <label for="data_nascimento">Data de Nascimento:<span class="asterisco">*</span></label>
             <input type="text" id="data_nascimento" name="data_nascimento" placeholder="DD/MM/AAAA">
             <button onclick="formatarData()">Verificar</button>
         </div>
         <br>
+        <!-- Adição número de celular com formato e verificação se tem menos ou mais de 11 números -->
         <div class="celular">
             <label for="numero-celular">Número de Celular:<span class="asterisco">*</span></label>
             <input type="tel" id="numero-celular" name="numero-celular" placeholder="(xx) xxxxx-xxxx">
             <span id="error-message"></span>
         </div>
+        <!-- Adição de e-mail -->
         <div class="email">
             <label for="email">Email:<span class="asterisco">*</span></label>
             <input type="email" id="email" name="email" placeholder="Digite seu email">
         </div>
+        <!-- Adição de uma senha no formato PIN de 4 dígitos -->
         <div class="senha">
             <label for="pin">Senha:<span class="asterisco">*</span></label>
             <input type="password" id="pin" maxlength="4">
@@ -64,58 +71,59 @@
     </div>
 </body>
 
-<script>
+<script> /*script para validar a data de nascimento*/
     function formatarData() {
         var input = document.getElementById('data_nascimento');
         var data = input.value;
 
         if (validarData(data)) {
-            var partes = data.split('/');
+            var partes = data.split('/'); /*adiciona barra entre dia, mês e ano de acordo com a posição*/
             var dia = partes[0];
             var mes = partes[1];
             var ano = partes[2];
             var dataFormatada = dia + '/' + mes + '/' + ano;
 
             input.value = dataFormatada;
-        } else {
+        } else { /*manda um alerta em formato de string para o usuário se a data estiver inválida*/
             alert('Data de Nascimento inválida. Por favor, insira no formato DD/MM/AAAA.');
         }
     }
 
-    function validarData(data) {
+    function validarData(data) { /*realiza a validação da data e retorna a data em formato padrão*/
         var padrao = /^\d{2}\/\d{2}\/\d{4}$/;
         return padrao.test(data);
     }
 </script>
 
-<script>
+<script> /*script para validar quantidade de números no celular*/
     var inputNumeroCelular = document.getElementById('numero-celular');
     var errorMessage = document.getElementById('error-message');
 
-    inputNumeroCelular.addEventListener('input', function () {
+    inputNumeroCelular.addEventListener('input', function () { /*verifica o tamanho do input que está sendo colocado o número do celular*/
         var numeroCelular = inputNumeroCelular.value;
         var quantidadeNumeros = numeroCelular.replace(/[^0-9]/g, '').length;
 
-        if (quantidadeNumeros !== 11) {
+        if (quantidadeNumeros !== 11) { /*mensagem de erro se o número for menor ou maior que 11 dígitos */
+        var numeroCelular = inputNumeroCelular.value;
             errorMessage.textContent = 'O número de celular deve ter 11 dígitos.';
             inputNumeroCelular.classList.add('error');
         } else {
-            errorMessage.textContent = '';
+            errorMessage.textContent = ''; /*não aparece mensagem se estiver correto*/
             inputNumeroCelular.classList.remove('error');
         }
     });
 </script>
 <script>
-    function validarPIN() {
+    function validarPIN() { /*script para validar PIN*/
         var pinInput = document.getElementById('pin');
         var pin = pinInput.value;
 
-        if (pin.length !== 4 || isNaN(pin)) {
+        if (pin.length !== 4 || isNaN(pin)) { /*mensagem de erro se o número for menor ou maior que 4 dígitos */
             document.getElementById('pin-feedback').textContent = 'PIN inválido. Digite exatamente 4 dígitos numéricos.';
             pinInput.classList.add('error');
         } else {
             document.getElementById('pin-feedback').textContent = 'PIN válido!';
-            pinInput.classList.remove('error');
+            pinInput.classList.remove('error'); /*aparece PIN válido ao inserir corretamente os 4 dígitos*/
         }
     }
 </script>
