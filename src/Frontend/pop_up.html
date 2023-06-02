@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop-up</title>
+    <link rel="stylesheet" href="pop-up.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@500&display=swap" rel="stylesheet">
+    <script src="pop_up.js"></script>
+</head>
+
+<body>
+    <div class="texto_espacado">
+        <div class="Questão">
+            <h1>Q1</h1>
+        </div>
+        <div class="Habilidades">
+            <h2>Habilidades:</h2>
+        </div>
+        <button class="expandir_botao" onclick="expandirBotao(this)">EF05MA01<span class="mais">+</span></button>
+        <div class="conteudo-escondido">
+            <p>Ler, escrever e ordenar números naturais até a ordem das centenas de milhar com compreensão das
+                principais características do sistema de numeração decimal.</p>
+        </div>
+        <div>
+            <button class="expandir_botao2" onclick="expandirBotao(this)">EF05MA03<span class="mais">+</span></button>
+            <div class="conteudo-escondido">
+                <p>Identificar e representar frações (menores e maiores que a unidade), associando-as ao resultado de
+                    uma divisão ou à ideia de parte de um todo, utilizando a reta numérica como recurso.</p>
+            </div>
+        </div>
+        <div>
+            <button class="expandir_botao3" onclick="expandirBotao(this)">EF05MA07<span class="mais">+</span></button>
+            <div class="conteudo-escondido">
+                <p>Resolver e elaborar problemas de adição e subtração com números naturais e com números racionais,
+                    cuja representação decimal seja finita, utilizando estratégias diversas, como cálculo por
+                    estimativa, cálculo mental e algoritmos.</p>
+            </div>
+        </div>
+        <div>
+            <button class="expandir_botao4" onclick="expandirBotao(this)">EF05MA08<span class="mais">+</span></button>
+            <div class="conteudo-escondido">
+                <p>Resolver e elaborar problemas de multiplicação e divisão com números naturais e com números racionais
+                    cuja representação decimal é finita (com multiplicador natural e divisor natural e diferente de
+                    zero), utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos.
+                </p>
+            </div>
+        </div>
+        <div>
+            <button class="expandir_botao5" onclick="expandirBotao(this)">EF05MA14<span class="mais">+</span></button>
+            <div class="conteudo-escondido">
+                <p>Utilizar e compreender diferentes representações para a localização de objetos no plano, como mapas,
+                    células em planilhas eletrônicas e coordenadas geográficas, a fim de desenvolver as primeiras noções
+                    de coordenadas cartesianas.</p>
+            </div>
+        </div>
+        <div>
+            <button class="expandir_botao6" onclick="expandirBotao(this)">EF05MA24<span class="mais">+</span></button>
+            <div class="conteudo-escondido">
+                <p>Interpretar dados estatísticos apresentados em textos, tabelas e gráficos (colunas ou linhas),
+                    referentes a outras áreas do conhecimento ou a outros contextos, como saúde e trânsito, e produzir
+                    textos com o objetivo de sintetizar conclusões.</p>
+            </div>
+        </div>
+        <input type="text" id="nome-botao" placeholder="Insira o nome do botão">
+        <button onclick="adicionarBotao()">Adicionar Habilidade</button>
+        <div id="conteudo-dinamico"></div>
+    </div>
+</body>
+<script>
+    function expandirBotao(botao) {
+        var bloco = botao.nextElementSibling;
+        if (bloco.style.display === "none") {
+            bloco.style.display = "block";
+        } else {
+            bloco.style.display = "none";
+        }
+    }
+</script>
+<script>
+    
+</script>
+</html>
