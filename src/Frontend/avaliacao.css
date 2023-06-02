@@ -101,7 +101,7 @@ p#nota{
 section{
     font-size: 17px;
     background-color: #D9D9D9;
-    width: 350px;
+    width: 400px;
     height: 750px;
     display: flex;
     border-radius: 4px;
@@ -109,4 +109,64 @@ section{
     margin-right: auto;
     overflow-y: auto;
     text-align: center;
+}
+
+button.questao{
+    color: #000; 
+    display: inline;
+    font-size: 30px;
+    height: 30px;
+    margin-top: auto;
+    padding-bottom: -100px;
+    position: relative;
+    top: -2px;
+    left: 13px;
+}
+
+table#notas{
+    border-collapse: collapse; /* Combina as bordas das células */
+    width: 100%;
+  }
+
+ th, td {
+    border: 1px solid #ddd; /* Define uma borda de 1px sólida cinza claro */
+    padding: 8px; /* Adiciona um espaçamento interno de 8 pixels */
+    text-align: center; /* Alinha o conteúdo à esquerda */
+    
+  }
+  tr.clas{
+    height: 30px;
+  }
+  
+  
+  .q{
+    background-color: #FF1D5C; /* Define uma cor de fundo cinza claro para os cabeçalhos */
+    font-weight: bold; /* Define a fonte em negrito para os cabeçalhos */
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+    border-radius: 10px;
+    border-color: #ddd;
+
+  }
+  
+  td[contenteditable="true"]{
+    width: 35px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: white;
+    padding:8px;
+    border-color: #000;
+}
+
+td#total{
+    width: 35px;
+    height: 20px;
+    border-radius: 10px;
+    background-color:#ddd;
+    padding:8px;
+    border-color: #000;
+}
+.total{
+    background-color: white;
 }
