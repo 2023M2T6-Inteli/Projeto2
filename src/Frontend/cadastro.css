@@ -9,9 +9,9 @@
     margin-top: 1%;
     /* Cria um espaçamento na parte superior, fazendo com que o texto se sobreponha a elementos próximos */
     padding-left: 5%;
-    /* Adiciona 15 pixels de espaçamento interno apenas na parte esquerda */
+    /* Adiciona 5% de espaçamento interno apenas na parte esquerda */
     padding-right: 5%;
-    /* Adiciona 20 pixels de espaçamento interno apenas na parte direita */
+    /* Adiciona 5% de espaçamento interno apenas na parte direita */
     font-size: 14px;
 }
 
@@ -47,10 +47,10 @@
 
 .button input[type="radio"] {
     display: none;
-    /* Oculta o input do rádio padrão */
+    /* Oculta o input do botão*/
 }
 
-.button label {
+.button label { /*adiciona cor, tamanho e posição dos botões*/
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -69,13 +69,13 @@
     /* Define a cor do texto do botão selecionado */
 }
 
-input[type="text"] {
+input[type="text"] { /*adiciona posicionamento e tamanho em radiano do botão e coloração*/
     padding: 5px;
     border-radius: 4px;
     border: 1px solid #ccc;
 }
 
-button {
+button { /*adiciona posicionamento e tamanho em radiano do botão e coloração*/
     padding: 5px 10px;
     border-radius: 4px;
     background-color: #FF1D5C;
@@ -84,50 +84,46 @@ button {
     cursor: pointer;
 }
 
-.celular {
+.celular { /*posicionamento do botão de celular*/
     display: block;
     margin-bottom: 10px;
 }
 
-input[type="tel"] {
+input[type="tel"] {/*adiciona posicionamento e tamanho em radiano do botão e coloração*/
     padding: 5px;
     border-radius: 4px;
     border: 1px solid #ccc;
 }
 
-.email {
+.email { /*posicionamento do botão de email*/
     display: block;
     margin-bottom: 10px;
 }
 
-input[type="email"] {
+input[type="email"] { /*adiciona posicionamento e tamanho em radiano do botão e coloração*/
     padding: 5px;
     border-radius: 4px;
     border: 1px solid #ccc;
 }
 
 
-.senha {
+.senha { /*posicionamento do botão de senha*/
     display: block;
     margin-bottom: 10px;
 }
 
-input[type="password"] {
+input[type="password"] { /*adiciona posicionamento e tamanho em radiano do botão e coloração*/
     padding: 5px;
     border-radius: 4px;
     border: 1px solid #ccc;
 }
 
-.error {
+.error { /*coloração do error*/
     border-color: red;
 }
 
 
-
-
-
-
-body {
+body { /*retira as bordas da web*/
     margin: 0;
     padding: 0;
 }
