@@ -1,0 +1,36 @@
+* {
+    font-family: 'Nunito', sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+
+.texto_espacado {
+    margin-top: 1%;
+    /* Cria um espaçamento na parte superior, fazendo com que o texto se sobreponha a elementos próximos */
+    padding-left: 25%;
+    /* Adiciona 15 pixels de espaçamento interno apenas na parte esquerda */
+    padding-right: 25%;
+    /* Adiciona 20 pixels de espaçamento interno apenas na parte direita */
+    font-size: 14px;
+}
+  
+.bloco-informacoes {
+    display: none; /* Oculta o bloco inicialmente */
+  }
+  
+body {
+    background-color: #C1C1C1;
+}
+
+.mais {
+    color: #FF1D5C;
+    /* Cor vermelha para o asterisco */
+}
+
+
+.conteudo-escondido {
+    display: none; /* Oculta o conteúdo inicialmente */
+    text-align: justify;
+  }
+  
