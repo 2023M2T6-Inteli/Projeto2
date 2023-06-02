@@ -1,4 +1,4 @@
-.container {
+.container { /*posicionamento, tamanho e coloração container*/
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -6,19 +6,20 @@
   border-radius: 5px;
 }
 
-h2 {
+h2 { /*alinhamento*/
   text-align: center;
 }
 
-form {
+form { /*posicionamento*/
   display: flex;
   flex-direction: column;
 }
 
-label {
+label { /*posicionamento*/
   margin-bottom: 10px;
 }
 
+/*posicionamento, tamanho e coloração dos inputs*/
 input[type="email"],
 input[type="tel"],
 input[type="telefone"],

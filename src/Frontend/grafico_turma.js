@@ -20,6 +20,7 @@ axios.get('turma_nota') // MUDAR - retorna média da turma por data
     console.log(error);
   });
 
+  /*gráficos da nota da turma em geral feito com chart.js*/
 function grafico_turma(turma_nota_data, turma_nota){
 
   const ctx1 = document.getElementById('grafico_turma');

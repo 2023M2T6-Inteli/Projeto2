@@ -16,6 +16,7 @@ axios.get('endpoint_habilidades_nota') // MUDAR - retorna média de notas da sal
     console.log(error);
   });
 
+  /*gráficos de habilidades da turma feito com chart.js*/
 function grafico_turma(habilidades_nome, habilidades_nota) {
   const ctx2 = document.getElementById('grafico_habilidades');
 

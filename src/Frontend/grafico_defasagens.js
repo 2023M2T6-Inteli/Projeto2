@@ -16,7 +16,7 @@ axios.get('/habilidades_defasagens') // MUDAR - retorna as 5 habilidades com mai
     console.log(error);
   });
 
-
+/*gráficos de defasagens da turma feito com chart.js*/
 function grafico_turma(habilidades_defasagens, habilidades_defasagens_nome){
 
   const ctx3 = document.getElementById('grafico_defasagens')

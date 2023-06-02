@@ -12,6 +12,7 @@ axios.get('nota_bncc') // MUDAR - retorna média da turma em relação aos crit�
 
 function grafico_progresso(nota_bncc){
 
+  /*gráficos de progresso da turma feito com chart.js*/
   const ctx4 = document.getElementById('grafico_progresso').getContext('2d');
   
   new Chart(ctx4, {
