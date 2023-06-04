@@ -107,7 +107,7 @@ img#lupa{
 section{
     font-size: 17px;
     background-color: #D9D9D9;
-    width: 350px;
+    width: 375px;
     height: auto;
     display: flex;
     border-radius: 4px;
@@ -137,7 +137,7 @@ section{
 
 
 .row{
-    width: 330px;
+    width: 375px;
     text-align: center;
     
 }

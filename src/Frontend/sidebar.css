@@ -1,0 +1,63 @@
+hr{
+    border-color: rgb(255, 255, 255);
+}
+
+img{
+  width: 140px;
+  height: auto;
+  margin-top: -30px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 10px;
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: var(--pink);
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+    padding: 0px;
+    padding-top: 5px;
+}
+
+#darkOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 1;
+  pointer-events: none; 
+}
+  
