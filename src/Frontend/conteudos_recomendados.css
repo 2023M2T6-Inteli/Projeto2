@@ -8,15 +8,9 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-body {
     font-family: 'Nunito', sans-serif;
 }
 
-header {
-    margin-top: 10px;
-}
 
 button {
     display: block;
@@ -30,13 +24,12 @@ aside {
     height: 60px;
 }
 
-button#perfil {
+#perfil {
     display: flex;
     width: 30px;
     height: 30px;
     background-color: #FF1D5C;
     border-radius: 100%;
-    padding-bottom: 5px;
 }
 
 button#sidebar {
@@ -53,19 +46,22 @@ button#sidebar {
 }
 
 div#busca {
-    background-color: #D9D9D9;
-    width: 270px;
-    height: 26px;
     display: flex;
-    margin-left: 40px;
-    margin-top: -55px;
-    border-radius: 10px;
+    align-items: center;
+    background-color: #D9D9D9;
+    width: 60%;
+    max-width: 400px;
+    height: 35px;
+    border-radius: 5px;
 }
-
 div#busca input[type="text"] {
     border: none;
-    background-color: #D9D9D9;
+    background-color: transparent;
     width: 100%;
+    padding: 4px;
+}
+input[type="text"]:focus{
+    outline-color: #ff1d5dbd;
 }
 
 img#circulo {
@@ -77,7 +73,7 @@ section {
     font-size: 17px;
     background-color: #D9D9D9;
     width: 350px;
-    height: 750px;
+    height: 400px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto auto;
@@ -87,6 +83,7 @@ section {
       "conteudo3 conteudo4";
     margin: 0 auto;
     padding: 20px;
+    border-radius: 5px;
 }
 
 h2 {
@@ -94,7 +91,7 @@ h2 {
 }
 
 .conteudo-recomendado {
-    padding: 10px;
+    padding: 40px 20px;
     background-color: #F2F2F2;
     border-radius: 4px;
     height: 100%;
@@ -129,3 +126,10 @@ h2 {
     text-align: center;
     margin-top: 20px;
 }
+
+.navegacao{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 1.5rem;
+  }

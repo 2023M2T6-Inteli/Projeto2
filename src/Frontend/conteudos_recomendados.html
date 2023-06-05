@@ -9,25 +9,42 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./sidebar.css">
+    <script src="sidebar.js"></script>
 </head>
 <body>
+    <div id="darkOverlay"></div>
     <header>
-        <aside>
+        <nav class="navegacao" id="navegacao">
             <div id="barraSuperior">
-                <button id="sidebar">
+                <button class="openbtn" onclick="openNav()">
                     <div id="menu" class="barra"></div>
                     <div id="menu2" class="barra"> </div>
                     <div id="menu3" class="barra"></div>
                 </button>
+                <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <img src="../../imagens/logo.png" alt="Logo" class="logo">
+                    <a href="./perfil.html">Perfil</a>
+                    <hr>
+                    <a href="turma.html">Turmas</a>
+                    <hr>
+                    <a href="alunos.html">Alunos</a>
+                    <hr>
+                    <a href="avaliacao.html">Avaliações</a>
+                    <hr>
+                    <a href="./conteudos_recomendados.html">Conteúdos Recomendados</a>
+                </div>
             </div>
-        </aside>
-
-        <div id="busca">
-            <img src="../../imagens/lupa.png" id="lupa">
-            <input type="text" placeholder="Buscar">
-        </div>
+            <div id="busca"> <!-- barra de busca -->
+                <input type="text" placeholder=" Buscar">
+            </div>
+            <a id="perfil" href="./perfil.html"></a>
+        </nav>
     </header>
+
     <h2>Recomendações</h2>
+    <br>
     <section>
         <br>
         <div class="conteudo-recomendado" style="grid-area: conteudo1;">

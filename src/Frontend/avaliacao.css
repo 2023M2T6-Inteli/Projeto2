@@ -9,12 +9,10 @@
 /* Estilos gerais */
 *{
     font-family: 'Nunito', sans-serif;
+    margin: 0%;
+    padding: 0%;
 }
 
-/* Estilos do cabeçalho */
-header{
-    margin-top: 10px;
-}
 
 button{
     display: block;
@@ -24,18 +22,16 @@ button{
     cursor: pointer;
 }
 
-/* Estilos da barra lateral */
-aside{
-    height: 60px;
-}
 
-button#perfil{
+/* Estilos da barra lateral */
+
+#perfil{
     display: flex;
     width: 30px;
     height: 30px;
     background-color: #FF1D5C;
     border-radius: 100%;
-    padding-bottom: 5px;
+
 }
 
 button#sidebar{
@@ -52,28 +48,25 @@ button#sidebar{
     margin-top: 3px;
 }
 
-/* Estilos da barra de busca */
 div#busca {
-    background-color:#D9D9D9 ;
-    width: 270px;
-    height: 26px;
     display: flex;
-    margin-left: 40px;
-    margin-top: -55px;
-    border-radius: 10px;
+    align-items: center;
+    background-color: #D9D9D9;
+    width: 60%;
+    max-width: 400px;
+    height: 35px;
+    border-radius: 5px;
 }
 div#busca input[type="text"] {
-    border: transparent;
-    background-color: #D9D9D9;
-    width: 270px;
-  }
-  
-button#perfil{
-    float: right;
-    padding: 0px;
-    margin-top: -28px
-
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    padding: 5px;
 }
+input[type="text"]:focus{
+    outline-color: #ff1d5dbd;
+}
+
 img#circulo{
     width: 36px;
     height: auto;
@@ -104,12 +97,12 @@ p#nota{
 section{
     font-size: 17px;
     background-color: #D9D9D9;
-    width: 400px;
-    height: 750px;
+    width: 580px;
+    height: 650px;
     display: flex;
     border-radius: 4px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 30px;
+    margin-right: 30px;
     overflow-y: auto;
     text-align: center;
 }
@@ -170,6 +163,11 @@ td#total{
     padding:8px;
     border-color: #000;
 }
-.total{
-    background-color: white;
-}
+
+
+.navegacao{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 1.5rem;
+  }
