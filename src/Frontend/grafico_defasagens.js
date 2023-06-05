@@ -1,20 +1,20 @@
-// axios.get('/habilidades_defasagens') // MUDAR - retorna as 5 habilidades com maior defasagem
-//   .then(response => {
-//     var habilidades_defasagens = response.data;
+/* axios.get('/habilidades_defasagens') // MUDAR - retorna as 5 habilidades com maior defasagem
+.then(response => {
+     var habilidades_defasagens = response.data;
 
-//     axios.get('/habilidades_defasagens_nome') // MUDAR - retorna o nome das 5 habilidades
-//       .then(response => {
-//         var habilidades_defasagens_nome = response.data;
+     axios.get('/habilidades_defasagens_nome') // MUDAR - retorna o nome das 5 habilidades
+       .then(response => {
+         var habilidades_defasagens_nome = response.data;
 
-//         grafico_turma(habilidades_defasagens, habilidades_defasagens_nome);
-//       })
-//       .catch(error => {
-//         console.log(error);
-//       });
-//   })
-//   .catch(error => {
-//     console.log(error);
-//   });
+         grafico_turma(habilidades_defasagens, habilidades_defasagens_nome);
+       })
+       .catch(error => {
+         console.log(error);
+       });
+   })
+   .catch(error => {
+     console.log(error);
+   });
 
 /*gráficos de defasagens da turma feito com chart.js*/
 function grafico_turma(habilidades_defasagens, habilidades_defasagens_nome){

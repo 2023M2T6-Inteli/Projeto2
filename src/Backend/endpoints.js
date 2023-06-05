@@ -3,7 +3,7 @@ const express = require("express");
 const sqlite3 = require("sqlite3");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const urlcodedParser = bodyParser.urlencoded({ extended: false })
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const port = 3000
 
 // Inicializando a aplicação.
@@ -18,7 +18,7 @@ const DBPATH = 'bd_nova_freire.db'
 
 // Iniciando a construção de endpoints
 // POST /turma
-app.post("/turma", urlcodedParser, (req, res) =>{
+app.post("/turma", urlencodedParser, (req, res) =>{
     // Criando variáveis para receber os dados da requisição.
     const {nome_turma, ano_turma} = req.body
 
@@ -37,7 +37,7 @@ app.post("/turma", urlcodedParser, (req, res) =>{
 
 
 // GET /turma/:id_turma
-app.get("/turma/:id_turma", urlcodedParser, (req, res) =>{
+app.get("/turma/:id_turma", urlencodedParser, (req, res) =>{
     // Pegando o id da turma.
     const id_turma = req.params.id_turma;
     
@@ -56,9 +56,26 @@ app.get("/turma/:id_turma", urlcodedParser, (req, res) =>{
     });
 });
 
+app.get("/turmas", urlencodedParser, (req, res) =>{
+
+    // Fazendo a query de seleção.
+    const query_selecao = "SELECT nome_turma FROM turma"
+    let db = new sqlite3.Database(DBPATH); // Abrindo o banco.
+
+    db.all(query_selecao, [], (error, rows) => {
+        if (error) {
+            res.status(500).json({error: "Erro ao selecionar turma."})
+        }
+        return res.status(200).json({
+            title: "Turmas selecionada com sucesso.",    
+            data: rows
+        });
+    });
+});
+
 
 // PUT /turma/:id_turma
-app.put("/turma/:id_turma", urlcodedParser, (req, res) =>{
+app.put("/turma/:id_turma", urlencodedParser, (req, res) =>{
     const {nome_turma, ano_turma} = req.body;
     const id_turma = req.params.id_turma;
 
@@ -79,7 +96,7 @@ app.put("/turma/:id_turma", urlcodedParser, (req, res) =>{
 
 
 // DELETE /turma/:id_turma
-app.delete("/turma/:id_turma", urlcodedParser, (req, res) => {
+app.delete("/turma/:id_turma", urlencodedParser, (req, res) => {
     const query_1 = "SELECT rowid, * FROM turma WHERE rowid = ?";
 
     let db = new sqlite3.Database(DBPATH) // Abrindo o banco de dados.
@@ -107,7 +124,7 @@ app.delete("/turma/:id_turma", urlcodedParser, (req, res) => {
 })
 
 // POST  /aluno
-app.post("/aluno", urlcodedParser, (req, res) => {
+app.post("/aluno", urlencodedParser, (req, res) => {
     const {nome_aluno} = req.body;
 
     const query = "INSERT INTO aluno(nome_aluno) VALUES (?)";
@@ -124,7 +141,7 @@ app.post("/aluno", urlcodedParser, (req, res) => {
 })
 
 // GET /aluno/:id_aluno
-app.get("/aluno/:id_aluno", urlcodedParser, (req, res) => {
+app.get("/aluno/:id_aluno", urlencodedParser, (req, res) => {
     const id_aluno = req.params.id_aluno;
 
     const query = "SELECT * FROM aluno WHERE id_aluno = ?";
@@ -141,9 +158,8 @@ app.get("/aluno/:id_aluno", urlcodedParser, (req, res) => {
     })
 })
 
-
 // GET /nota/aluno/:id_aluno
-app.get("/aluno/nota/:id_nota", urlcodedParser, (req, res) => {
+app.get("/aluno/nota/:id_nota", urlencodedParser, (req, res) => {
     const id_nota = req.params.id_nota;
 
     const query = "SELECT aluno.valor_nota, habilidade.id_habilidade FROM desempenho JOIN aluno ON aluno.id_aluno = desempenho.id_aluno JOIN habilidade ON habilidade.id_habilidade = desempenho.id_habilidade WHERE desempenho.id_nota = ?";
@@ -163,7 +179,7 @@ app.get("/aluno/nota/:id_nota", urlcodedParser, (req, res) => {
 
 
 // PUT /aluno/:id_aluno
-app.put("/aluno/:id_aluno", urlcodedParser, (req, res) => {
+app.put("/aluno/:id_aluno", urlencodedParser, (req, res) => {
     const id_aluno = req.params.id_aluno;
     const {nome_aluno} = req.body;
 
@@ -182,7 +198,7 @@ app.put("/aluno/:id_aluno", urlcodedParser, (req, res) => {
 
 
 // DELETE /aluno/:id_aluno
-app.delete("/aluno/:id_aluno", urlcodedParser, (req, res) => {
+app.delete("/aluno/:id_aluno", urlencodedParser, (req, res) => {
     const id_aluno = req.params.id_aluno;
 
     const query_1 = "SELECT rowid, * FROM aluno WHERE rowid = ?";
@@ -216,7 +232,7 @@ app.delete("/aluno/:id_aluno", urlcodedParser, (req, res) => {
 
 
 // POST habilidade
-app.post("/habilidade", urlcodedParser, (req, res) => {
+app.post("/habilidade", urlencodedParser, (req, res) => {
     const {tipo_habilidade, ano_habilidade} = req.body;
 
     const query = "INSERT INTO habilidade(tipo_habilidade, ano_habilidade) VALUES(?, ?)"
@@ -237,7 +253,7 @@ app.post("/habilidade", urlcodedParser, (req, res) => {
 
 
 // PUT /habilidade/:id_habilidade
-app.put("/habilidade/:id_habilidade", urlcodedParser, (req, res) => {
+app.put("/habilidade/:id_habilidade", urlencodedParser, (req, res) => {
     const {tipo_habilidade, ano_habilidade} = req.body;
     const id_habilidade = req.params.id_habilidade;
 
@@ -257,7 +273,7 @@ app.put("/habilidade/:id_habilidade", urlcodedParser, (req, res) => {
 });
 
 // GET /habilidade/:id_habilidade
-app.get("/habilidade/:id_habilidade", urlcodedParser, (req, res) => {
+app.get("/habilidade/:id_habilidade", urlencodedParser, (req, res) => {
     const id_habilidade = req.params.id_habilidade;
 
     const query = "SELECT rowid, * FROM habilidade WHERE id_habilidade = ?";
@@ -277,7 +293,7 @@ app.get("/habilidade/:id_habilidade", urlcodedParser, (req, res) => {
 })
 
 // GET /habilidade
-app.get("/habilidade", urlcodedParser, (req, res) => {
+app.get("/habilidade", urlencodedParser, (req, res) => {
     const query = "SELECT * FROM habilidade";
     let db = new sqlite3.Database(DBPATH);
 
@@ -297,7 +313,7 @@ app.get("/habilidade", urlcodedParser, (req, res) => {
 
 
 // DELETE /habilidade/:id_habilidade
-app.delete("/habilidade/:id_habilidade", urlcodedParser, (req, res) => {
+app.delete("/habilidade/:id_habilidade", urlencodedParser, (req, res) => {
     const id_habilidade = req.params.id_habilidade;
 
     const query_selecao = "SELECT rowid, * FROM habilidade WHERE id_habilidade = ?";
@@ -330,7 +346,7 @@ app.delete("/habilidade/:id_habilidade", urlcodedParser, (req, res) => {
 
 
 // POST avaliacao
-app.post("/avaliacao", urlcodedParser, (req, res) => {
+app.post("/avaliacao", urlencodedParser, (req, res) => {
     const {nome_avaliacao, data} = req.body;
 
     const query = "INSERT INTO avaliacao(nome_avaliacao, data) VALUES (?, ?)";
@@ -347,7 +363,7 @@ app.post("/avaliacao", urlcodedParser, (req, res) => {
 })
 
 // PUT avaliacao/:id_avaliacao
-app.put("/avaliacao/:id_avaliacao", urlcodedParser, (req, res) => {
+app.put("/avaliacao/:id_avaliacao", urlencodedParser, (req, res) => {
     const {nome_avaliacao, data} = req.body;
     const id_habilidade = req.params.id_avaliacao;
 
@@ -367,7 +383,7 @@ app.put("/avaliacao/:id_avaliacao", urlcodedParser, (req, res) => {
 })
 
 // GET /avaliacao/:id_avaliacao
-app.get("/avaliacao/:id_avaliacao", urlcodedParser, (req, res) => {
+app.get("/avaliacao/:id_avaliacao", urlencodedParser, (req, res) => {
     const id_avaliacao = req.params.id_avaliacao;
 
     const query = "SELECT rowid, * FROM avaliacao WHERE id_avaliacao = ?"
@@ -385,7 +401,7 @@ app.get("/avaliacao/:id_avaliacao", urlcodedParser, (req, res) => {
 })
 
 // GET /avaliacao
-app.get("/avaliacao", urlcodedParser, (req, res) => {
+app.get("/avaliacao", urlencodedParser, (req, res) => {
     const id_avaliacao = req.params.id_avaliacao;
 
     const query = "SELECT * FROM avaliacao";
@@ -403,7 +419,7 @@ app.get("/avaliacao", urlcodedParser, (req, res) => {
 })
 
 // DELETE /avaliacao/:id_avaliacao
-app.delete("/avaliacao/:id_avaliacao", urlcodedParser, (req, res) => {
+app.delete("/avaliacao/:id_avaliacao", urlencodedParser, (req, res) => {
     const id_avaliacao = req.params.id_avaliacao;
 
     const query_selecao = "SELECT rowid, * FROM avaliacao WHERE id_avaliacao = ?"
@@ -435,7 +451,7 @@ app.delete("/avaliacao/:id_avaliacao", urlcodedParser, (req, res) => {
 
 
 // POST professor
-app.post("/professor", urlcodedParser, (req, res) => {
+app.post("/professor", urlencodedParser, (req, res) => {
     const {nome_professor, email, senha, cargo, celular, cep, idade} = req.body;
 
     const query = "INSERT INTO professor(nome_professor, email, senha, cargo, celular, cep, idade) VALUES(?, ?, ?, ?, ?, ?, ?)"
@@ -453,7 +469,7 @@ app.post("/professor", urlcodedParser, (req, res) => {
 
 
 // PUT /professor/:id_professor
-app.put("/professor/:id_professor", urlcodedParser, (req, res) => {
+app.put("/professor/:id_professor", urlencodedParser, (req, res) => {
     const {nome_professor, email, senha, cargo, celular, cep, idade} = req.body;
     const id_professor = req.params.id_professor;
 
@@ -489,7 +505,7 @@ app.get("/professor/:id_professor", (req, res) => {
 });
 
 // DELETE /professor/:id_professor
-app.delete("/professor/:id_professor", urlcodedParser, (req, res) => {
+app.delete("/professor/:id_professor", urlencodedParser, (req, res) => {
     const id_professor = req.params.id_professor;
 
     const query_selecao = "SELECT rowid, * FROM professor WHERE id_professor = ?";
@@ -519,7 +535,7 @@ app.delete("/professor/:id_professor", urlcodedParser, (req, res) => {
 
 
 // POST escola
-app.post("/escola", urlcodedParser, (req, res) => {
+app.post("/escola", urlencodedParser, (req, res) => {
     const {nome_escola} = req.body;
     
     const query = "INSERT INTO escola(nome_escola) VALUES(?)";
@@ -536,7 +552,7 @@ app.post("/escola", urlcodedParser, (req, res) => {
 })
 
 // PUT /escola/:id_escola
-app.put("/escola/:id_escola", urlcodedParser, (req, res) => {
+app.put("/escola/:id_escola", urlencodedParser, (req, res) => {
     const id_escola = req.params.id_escola;
     const {nome_escola} = req.body;
 
@@ -554,7 +570,7 @@ app.put("/escola/:id_escola", urlcodedParser, (req, res) => {
 
 
 // GET /escola/:id_escola
-app.get("/escola/:id_escola", urlcodedParser, (req, res) => {
+app.get("/escola/:id_escola", urlencodedParser, (req, res) => {
     const id_escola = req.params.id_escola;
 
     const query = "SELECT rowid, * FROM escola WHERE id_escola = ?";
@@ -571,7 +587,7 @@ app.get("/escola/:id_escola", urlcodedParser, (req, res) => {
 })
 
 // DELETE /escola/:id_escola
-app.delete("/escola/:id_escola", urlcodedParser, (req, res) => {
+app.delete("/escola/:id_escola", urlencodedParser, (req, res) => {
     const id_escola = req.params.id_escola;
 
     const query_selecao = "SELECT rowid, * FROM escola WHERE id_escola = ?";
@@ -600,7 +616,7 @@ app.delete("/escola/:id_escola", urlcodedParser, (req, res) => {
 
 
 // GET /registro/:id_registro
-app.get("/registro/:id_registro", urlcodedParser, (req, res) => { // Iniciando o caminho da requisição.
+app.get("/registro/:id_registro", urlencodedParser, (req, res) => { // Iniciando o caminho da requisição.
 
     let db = new sqlite3.Database(DBPATH) // Abrindo o banco de dados
     const query = "SELECT registro.id_registro, turma.id_turma, aluno.id_aluno FROM registro JOIN aluno ON registro.id_aluno = aluno.id_aluno JOIN turma ON registro.id_turma = turma.id_turma WHERE registro.id_registro = ?";
@@ -617,7 +633,7 @@ app.get("/registro/:id_registro", urlcodedParser, (req, res) => { // Iniciando o
 })
 
 // GET /questao-habilidade/:id_questao_habilidade
-app.get("/questao-habilidade/:id_questao_habilidade", urlcodedParser, (req, res) =>{
+app.get("/questao-habilidade/:id_questao_habilidade", urlencodedParser, (req, res) =>{
     let db = new sqlite3.Database(DBPATH);
     const query = "SELECT questao_habilidade.id_questao_habilidade, habilidade.id_habilidade, questao.id_questao FROM questao_habilidade JOIN habilidade ON questao_habilidade.id_habilidade = habilidade.id_habilidade JOIN questao ON questao_habilidade.id_questao = questao.id_questao WHERE id_questao_habilidade = ?";
 
@@ -633,7 +649,7 @@ app.get("/questao-habilidade/:id_questao_habilidade", urlcodedParser, (req, res)
 });
 
 // POST /questao
-app.post("/questao", urlcodedParser, (req, res) => {
+app.post("/questao", urlencodedParser, (req, res) => {
     const {numero, id_avaliacao} = req.body;
     
     const query = "INSERT INTO questao(numero, id_avaliacao) VALUES(?, ?)";
@@ -650,7 +666,7 @@ app.post("/questao", urlcodedParser, (req, res) => {
 });
 
 // PUT /questao/id_questao
-app.put("/questao/:id_questao", urlcodedParser, (req, res) => {
+app.put("/questao/:id_questao", urlencodedParser, (req, res) => {
     const {numero} = req.body;
     const id_questao = req.params.id_questao;
 
@@ -669,7 +685,7 @@ app.put("/questao/:id_questao", urlcodedParser, (req, res) => {
 
 
 // GET /questão/:id_questao
-app.get("/questao/:id_questao", urlcodedParser, (req, res) => {
+app.get("/questao/:id_questao", urlencodedParser, (req, res) => {
     const id_questao = req.params.id_questao;
 
     const query = "SELECT rowid, * FROM questao WHERE id_questao = ?";
@@ -687,7 +703,7 @@ app.get("/questao/:id_questao", urlcodedParser, (req, res) => {
 })
 
 // GET /questão/:id_questao
-app.get("/questao", urlcodedParser, (req, res) => {
+app.get("/questao", urlencodedParser, (req, res) => {
 
     const query = "SELECT * FROM questao";
     let db = new sqlite3.Database(DBPATH);
@@ -704,7 +720,7 @@ app.get("/questao", urlcodedParser, (req, res) => {
 })
 
 // DELETE /questao/:id_questao
-app.delete("/questao/:id_questao", urlcodedParser, (req, res) => {
+app.delete("/questao/:id_questao", urlencodedParser, (req, res) => {
     const id_questao = req.params.id_questao;
 
     const query_selecao = "SELECT rowid, * FROM questao WHERE id_questao = ?";
@@ -732,8 +748,54 @@ app.delete("/questao/:id_questao", urlcodedParser, (req, res) => {
     })
 })
 
+// GET /medias/:id_turma
+app.get('/medias/:id_turma', urlencodedParser, (req, res) => {
+    const id_turma = req.params.id_turma;
+
+    const query = `SELECT av.data, AVG(n.valor_nota) AS media_notas
+    FROM nota n
+    JOIN questao q ON n.id_questao = q.id_questao
+    JOIN avaliacao av ON q.id_avaliacao = av.id_avaliacao
+    JOIN turma t ON av.id_turma = t.id_turma
+    WHERE t.id_turma = ?
+    GROUP BY av.id_avaliacao`;
+
+    let db = new sqlite3.Database(DBPATH);
+
+    db.all(query, [id_turma], (error, rows) => {
+        if (error) {
+            res.json({ error: error });
+        }
+        return res.status(200).json({
+            data: rows
+        })
+    })
+})
+
+app.get('/medias/habilidades', (req, res) =>{
+   
+    const query = `SELECT h.tipo_habilidade, AVG(n.valor_nota) AS media_habilidade
+    FROM nota n
+    JOIN questao q ON n.id_questao = q.id_questao
+    JOIN questao_habilidade qh ON q.id_questao = qh.id_questao
+    JOIN habilidade h ON qh.id_habilidade = h.id_habilidade
+    JOIN turma t ON n.id_turma = t.id_turma
+    GROUP BY h.id_habilidade, h.tipo_habilidade`;
+
+    let db = new sqlite3.Database(DBPATH);
+
+    db.all(query, [], (error, rows) => {
+        if (error) {
+            res.json({ error: error });
+        }
+        return res.status(200).json({
+            data: rows
+        })
+    });
+})
+
 // POST /nota
-app.post("/nota", urlcodedParser, (req, res) => {
+app.post("/nota", urlencodedParser, (req, res) => {
     const {valor_nota, id_aluno, id_questao} = req.body
 
     const query = "INSERT INTO nota(valor_nota, id_aluno, id_questao) VALUES(?, ?, ?)";
@@ -751,7 +813,7 @@ app.post("/nota", urlcodedParser, (req, res) => {
 
 
 // PUT /nota/:id_nota
-app.put("/nota/:id_nota", urlcodedParser, (req, res) => {
+app.put("/nota/:id_nota", urlencodedParser, (req, res) => {
     const id_nota = req.params.id_nota;
     const {valor_nota, id_aluno, id_questao} = req.body;
 
@@ -768,22 +830,7 @@ app.put("/nota/:id_nota", urlcodedParser, (req, res) => {
     })
 })
 
-// GET /nota
-app.get("/nota", urlcodedParser, (req, res) => {
-    const query = "SELECT * FROM alunos";
-
-    db.all(query, [], (error, rows) => {
-        if (error) {
-            res.json({ error: error });
-        }
-        return res.status(200).json({
-            title: "Lista de alunos com notas.",
-            data: rows
-        })
-    })
-})
-
-app.get("/nota/:valor_nota", urlcodedParser, (req, res) => {
+app.get("/nota/:valor_nota", urlencodedParser, (req, res) => {
     const valor_nota = req.params.valor_nota;
 
     const query = "SELECT valor_nota >= valor_nota FROM nota";
@@ -801,7 +848,7 @@ app.get("/nota/:valor_nota", urlcodedParser, (req, res) => {
 })
 
 // DELETE /nota/:id_nota
-app.delete("/nota/:id_nota", urlcodedParser, (req, res) => {
+app.delete("/nota/:id_nota", urlencodedParser, (req, res) => {
     const id_nota = req.params.id_nota;
 
     const query_selecao = "SELECT rowid, * FROM nota WHERE id_nota = ?";
@@ -831,7 +878,7 @@ app.delete("/nota/:id_nota", urlcodedParser, (req, res) => {
 
 
 // POST /desempenho
-app.post("/desempenho", urlcodedParser, (req, res) => {
+app.post("/desempenho", urlencodedParser, (req, res) => {
     const {valor_desempenho, id_aluno, id_habilidade} = req.body;
 
     const query = "INSERT INTO desempenho (valor_desempenho, id_aluno, id_habilidade) VALUES (?, ?, ?)";
@@ -849,7 +896,7 @@ app.post("/desempenho", urlcodedParser, (req, res) => {
 
 
 // GET /desempenho/id_desempenho
-app.get("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
+app.get("/desempenho/:id_desempenho", urlencodedParser, (req, res) => {
     const id_desempenho = req.params.id_desempenho;
 
     const query = "SELECT rowid, * FROM desempenho WHERE id_desempenho = ?";
@@ -868,7 +915,7 @@ app.get("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
 
 
 // PUT /desempenho/:id_desempenho
-app.put("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
+app.put("/desempenho/:id_desempenho", urlencodedParser, (req, res) => {
     const id_desempenho = req.params.id_desempenho;
     const {valor_desempenho, id_aluno, id_habilidade} = req.body
 
@@ -886,7 +933,7 @@ app.put("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
 })
 
 // POST /alocacao
-app.post("/alocacao", urlcodedParser, (req, res) => {
+app.post("/alocacao", urlencodedParser, (req, res) => {
     const {id_professor, id_escola, id_turma} = req.body;
 
     const query = "INSERT INTO alocacao(id_professor, id_escola, id_turma) VALUES = (?, ?, ?)";
@@ -902,7 +949,7 @@ app.post("/alocacao", urlcodedParser, (req, res) => {
     })
 })
 // GET /alocacao/:id_alocacao
-app.get("/alocacao/:id_alocacao", urlcodedParser, (req, res) => {
+app.get("/alocacao/:id_alocacao", urlencodedParser, (req, res) => {
     const id_alocacao = req.params.id_alocacao;
 
     const query = "SELECT rowid, * FROM alocacao WHERE id_alocacao = ?";
