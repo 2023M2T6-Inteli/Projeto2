@@ -5,41 +5,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaFreire</title>
     <link rel="stylesheet" href="alunos.css" />
+    <link rel="stylesheet" href="sidebar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@400&display=swap" rel="stylesheet">
+    <script src="sidebar.js"></script>
 
+    <title>NovaFreire</title>
 </head>
 
 <body>
+    <div id="darkOverlay" onclick="closeNav()"></div>
     <header>
-        <aside>
-            <div id="barraSuperior">                    <!-- barra menu lateral--> 
-                <button id="sidebar">
+        <nav class="navegacao" id="navegacao">
+            <div id="barraSuperior"> <!-- barra menu lateral-->
+                <button class="openbtn" onclick="openNav()">
                     <div id="menu" class="barra"></div>
                     <div id="menu2" class="barra"> </div>
                     <div id="menu3" class="barra"></div>
                 </button>
 
+                <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <img src="../../imagens/logo.png" alt="Logo" class="logo">
+                    <a href="turma.html">Turmas</a>
+                    <hr>
+                    <a href="alunos.html">Alunos</a>
+                    <hr>
+                    <a href="avaliacao.html">Avaliações</a>
+                </div>
             </div>
-        </aside>
-
-
-        <div id="busca">                   <!-- barra de busca --> 
-            <img src="../../imagens/lupa.png" id="lupa">
-            <input type="text" placeholder="Buscar">
-        </div>
-
-
-        <button id="perfil"></button> <!-- botão perfil --> 
+            <div id="busca"> <!-- barra de busca -->
+                <input type="text" placeholder=" Buscar">
+            </div>
+            <a id="perfil" href="./perfil.html"></a>
+        </nav>
     </header>
 
-    <p id="turmas"> <u style="text-decoration-color: #FF1D5C">Turma 1</u> | Turma 2 | Turma 3<button class="mais">+</button></p>
+    <p id="turmas"> <u style="text-decoration-color: #FF1D5C">Turma 1</u> | Turma 2 | Turma 3<button
+            class="mais">+</button></p>
 
     <section>
-        <div class="row"> <!-- barra sobre situação, progresso e nome dos alunos --> 
+        <div class="row"> <!-- barra sobre situação, progresso e nome dos alunos -->
             <div class="item">
                 <p class="nome"><strong>Nome</strong><button class="mais">+</button></p>
                 <div class="situacao"><strong>Situação</strong></div>
@@ -48,8 +56,12 @@
             <hr>
             <div class="item">
                 <p class="nome">Elisa Silva</p>
-                <div class="situacao"><div class="greenBall"></div></div>
-                <div class="progresso"><div class="greenBar"></div></div>
+                <div class="situacao">
+                    <div class="greenBall"></div>
+                </div>
+                <div class="progresso">
+                    <div class="greenBar"></div>
+                </div>
             </div>
             <hr>
             <div class="item">
@@ -141,16 +153,10 @@
                     <div class="yellowBar"></div>
                 </div>
             </div>
-            
-            
-            
-                
-            
-            
         </div>
     </section>
 
- 
+
 </body>
 
 </html>
