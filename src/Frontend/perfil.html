@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,53 +11,92 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@400&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>NovaFreire</title>
+    <link rel="stylesheet" href="./sidebar.css">
 </head>
+
 <body>
+    <div id="darkOverlay"></div>
     <header>
-        <aside>
-            <div id="barraSuperior">                    <!-- barra menu lateral--> 
-                <button id="sidebar">
+        <nav class="navegacao" id="navegacao">
+            <div id="barraSuperior"> <!-- barra menu lateral-->
+                <button class="openbtn" onclick="openNav()">
                     <div id="menu" class="barra"></div>
                     <div id="menu2" class="barra"> </div>
                     <div id="menu3" class="barra"></div>
                 </button>
-
+                <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <img src="../../imagens/logo.png" alt="Logo" class="logo">
+                    <a href="./perfil.html">Perfil</a>
+                    <hr>
+                    <a href="turma.html">Turmas</a>
+                    <hr>
+                    <a href="alunos.html">Alunos</a>
+                    <hr>
+                    <a href="avaliacao.html">Avaliações</a>
+                    <hr>
+                    <a href="./conteudos_recomendados.html">Conteúdos Recomendados</a>
+                </div>
             </div>
-        </aside>
-
-
-        <div id="busca">                   <!-- barra de busca --> 
-            <img src="../../imagens/lupa.png" id="lupa">
-            <input type="text" placeholder="Buscar">
-        </div>
-
+            <div id="busca"> <!-- barra de busca -->
+                <input type="text" placeholder="Buscar">
+            </div>
+        </nav>
+        <br>
+        <div class="Nome" id="Nome">Maria Cecília</div>
     </header>
 
-    <section> 
-        <div class="row"> 
-           <button id="perfil">  </button>
+    <section>
+        <div class="row">
+            <a id="perfil"></a>
         </div>
-    
     </section>
-
     <br>
-    <input  type="nome" id="nome" name="nome" required class="input-field" placeholder="Nome Completo">    <!-- Campo de entrada para o nome -->
-    <br> 
-    <br>
-    <input  type="email" id="email" name="email" required class="input-field" placeholder="Email">  <!-- Campo de entrada para o email -->
-    <br> 
-    <br>
-    <input  type="ocupacao" id="ocupacao" name="ocupacao" required class="input-field" placeholder="Ocupação">  <!-- Campo de entrada para a ocupação -->
-    <br> 
-    <br>
-    <input  type="telefone" id="telefone" name="telefone" required class="input-field" placeholder="Telefone">   <!-- Campo de entrada para o telefone -->
+    <input type="nome" id="nome" name="nome" required class="input-field" placeholder="Nome Completo">
+    <!-- Campo de entrada para o nome -->
     <br>
     <br>
-    <select id="materias">        <!-- Lista suspensa para seleção de matérias -->
+    <input type="email" id="email" name="email" required class="input-field" placeholder="Email">
+    <!-- Campo de entrada para o email -->
+    <br>
+    <br>
+    <input type="ocupacao" id="ocupacao" name="ocupacao" required class="input-field" placeholder="Ocupação">
+    <!-- Campo de entrada para a ocupação -->
+    <br>
+    <br>
+    <input type="telefone" id="telefone" name="telefone" required class="input-field" placeholder="Telefone">
+    <!-- Campo de entrada para o telefone -->
+    <br>
+    <br>
+    <select id="materias"> <!-- Lista suspensa para seleção de matérias -->
         <option value="">Matemática</option>
-        <option value="Matemática"> Matemática </option>
-        
-      </select>
+        <option value="Matemática">Português</option>
+        <option value="Matemática">Biologia</option>
+    </select>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button class="botao-redirecionador" onclick="redirecionar()">Voltar Menu Principal</button>
+    <br>
+    <br>
+        <script>
+            function redirecionar() {
+              // Altere o valor abaixo para o URL desejado
+              window.location.href = "./login.html";
+            }
+          </script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "230px";
+            document.getElementById("darkOverlay").style.display = "block";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("darkOverlay").style.display = "none";
+        }
+    </script>
 </body>
-</body>
+
 </html>
