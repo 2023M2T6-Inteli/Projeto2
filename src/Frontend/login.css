@@ -1,8 +1,6 @@
 /* fonte utlizada */
 * {
   font-family: 'Nunito', sans-serif;
-  overflow-y: hidden;
-  overflow-x: hidden;
 }
 
 /* Define o estilo para o HTML e o corpo da página, definindo a altura como 100% e removendo as margens e preenchimentos */
@@ -48,6 +46,7 @@ html, body {
   margin-top: 20px;
   float: right;
   margin-right: auto;
+  cursor:pointer;
 }
 
 /* Define o estilo para os rótulos do formulário, adicionando margem inferior */

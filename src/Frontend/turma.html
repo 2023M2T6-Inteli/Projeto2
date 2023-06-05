@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,73 +10,90 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@400&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>    
-    
-    <title>NovaFreire</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="integracao/turma_int.js"></script>
+
     <title>NovaFreire</title>
 </head>
+
 <body>
-    
+
     <header>
-        <aside>
-            <div id="barraSuperior">                    <!-- barra menu lateral--> 
-                <button id="sidebar">
-                    <div id="menu" class="barra"></div>
-                    <div id="menu2" class="barra"> </div>
-                    <div id="menu3" class="barra"></div>
-                </button>
+        <nav class="navegacao" id="navegacao">
+            <div id="menu"> <!-- barra menu lateral-->
+                <div id="menu_bar" onclick="menuOnClick()">
+                    <div id="barra1" class="barra"></div>
+                    <div id="barra2" class="barra"></div>
+                    <div id="barra3" class="barra"></div>
+                </div>
 
+                <nav class="nav" id="nav">
+                    <ul>
+                        <li><a href="./perfil.html">Perfil</a></li>
+                        <li><a href="./turma.html">Turma</a></li>
+                        <li><a href="./alunos.html">Aluno</a></li>
+                        <li><a href="./avaliacao.html">Avaliação</a></li>
+                        <li><a href="./conteudos_recomendados.html">Conteúdos<br>Recomendados</a></li>
+                    </ul>
+                </nav>
+                <div class="menu_bg" id="menu_bg"></div>
             </div>
-        </aside>
 
+            <div id="busca"> <!-- barra de busca -->
+                <input type="text" placeholder=" Buscar">
+            </div>
 
-        <div id="busca">                   <!-- barra de busca --> 
-            <input type="text" placeholder=" Buscar">
-        </div>
-
-
-        <button id="perfil"></button>
+            <a id="perfil" href="./perfil.html"></a>
+        </nav>
     </header>
 
-    <p id="turmas"> <u style="text-decoration-color: #FF1D5C">Turma 1</u> | Turma 2 | Turma 3<button class="mais">+</button></p>
+
+
+
+    <p id="turmas"></p>
+    <br><br>
     <section>
-            
-            <p class="chart-title">Média geral</p>
-            <div class="chart-container-turma">
-                <canvas id="grafico_turma"></canvas>
-            </div>
-              
-            <p class="chart-title">Habilidades</p>
-            <div class="chart-container-habilidades">
-                <canvas id="grafico_habilidades"></canvas>
-            </div>
-                
-            <p id="chart-title-defasagens" class="chart-title">Maiores defasagens da turma</p>
-            <div class="chart-container-defasagens">
-                <canvas id="grafico_defasagens"></canvas>
-            </div>
-            
-            <p id="chart-title-progresso" class="chart-title">Progresso BNCC</p>
-            <p id="porcentagem"></p>
-            <div class="chart-container-progresso">
-                <canvas id="grafico_progresso"></canvas>
-            </div>
+        <p class="chart-title">Média geral</p>
+        <div class="chart-container-turma">
+            <canvas id="grafico_turma"></canvas>
         </div>
-        
+
+        <p class="chart-title">Habilidades</p>
+        <div class="chart-container-habilidades">
+            <canvas id="grafico_habilidades"></canvas>
+        </div>
+
+        <p id="chart-title-defasagens" class="chart-title">Maiores defasagens da turma</p>
+        <div class="chart-container-defasagens">
+            <canvas id="grafico_defasagens"></canvas>
+        </div>
+
+        <p id="chart-title-progresso" class="chart-title">Progresso BNCC</p>
+        <p id="porcentagem"></p>
+        <div class="chart-container-progresso">
+            <canvas id="grafico_progresso"></canvas>
+        </div>
+        </div>
+
         <script src="grafico_turma.js"></script>
         <script src="grafico_habilidades.js"></script>
         <script src="grafico_defasagens.js"></script>
         <script src="grafico_progresso.js"></script>
 
     </section>
+
+    <footer class="footerContainer">
+        <p>Grupo Phoenix;&copy;2023 - Todos os direitos reservados.</p>
+        <p>Mantenedora - Nova Escola & Inteli</p>
+    </footer>
+
+    <script>
+        function menuOnClick() {
+            document.getElementById("menu_bar").classList.toggle("change");
+            document.getElementById("nav").classList.toggle("change");
+            document.getElementById("menu_bg").classList.toggle("change_bg");
+        }
+    </script>
 </body>
 
-
-<br>
-
-
-<footer class="footerContainer">
-    <p>Grupo Phoenix;&copy;2023 - Todos os direitos reservados.</p>
-    <p>Mantenedora - Nova Escola & Inteli</p>
-</footer>
 </html>

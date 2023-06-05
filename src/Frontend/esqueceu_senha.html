@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="esqueceu_senha.css">
 </head>
 <body>
@@ -9,20 +10,28 @@
     <h2>Redefinir Senha</h2>              
     <form>
       <!-- forma de redefinir senha com email, senha, telefone  -->
-      <label for="email">E-mail:</label>
+      <label for="email">E-mail:<span class="asterisco">*</span></label>
       <input type="email" id="email" name="email" required>
 
-      <label for="telefone">Telefone:</label>
+      <label for="telefone">Telefone:<span class="asterisco">*</span></label>
       <input type="tel" id="telefone" name="telefone" required>
 
-      <label for="new-password">Nova Senha:</label>
+      <label for="new-password">Nova Senha:<span class="asterisco">*</span></label>
       <input type="password" id="new-password" name="new-password" required>
 
-      <label for="confirm-password">Confirme a Nova Senha:</label>
+      <label for="confirm-password">Confirme a Nova Senha:<span class="asterisco">*</span></label>
       <input type="password" id="confirm-password" name="confirm-password" required>
 
       <br>
       <input type="submit" value="Enviar">
+      <script>
+        function Enviar() {
+          window.location.href = "./login.html"
+        }
+      </script>
+
+      <br>
+      <a href="./login.html">Voltar ao Login</a>
     </form>
   </div>
 </body>

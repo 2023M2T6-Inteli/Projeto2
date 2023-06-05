@@ -30,16 +30,23 @@
             <label for="password">Senha:</label> <!-- Rótulo para o campo de senha -->
             <input type="password" id="senha" name="password" required class="input-field"> <!-- Campo de entrada para a senha -->
             
-            <button type="button" class="button-enter" id="enviar">Entrar</button> <!-- Botão de entrar -->
+            <button type="button" class="button-enter" id="enviar" onclick="redirecionar()">Entrar</button> <!-- Botão de entrar -->
         </form>
         <div class="links">
             <br>
-            <a href="#">Esqueceu sua senha?</a> <!-- Redefinir senha -->
+            <a href="./esqueceu_senha.html">Esqueceu sua senha?</a> <!-- Redefinir senha -->
             <br>
             <br>
-            <a href="#">Cadastrar-se</a> <!-- cadastrar-se -->
+            <a href="./cadastro.html">Cadastrar-se</a> <!-- cadastrar-se -->
         </div>
     </section>
+
+    <script>
+
+        function redirecionar(){
+            window.location.href = "./turma.html"
+        }
+    </script>
 </body>
 
 </html>

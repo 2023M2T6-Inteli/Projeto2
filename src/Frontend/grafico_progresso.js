@@ -1,13 +1,13 @@
-axios.get('nota_bncc') // MUDAR - retorna média da turma em relação aos critérios da BNCC
-  .then(response =>{
+// axios.get('nota_bncc') // MUDAR - retorna média da turma em relação aos critérios da BNCC
+//   .then(response =>{
 
-    var nota_bncc = response.data;
+//     var nota_bncc = response.data;
 
-    grafico_progresso(nota_bncc);
-  })
-  .catch(error => {
-    console.error(error);
-  });
+//     grafico_progresso(nota_bncc);
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
 
 
 function grafico_progresso(nota_bncc){
@@ -71,6 +71,6 @@ function grafico_progresso(nota_bncc){
   });
 }
 
-window.onload = function(){
-    document.getElementById('porcentagem').innerHTML = nota_bncc + '%';
-}
+// window.onload = function(){
+//     document.getElementById('porcentagem').innerHTML = nota_bncc + '%';
+// }

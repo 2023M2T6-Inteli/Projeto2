@@ -1,20 +1,20 @@
-axios.get('endpoint_habilidades_nota') // MUDAR - retorna média de notas da sala por habilidade
-  .then(response => {
-    var habilidades_nota = response.data;
+// axios.get('endpoint_habilidades_nota') // MUDAR - retorna média de notas da sala por habilidade
+//   .then(response => {
+//     var habilidades_nota = response.data;
 
-    axios.get('endpoint_habilidades_nome') // MUDAR - retorna nome das habilidades BNCC
-      .then(response => {
-        var habilidades_nome = response.data;
+//     axios.get('endpoint_habilidades_nome') // MUDAR - retorna nome das habilidades BNCC
+//       .then(response => {
+//         var habilidades_nome = response.data;
 
-        grafico_turma(habilidades_nome, habilidades_nota);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  })
-  .catch(error => {
-    console.log(error);
-  });
+//         grafico_turma(habilidades_nome, habilidades_nota);
+//       })
+//       .catch(error => {
+//         console.log(error);
+//       });
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });
 
   /*gráficos de habilidades da turma feito com chart.js*/
 function grafico_turma(habilidades_nome, habilidades_nota) {

@@ -2,23 +2,23 @@ const green = '#43A633';
 const yellow = '#F2A413';
 const red = '#F55353';
 
-axios.get('turma_nota') // MUDAR - retorna média da turma por data
-  .then(response => {
-    var turma_nota = response.data;
+// axios.get('turma_nota') // MUDAR - retorna média da turma por data
+//   .then(response => {
+//     var turma_nota = response.data;
 
-    axios.get('turma_nota_data') // MUDAR - retorna data que a média foi registrada
-      .then(response => {
-        var turma_nota_data = response.data;
+//     axios.get('turma_nota_data') // MUDAR - retorna data que a média foi registrada
+//       .then(response => {
+//         var turma_nota_data = response.data;
 
-        grafico_turma(turma_nota_data, turma_nota);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  })
-  .catch(error => {
-    console.log(error);
-  });
+//         grafico_turma(turma_nota_data, turma_nota);
+//       })
+//       .catch(error => {
+//         console.log(error);
+//       });
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });
 
   /*gráficos da nota da turma em geral feito com chart.js*/
 function grafico_turma(turma_nota_data, turma_nota){
