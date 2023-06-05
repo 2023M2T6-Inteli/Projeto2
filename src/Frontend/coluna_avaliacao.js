@@ -1,18 +1,22 @@
-function addColumn() {
-    var table = document.getElementById("notas"); // Obtém a referência para a tabela com o id "notas"
-    
-    var headerRow = table.querySelector(".questão"); // Obtém a linha de cabeçalho com a classe "questão"
-    var newHeaderCell = document.createElement("th"); // Cria uma nova célula de cabeçalho
-    newHeaderCell.innerHTML = '<button class="q"> Q' + (headerRow.children.length - 2) + '</button>'; // Define o conteúdo HTML da nova célula de cabeçalho
-    headerRow.insertBefore(newHeaderCell, headerRow.lastElementChild); // Insere a nova célula de cabeçalho antes da última célula
-    
-    var rows = table.querySelectorAll(".valor"); // Obtém todas as linhas com a classe "valor"
-    rows.forEach(function(row) {
-      var newCell = document.createElement("td"); // Cria uma nova célula
-      newCell.contentEditable = true; // Torna a célula editável
-      row.insertBefore(newCell, row.lastElementChild); // Insere a nova célula antes da última célula na linha
-    });
-}
 
   
+function addColumn() {
+    var table = document.getElementById("notas");
+    var rows = table.getElementsByTagName("tr");
+
+    // Atualiza o cabeçalho
+    var headerRow = rows[0];
+    var newHeaderCell = document.createElement("th");
+    newHeaderCell.innerHTML = "<button class='q'> Q" + (headerRow.childElementCount - 2) + " </button>";
+    headerRow.insertBefore(newHeaderCell, headerRow.children[headerRow.childElementCount - 2]);
+
+    // Atualiza as células das linhas
+    for (var i = 1; i < rows.length - 1; i++) {
+      var valueRow = rows[i];
+      var newCell = document.createElement("td");
+      newCell.contentEditable = "true";
+      valueRow.insertBefore(newCell, valueRow.children[valueRow.childElementCount - 2]);
+    }
+  }
+
   
