@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,74 +11,78 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@400&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="sidebar.js"></script>
-    
-    
+
+
     <title>NovaFreire</title>
 </head>
+
 <body>
-    
+
     <div id="darkOverlay"></div>
     <header>
         <aside>
-            <div id="barraSuperior">                    <!-- barra menu lateral--> 
-                <button class="openbtn" onclick="openNav()">
-                    <div id="menu" class="barra"></div>
-                    <div id="menu2" class="barra"> </div>
-                    <div id="menu3" class="barra"></div>
-                </button>
+            <nav class="navegacao" id="navegacao">
+                <div id="barraSuperior"> <!-- barra menu lateral-->
+                    <button class="openbtn" onclick="openNav()">
+                        <div id="menu" class="barra"></div>
+                        <div id="menu2" class="barra"> </div>
+                        <div id="menu3" class="barra"></div>
+                    </button>
 
-                <div id="mySidebar" class="sidebar">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <img src="../../imagens/logo.png" alt="Logo" class="logo">
-                    <a href="turma.html">Turmas</a>
-                    <hr>
-                    <a href="alunos.html">Alunos</a>
-                    <hr>
-                    <a href="avaliacao.html">Avaliações</a>
-                  </div>
-
-                  
-
-            </div>
+                    <div id="mySidebar" class="sidebar">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <img src="../../imagens/logo.png" alt="Logo" class="logo">
+                        <a href="./perfil.html">Perfil</a>
+                        <hr>
+                        <a href="turma.html">Turmas</a>
+                        <hr>
+                        <a href="alunos.html">Alunos</a>
+                        <hr>
+                        <a href="avaliacao.html">Avaliações</a>
+                        <hr>
+                        <a href="./conteudos_recomendados.html">Conteúdos Recomendados</a>
+                    </div>
+                </div>
+                <div id="busca"> <!-- barra de busca -->
+                    <input type="text" placeholder=" Buscar">
+                </div>
+                <a id="perfil" href="./perfil.html"></a>
+            </nav>
         </aside>
 
+
+
         
-
-        <div id="busca">                   <!-- barra de busca --> 
-            <input type="text" placeholder=" Buscar">
-        </div>
-
-
-        <button id="perfil"></button>
     </header>
 
-    <p id="turmas"> <u style="text-decoration-color: #FF1D5C">Turma 1</u> | Turma 2 | Turma 3<button class="mais">+</button></p>
+    <p id="turmas"> <u style="text-decoration-color: #FF1D5C">Turma 1</u> | Turma 2 | Turma 3<button
+            class="mais">+</button></p>
     <section>
-            
-            <p class="chart-title">Média geral</p>
-            <div class="chart-container-turma">
-                <canvas id="grafico_turma"></canvas>
-            </div>
-              
-            <p class="chart-title">Habilidades</p>
-            <div class="chart-container-habilidades">
-                <canvas id="grafico_habilidades"></canvas>
-            </div>
-                
-            <p id="chart-title-defasagens" class="chart-title">Maiores defasagens da turma</p>
-            <div class="chart-container-defasagens">
-                <canvas id="grafico_defasagens"></canvas>
-            </div>
-            
-            <p id="chart-title-progresso" class="chart-title">Progresso BNCC</p>
-            <p id="porcentagem"></p>
-            <div class="chart-container-progresso">
-                <canvas id="grafico_progresso"></canvas>
-            </div>
+
+        <p class="chart-title">Média geral</p>
+        <div class="chart-container-turma">
+            <canvas id="grafico_turma"></canvas>
         </div>
-        
+
+        <p class="chart-title">Habilidades</p>
+        <div class="chart-container-habilidades">
+            <canvas id="grafico_habilidades"></canvas>
+        </div>
+
+        <p id="chart-title-defasagens" class="chart-title">Maiores defasagens da turma</p>
+        <div class="chart-container-defasagens">
+            <canvas id="grafico_defasagens"></canvas>
+        </div>
+
+        <p id="chart-title-progresso" class="chart-title">Progresso BNCC</p>
+        <p id="porcentagem"></p>
+        <div class="chart-container-progresso">
+            <canvas id="grafico_progresso"></canvas>
+        </div>
+        </div>
+
         <script src="grafico_turma.js"></script>
         <script src="grafico_habilidades.js"></script>
         <script src="grafico_defasagens.js"></script>
@@ -94,4 +99,5 @@
     <p>Grupo Phoenix;&copy;2023 - Todos os direitos reservados.</p>
     <p>Mantenedora - Nova Escola & Inteli</p>
 </footer>
+
 </html>
