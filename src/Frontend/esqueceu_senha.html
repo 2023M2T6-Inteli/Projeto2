@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css" href="esqueceu_senha.css">
 </head>
 <body>
+  <hr class="linha_colorida">
   <div class="container">
     <h2>Redefinir Senha</h2>              
     <form>
@@ -29,9 +30,13 @@
           window.location.href = "./login.html"
         }
       </script>
-
       <br>
-      <a href="./login.html">Voltar ao Login</a>
+      <button class="botao-redirecionador" onclick="redirecionar()">Voltar ao login</button>
+      <script>
+         function redirecionar() {
+              window.location.href = "./login.html";
+            }
+      </script>
     </form>
   </div>
 </body>

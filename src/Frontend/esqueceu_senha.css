@@ -1,13 +1,14 @@
 /* fonte utlizada */
 * {
   font-family: 'Nunito', sans-serif;
+  margin: 0%;
+  padding: 0%;
 }
 
 .container { /*posicionamento, tamanho e coloração container*/
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #ffffff;
   border-radius: 5px;
   font-size: 14px;
 }
@@ -73,4 +74,24 @@ input[type="submit"]:hover {
   .container {
     max-width: 50%;
   }
+}
+
+.linha_colorida {
+  margin: 0;
+  border: 0;
+  height: 60px;
+  /* Define a altura da linha */
+  background-color: #FF1D5C;
+  /* Define a cor da linha (neste exemplo, vermelho) */
+}
+
+.botao-redirecionador {
+  background-color: #FF1D5C;
+  color: white;
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 12px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
 }
