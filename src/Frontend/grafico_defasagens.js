@@ -1,25 +1,19 @@
-/* axios.get('/habilidades_defasagens') // MUDAR - retorna as 5 habilidades com maior defasagem
-.then(response => {
-     var habilidades_defasagens = response.data;
+$.ajax({
+  url: 'http://127.0.0.1:3000/defasagens',
+  method: 'GET',
+  success: function (response) {
 
-     axios.get('/habilidades_defasagens_nome') // MUDAR - retorna o nome das 5 habilidades
-       .then(response => {
-         var habilidades_defasagens_nome = response.data;
+    var data = response.data;
 
-         grafico_turma(habilidades_defasagens, habilidades_defasagens_nome);
-       })
-       .catch(error => {
-         console.log(error);
-       });
-   })
-   .catch(error => {
-     console.log(error);
-   });
+    var habilidades_defasagens_num_alunos = data.map(function (item) {
+      return item.num_alunos;
+    });
 
-/*gráficos de defasagens da turma feito com chart.js*/
-function grafico_turma(habilidades_defasagens, habilidades_defasagens_nome){
+    var habilidades_defasagens_nome = data.map(function (item) {
+      return item.tipo_habilidade;
+    });
 
-  const ctx3 = document.getElementById('grafico_defasagens')
+    const ctx3 = document.getElementById('grafico_defasagens')
 
   new Chart (ctx3, {
       type: 'pie',
@@ -27,7 +21,7 @@ function grafico_turma(habilidades_defasagens, habilidades_defasagens_nome){
           labels: habilidades_defasagens_nome,
           datasets: [{
               label: 'Maiores defasagens da turma',
-              data: habilidades_defasagens,
+              data: habilidades_defasagens_num_alunos,
               borderWidth: 0
           }]
       },
@@ -44,4 +38,10 @@ function grafico_turma(habilidades_defasagens, habilidades_defasagens_nome){
           },
         }
   });
-}
+  
+  },
+  error: function (err) {
+    console.log(err);
+  }
+});
+

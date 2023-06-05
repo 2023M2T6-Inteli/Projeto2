@@ -1,24 +1,20 @@
-// axios.get('endpoint_habilidades_nota') // MUDAR - retorna média de notas da sala por habilidade
-//   .then(response => {
-//     var habilidades_nota = response.data;
+$.ajax({
+  url: 'http://127.0.0.1:3000/medias_habilidades',
+  method: 'GET',
 
-//     axios.get('endpoint_habilidades_nome') // MUDAR - retorna nome das habilidades BNCC
-//       .then(response => {
-//         var habilidades_nome = response.data;
+  success: function(response) {
+    var data = response.data;
 
-//         grafico_turma(habilidades_nome, habilidades_nota);
-//       })
-//       .catch(error => {
-//         console.log(error);
-//       });
-//   })
-//   .catch(error => {
-//     console.log(error);
-//   });
+    var habilidades_nota = data.map(function(item) {
+      return item.media_habilidade;
+    });
 
-  /*gráficos de habilidades da turma feito com chart.js*/
-function grafico_turma(habilidades_nome, habilidades_nota) {
-  const ctx2 = document.getElementById('grafico_habilidades');
+    console.log(green)
+    var habilidades_nome = data.map(function(item) {
+      return item.tipo_habilidade;
+    });
+
+    const ctx2 = document.getElementById('grafico_habilidades');
 
   new Chart(ctx2, {
     type: 'bar',
@@ -29,21 +25,21 @@ function grafico_turma(habilidades_nome, habilidades_nota) {
         data: habilidades_nota,
         borderWidth: 1,
         backgroundColor: habilidades_nota.map(nota => {
-          if (nota >= 80) {
-            return 'green';
-          } else if (nota >= 50) {
-            return 'yellow';
+          if (nota >= 8) {
+            return green;
+          } else if (nota >= 5) {
+            return yellow;
           } else {
-            return 'red';
+            return red;
           }
         }),
         hoverBackgroundColor: habilidades_nota.map(nota => {
-          if (nota >= 80) {
-            return 'green';
-          } else if (nota >= 50) {
-            return 'yellow';
+          if (nota >= 8) {
+            return green;
+          } else if (nota >= 5) {
+            return yellow;
           } else {
-            return 'red';
+            return red;
           }
         })
       }]
@@ -70,4 +66,10 @@ function grafico_turma(habilidades_nome, habilidades_nota) {
       }
     }
   });
-}
+  },
+  error: function(error) {
+    console.log(error);
+  }
+})
+
+

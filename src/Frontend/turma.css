@@ -102,12 +102,13 @@ img#circulo{
     height: 80px;
     position: relative;
     margin: 0 auto;
+    padding-top: 30px;
     z-index: 1;
 }
 #porcentagem{
     color: white;
     position: relative;
-    margin-bottom: -36px;
+    margin-bottom: -70px;
     margin-left: 8vw;
     z-index: 2;
 }

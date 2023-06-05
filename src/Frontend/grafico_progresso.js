@@ -1,19 +1,16 @@
-// axios.get('nota_bncc') // MUDAR - retorna média da turma em relação aos critérios da BNCC
-//   .then(response =>{
+$.ajax({
+  url: 'http://127.0.0.1:3000/progresso',
+  method: 'GET',
+  success: function(response){
+    var data = response.data;
 
-//     var nota_bncc = response.data;
+    var progresso_bncc = data.map(function(item){
+      return item.progresso;
+    });
 
-//     grafico_progresso(nota_bncc);
-//   })
-//   .catch(error => {
-//     console.error(error);
-//   });
+    document.getElementById('porcentagem').innerHTML = progresso_bncc[0]*10 + '%';
 
-
-function grafico_progresso(nota_bncc){
-
-  /*gráficos de progresso da turma feito com chart.js*/
-  const ctx4 = document.getElementById('grafico_progresso').getContext('2d');
+    const ctx4 = document.getElementById('grafico_progresso').getContext('2d');
   
   new Chart(ctx4, {
     type: 'bar', 
@@ -21,20 +18,20 @@ function grafico_progresso(nota_bncc){
       labels: ['Percentage'],
       datasets: [
         {
-          data: nota_bncc,
-          backgroundColor: nota_bncc.map(nota => {
-            if (nota >= 80) {
+          data: progresso_bncc,
+          backgroundColor: progresso_bncc.map(nota => {
+            if (nota >= 8) {
               return green;
-            } else if (nota >= 50) {
+            } else if (nota >= 5) {
               return yellow;
             } else {
               return red;
             }
           }),
-          hoverBackgroundColor: nota_bncc.map(nota => {
-            if (nota >= 80) {
+          hoverBackgroundColor: progresso_bncc.map(nota => {
+            if (nota >= 8) {
               return green;
-            } else if (nota >= 50) {
+            } else if (nota >= 5) {
               return yellow;
             } else {
               return red;
@@ -42,7 +39,7 @@ function grafico_progresso(nota_bncc){
           })
         },
         {
-          data: [100 - nota_bncc],
+          data: [10 - progresso_bncc],
           backgroundColor: '#D9D9D9',
           hoverBackgroundColor: '#D9D9D9',
         },
@@ -69,8 +66,8 @@ function grafico_progresso(nota_bncc){
       }
     }
   });
-}
-
-// window.onload = function(){
-//     document.getElementById('porcentagem').innerHTML = nota_bncc + '%';
-// }
+  },
+  error: function(error) {
+    console.log(error);
+  }
+})

@@ -714,7 +714,7 @@ app.get("/questao", urlencodedParser, (req, res) => {
         }
         return res.status(200).json({
             title: "Questão pega com sucesso.",
-            data: rows
+            data: rows 
         })
     })
 })
@@ -772,15 +772,14 @@ app.get('/medias/:id_turma', urlencodedParser, (req, res) => {
     })
 })
 
-app.get('/medias/habilidades', (req, res) =>{
+app.get('/medias_habilidades', urlencodedParser, (req, res) =>{ //DANDO ERRO
    
     const query = `SELECT h.tipo_habilidade, AVG(n.valor_nota) AS media_habilidade
     FROM nota n
     JOIN questao q ON n.id_questao = q.id_questao
-    JOIN questao_habilidade qh ON q.id_questao = qh.id_questao
+    JOIN questao_habilidade qh ON q.id_questao = qh.id_questao_habilidade
     JOIN habilidade h ON qh.id_habilidade = h.id_habilidade
-    JOIN turma t ON n.id_turma = t.id_turma
-    GROUP BY h.id_habilidade, h.tipo_habilidade`;
+    GROUP BY h.tipo_habilidade`;
 
     let db = new sqlite3.Database(DBPATH);
 
@@ -789,9 +788,49 @@ app.get('/medias/habilidades', (req, res) =>{
             res.json({ error: error });
         }
         return res.status(200).json({
-            data: rows
+            data: rows 
         })
     });
+});
+
+app.get('/progresso', (req, res) =>{
+    const query = `SELECT AVG(valor_nota) AS progresso
+    FROM nota`
+
+    let db = new sqlite3.Database(DBPATH);
+
+    db.all(query, [], (error, rows) => {
+        if (error) {
+            res.json({ error: error });
+        }
+        return res.status(200).json({
+            data: rows 
+        })  
+    })
+})
+
+app.get('/defasagens', (req, res) =>{
+    const query = `SELECT h.tipo_habilidade, COUNT(*) AS num_alunos
+    FROM nota n
+    JOIN questao q ON n.id_questao = q.id_questao
+    JOIN questao_habilidade qh ON q.id_questao = qh.id_questao_habilidade
+    JOIN habilidade h ON qh.id_habilidade = h.id_habilidade
+    WHERE n.valor_nota < 5
+    GROUP BY h.tipo_habilidade
+    ORDER BY COUNT(*) ASC
+    LIMIT 3;
+    `;
+
+    let db = new sqlite3.Database(DBPATH);
+
+    db.all(query, [], (error, rows) => {
+        if (error) {
+            res.json({ error: error });
+        }
+        return res.status(200).json({
+            data: rows 
+        })  
+    })
 })
 
 // POST /nota
