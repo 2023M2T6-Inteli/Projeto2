@@ -1,118 +1,23 @@
-body {
-    font-family: 'Nunito', sans-serif;
-    margin: 0%;
-    padding: 0%;
-}
-
-#menu{
-    z-index: 2;
-}
-
-#menu_bar{
-    width: 30px;
-    cursor: pointer;
-}
-
-.barra{
-    height: 5px;
-    background-color: #FF1D5C;
-    display: block;
-    border-radius: 5px;
-    transition: 0.3s ease;
-}
-
-#barra1{
-    transform:translateY(-4px);
-}
-
-#barra3{
-    transform: translateY(4px);
-}
-
-
-.nav {
-    transition: 0.3s ease;
-    display: none;
-    z-index: 3;
-    position: relative;
-}
-
-.nav ul {
-    padding: 0 22px;
-}
-
-.nav li {
-    list-style: none;
-    padding: 12px 0;
-}
-
-.nav li a {
-    color: #FFF;
-    font-size: 14px;
-    text-decoration: none;
-}
-
-.nav li a:hover{
-    font-weight: bold;
-    color: #F2A413;
-}
-
-.menu_bg{
-    z-index: 1;
-    width: 0;
-    height: 0;
-    margin: 30px 0 20px 20px;
-    background-color: #FF1D5C;
-    border-radius: 24%;
-    transition: 0.3s ease;
-    position: absolute;
-    top: 150px;
-}
-
-.menu_bg #menu{
-    top: 0;
-    left: 0;
-    position: absolute;
-}
-
-.change{
-    display: block;
-}
-
-.change .barra{
-    background-color: #F2A413;
-}
-
-.change #barra1{
-    transform: translate(4px, 5px) rotateZ(-45deg);
-}
-
-.change #barra2{
-    opacity: 0;
-}
-
-.change #barra3{
-    transform: translate(4px, -5px) rotateZ(45deg);
-}
-
-.change_bg{
-    width: 280px;
-    height: 422px;
-    transform: translate(-60%, -30%);
-}
-
-
-
-:root {
-    --green: #43A633;
-    --red: #F55353;
-    --yellow: #F2A413;
+:root{
+    --green:#43A633;
+    --red:#F55353;
+    --yellow:#F2A413;
     --pink: #FF1D5C;
 }
 
 
 
-button {
+*{
+    font-family: 'Nunito', sans-serif;
+}
+
+header{
+    margin-top: 10px;
+    overflow-y: hidden;
+}
+
+
+button{
     display: block;
     position: relative;
     border: 0px;
@@ -120,42 +25,139 @@ button {
     cursor: pointer;
 }
 
-aside {
+aside{
     height: 60px;
+    z-index: 1;
 }
 
-#perfil {
+
+
+button#perfil{
     display: flex;
     width: 30px;
     height: 30px;
     background-color: var(--pink);
     border-radius: 100%;
+    padding-bottom: 5px;
 }
+
+
+
+.barra{
+    background-color: #D9D9D9;
+    width: 24px;
+    height: 5px;
+    display: flex;
+    margin: 2px;
+    margin-top: 3px;
+}
+
 
 div#busca {
+    background-color:#D9D9D9 ;
+    width: 71vw;
+    height: 26px;
     display: flex;
-    align-items: center;
-    background-color: #D9D9D9;
-    width: 50%;
-    max-width: 400px;
-    height: 30px;
+    margin-left: 40px;
+    margin-top: -55px;
     border-radius: 5px;
 }
-
 div#busca input[type="text"] {
-    border: none;
-    background-color: transparent;
-    width: 100%;
-    padding: 5px;
+    border: transparent;
+    background-color: #D9D9D9;
+    width: 74vw;
+    border-radius: 3px;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus{
     outline-color: #ff1d5dbd;
 }
 
-.navegacao{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 1.5rem;
+button#perfil{
+    float: right;
+    padding: 0px;
+    margin-top: -28px
+    
 }
+img#circulo{
+    width: 36px;
+    height: auto;
+}
+
+#turmas{
+    width: 100vw;
+    font-size: 18px;
+    color: #484848;
+    margin-top: 12px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+
+
+.mais{
+    color: var(--pink); 
+    display: inline;
+    font-size: 30px;
+    height: 30px;
+    margin-top: auto;
+    padding-bottom: -100px;
+    position: relative;
+    top: 3px;
+    left: 4px;
+}
+
+.chart-title{
+    font-size: 20px;
+    color: #000000;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.chart-container-turma,
+.chart-container-habilidades,
+.chart-container-defasagens
+{
+    width: 100%;
+    height: 300px;
+    position: relative;
+    margin: 0 auto;
+    padding: 5px;
+    box-sizing: border-box;;
+}
+
+.chart-container-progresso{
+    width: 85vw;
+    height: 80px;
+    position: relative;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+#porcentagem{
+    color: white;
+    position: relative;
+    margin-bottom: -36px;
+    margin-left: 8vw;
+    z-index: 2;
+}
+
+canvas{
+    margin-bottom: 30px;
+}
+
+.footerContainer{
+    color: #00000089;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    width: 95%;
+    margin: 0 auto;
+    font-size: 10px;
+    display: block;
+  }
