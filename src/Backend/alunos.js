@@ -15,29 +15,25 @@ router.use(cors());
 // Importando o banco.
 const DBPATH = 'bd_nova_freire.db'
 
-// Iniciando a construção de endpoints
-// GET /medias/:id_turma
-router.get('/:id_turma', (req, res) => {
-    const id_turma = req.params.id_turma;
-
-    const query = `SELECT av.data, AVG(n.valor_nota) AS media_notas
-    FROM nota n
-    JOIN questao q ON n.id_questao = q.id_questao
-    JOIN avaliacao av ON q.id_avaliacao = av.id_avaliacao
-    JOIN turma t ON av.id_turma = t.id_turma
-    WHERE t.id_turma = ?
-    GROUP BY av.id_avaliacao`;
+// Criando os endpoints
+// GET /aluno
+router.get('/', (req, res) =>{
+    const query = `SELECT AVG(n.valor_nota) AS media_aluno, a.nome_aluno
+    FROM aluno a
+    JOIN nota n ON a.id_aluno = n.id_aluno
+    GROUP BY nome_aluno`;
 
     let db = new sqlite3.Database(DBPATH);
 
-    db.all(query, [id_turma], (error, rows) => {
+    db.all(query, [], (error, rows) => {
         if (error) {
-            res.json({ error: error });
+            res.status(500).json({ error: error });
         }
         return res.status(200).json({
-            data: rows
+            title: "Alunos pegos com sucesso.",
+            data: rows 
         })
-    })
+    }) 
 })
 
 module.exports = router;

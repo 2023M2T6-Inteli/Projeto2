@@ -26,12 +26,12 @@ const turmas_endpoints = require("./turmas.js");
 app.use("/turmas", turmas_endpoints);
 
 // Puxando os endpoints alunos.js.
-const alunos_endpoints = require("./aluno");
-app.use("/aluno", alocacao_endpoints);
+const aluno_endpoints = require("./aluno");
+app.use("/aluno", aluno_endpoints);
 
 // Puxando os endpoints de avaliacao.js.
 const avaliacao_endpoints = require("./avaliacao");
-app.use("/avaliacao", alocacao_endpoints);
+app.use("/avaliacao", avaliacao_endpoints);
 
 // Puxando os endpoints de desempenho.js.
 const desempenho_endpoints = require("./desempenho");
@@ -72,6 +72,15 @@ app.use("/registro", registro_endpoints);
 // Puxando os endpoints de defasagens.js.
 const defasagens_endpoints = require("./defasagens.js");
 app.use("/defasagens", defasagens_endpoints);
+
+// Puxando os endpoints de alunos.js.
+const alunos_endpoints = require("./alunos.js");
+app.use("/alunos", alunos_endpoints);
+
+
+// Puxando os endpoints de medias_habilidade.js.
+const medias_habilidade = require("./medias_habilidade.js");
+app.use("/medias_habilidade", medias_habilidade);
 
 // Inicializando o servidor.
 app.listen(port, () => {
