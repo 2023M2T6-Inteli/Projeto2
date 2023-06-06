@@ -4,7 +4,8 @@
   "description": "",
   "main": "endpoints.js",
   "scripts": {
-    "start": "nodemon ."
+    "dev": "nodemon endpoints.js",
+    "start": "node endpoints.js"
   },
   "keywords": [],
   "author": "",
