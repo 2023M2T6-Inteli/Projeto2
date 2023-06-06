@@ -167,6 +167,14 @@ section {
     left: 4px;
 }
 
+.titulo-alunos{
+    font-size: 20px;
+    color: #000000;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
 /* tamanho, borda e coloração das esferas*/
 .greenBall {
     width: 20px;
@@ -220,9 +228,3 @@ section {
 
 }
 
-/* coloração e tamanho da porcentagem*/
-div#porcentagem {
-    background-color: #EFEFEF;
-    width: 30px;
-
-}

@@ -97,7 +97,7 @@ p#nota{
 section{
     font-size: 17px;
     background-color: #D9D9D9;
-    width: 580px;
+    width: 90vw;
     height: 650px;
     display: flex;
     border-radius: 4px;
@@ -112,11 +112,11 @@ button.questao{
     display: inline;
     font-size: 30px;
     height: 30px;
+    padding: 12px;
     margin-top: auto;
     padding-bottom: -100px;
     position: relative;
     top: -2px;
-    left: 13px;
 }
 
 table#notas{
@@ -124,14 +124,21 @@ table#notas{
     width: 100%;
   }
 
- th, td {
+ th{
     border: 1px solid #ddd; /* Define uma borda de 1px sólida cinza claro */
-    padding: 8px; /* Adiciona um espaçamento interno de 8 pixels */
+    padding: 12px; /* Adiciona um espaçamento interno de 8 pixels */
     text-align: center; /* Alinha o conteúdo à esquerda */
-    
   }
-  tr.clas{
+
+ 
+
+  td{
+    border: 1px solid #ddd
+  }
+
+  tr.questao{
     height: 30px;
+    padding: 13px;
   }
   
   

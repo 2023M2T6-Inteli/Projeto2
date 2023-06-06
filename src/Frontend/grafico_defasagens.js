@@ -29,7 +29,7 @@ function grafico_defasagens(habilidades_defasagens_nome, habilidades_defasagens_
       data: {
           labels: habilidades_defasagens_nome,
           datasets: [{
-              label: 'Maiores defasagens da turma',
+              label: 'Número de alunos com a defasagem',
               data: habilidades_defasagens_num_alunos,
               borderWidth: 0
           }]

@@ -73,8 +73,8 @@ section {
     width: 330px;
     display: flex;
     border-radius: 10px;
-    margin-left: auto;
-    margin-right: 36px;
+    margin-left: 18px;
+    margin-right: auto;
     overflow-y: auto;
     text-align: center;
     margin-top: 20px;
