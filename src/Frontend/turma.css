@@ -127,7 +127,7 @@ canvas{
     padding-top: 1rem;
     width: 95%;
     margin: 0 auto;
-    font-size: 10px;
+    font-size: 10px !important;
     display: block;
   }
   .navegacao{

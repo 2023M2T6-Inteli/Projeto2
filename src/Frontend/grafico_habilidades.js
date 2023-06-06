@@ -14,7 +14,16 @@ $.ajax({
       return item.tipo_habilidade;
     });
 
-    const ctx2 = document.getElementById('grafico_habilidades');
+    grafico_habilidades(habilidades_nome, habilidades_nota);
+    
+  },
+  error: function(error) {
+    console.log(error);
+  }
+})
+
+function grafico_habilidades(habilidades_nome, habilidades_nota){
+  const ctx2 = document.getElementById('grafico_habilidades');
 
   new Chart(ctx2, {
     type: 'bar',
@@ -66,10 +75,4 @@ $.ajax({
       }
     }
   });
-  },
-  error: function(error) {
-    console.log(error);
-  }
-})
-
-
+}

@@ -13,7 +13,16 @@ $.ajax({
       return item.tipo_habilidade;
     });
 
-    const ctx3 = document.getElementById('grafico_defasagens')
+    grafico_defasagens(habilidades_defasagens_nome, habilidades_defasagens_num_alunos);
+
+  },
+  error: function (err) {
+    console.log(err);
+  }
+});
+
+function grafico_defasagens(habilidades_defasagens_nome, habilidades_defasagens_num_alunos) {
+  const ctx3 = document.getElementById('grafico_defasagens')
 
   new Chart (ctx3, {
       type: 'pie',
@@ -38,10 +47,5 @@ $.ajax({
           },
         }
   });
-  
-  },
-  error: function (err) {
-    console.log(err);
-  }
-});
+}
 

@@ -10,8 +10,19 @@ $.ajax({
 
     document.getElementById('porcentagem').innerHTML = progresso_bncc[0]*10 + '%';
 
-    const ctx4 = document.getElementById('grafico_progresso').getContext('2d');
+    
+    
+    grafico_progresso(progresso_bncc);
   
+  },
+  error: function(error) {
+    console.log(error);
+  }
+})
+
+function grafico_progresso(progresso_bncc){
+  const ctx4 = document.getElementById('grafico_progresso').getContext('2d');
+
   new Chart(ctx4, {
     type: 'bar', 
     data: {
@@ -66,8 +77,4 @@ $.ajax({
       }
     }
   });
-  },
-  error: function(error) {
-    console.log(error);
-  }
-})
+}
