@@ -14,7 +14,7 @@ router.use(cors());
 const DBPATH = 'bd_nova_freire.db';
 
 // GET /progresso
-router.get('/progresso', (req, res) =>{
+router.get('/', (req, res) =>{
     const query = `SELECT AVG(valor_nota) AS progresso
     FROM nota`
 

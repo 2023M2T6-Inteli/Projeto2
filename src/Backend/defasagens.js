@@ -16,7 +16,7 @@ router.use(cors());
 const DBPATH = 'bd_nova_freire.db'
 
 // GET /defasagens
-router.get('/defasagens', (req, res) =>{
+router.get('/', (req, res) =>{
     const query = `SELECT h.tipo_habilidade, COUNT(*) AS num_alunos
     FROM nota n
     JOIN questao q ON n.id_questao = q.id_questao

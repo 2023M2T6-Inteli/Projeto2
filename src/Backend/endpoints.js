@@ -82,6 +82,10 @@ app.use("/alunos", alunos_endpoints);
 const medias_habilidade = require("./medias_habilidade.js");
 app.use("/medias_habilidade", medias_habilidade);
 
+// Puxando os endpoints de medias.js.
+const medias = require("./medias.js");
+app.use("/medias", medias);
+
 // Inicializando o servidor.
 app.listen(port, () => {
     console.log("Servidor iniciado com sucesso. Escutando a porta http://localhost:"+ port)
