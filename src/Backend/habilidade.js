@@ -6,18 +6,18 @@ const bodyParser = require("body-parser");
 const urlcodedParser = bodyParser.urlencoded({ extended: true })
 
 // Inicializando a aplicação.
-const app = express();
+const router = express.Router();
 
 // Definindo regras gerais da aplicação.
-app.use(express.json())
-app.use(cors());
+router.use(express.json())
+router.use(cors());
 
 // Importando o banco.
 const DBPATH = 'bd_nova_freire.db'
 
 // Iniciando a construção de endpoints
 // POST habilidade
-app.post("/habilidade", urlcodedParser, (req, res) => {
+router.post("/", urlcodedParser, (req, res) => {
     const {tipo_habilidade, ano_habilidade} = req.body;
 
     const query = "INSERT INTO habilidade(tipo_habilidade, ano_habilidade) VALUES(?, ?)"
@@ -38,7 +38,7 @@ app.post("/habilidade", urlcodedParser, (req, res) => {
 
 
 // PUT /habilidade/:id_habilidade
-app.put("/habilidade/:id_habilidade", urlcodedParser, (req, res) => {
+router.put("/:id_habilidade", urlcodedParser, (req, res) => {
     const {tipo_habilidade, ano_habilidade} = req.body;
     const id_habilidade = req.params.id_habilidade;
 
@@ -58,7 +58,7 @@ app.put("/habilidade/:id_habilidade", urlcodedParser, (req, res) => {
 });
 
 // GET /habilidade/:id_habilidade
-app.get("/habilidade/:id_habilidade", urlcodedParser, (req, res) => {
+router.get("/:id_habilidade", urlcodedParser, (req, res) => {
     const id_habilidade = req.params.id_habilidade;
 
     const query = "SELECT rowid, * FROM habilidade WHERE id_habilidade = ?";
@@ -78,7 +78,7 @@ app.get("/habilidade/:id_habilidade", urlcodedParser, (req, res) => {
 })
 
 // GET /habilidade
-app.get("/habilidade", urlcodedParser, (req, res) => {
+router.get("/", urlcodedParser, (req, res) => {
     const query = "SELECT * FROM habilidade";
     let db = new sqlite3.Database(DBPATH);
 
@@ -98,7 +98,7 @@ app.get("/habilidade", urlcodedParser, (req, res) => {
 
 
 // DELETE /habilidade/:id_habilidade
-app.delete("/habilidade/:id_habilidade", urlcodedParser, (req, res) => {
+router.delete("/:id_habilidade", urlcodedParser, (req, res) => {
     const id_habilidade = req.params.id_habilidade;
 
     const query_selecao = "SELECT rowid, * FROM habilidade WHERE id_habilidade = ?";
@@ -128,3 +128,6 @@ app.delete("/habilidade/:id_habilidade", urlcodedParser, (req, res) => {
         })
     })
 });
+
+
+module.exports = router;

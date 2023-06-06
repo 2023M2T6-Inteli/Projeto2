@@ -6,18 +6,18 @@ const bodyParser = require("body-parser");
 const urlcodedParser = bodyParser.urlencoded({ extended: true })
 
 // Inicializando a aplicação.
-const app = express();
+const router = express.Router();
 
 // Definindo regras gerais da aplicação.
-app.use(express.json())
-app.use(cors());
+router.use(express.json())
+router.use(cors());
 
 // Importando o banco.
 const DBPATH = 'bd_nova_freire.db'
 
 // Iniciando a construção de endpoints
 // POST escola
-app.post("/escola", urlcodedParser, (req, res) => {
+router.post("/", urlcodedParser, (req, res) => {
     const {nome_escola} = req.body;
     
     const query = "INSERT INTO escola(nome_escola) VALUES(?)";
@@ -34,7 +34,7 @@ app.post("/escola", urlcodedParser, (req, res) => {
 })
 
 // PUT /escola/:id_escola
-app.put("/escola/:id_escola", urlcodedParser, (req, res) => {
+router.put("/:id_escola", urlcodedParser, (req, res) => {
     const id_escola = req.params.id_escola;
     const {nome_escola} = req.body;
 
@@ -52,7 +52,7 @@ app.put("/escola/:id_escola", urlcodedParser, (req, res) => {
 
 
 // GET /escola/:id_escola
-app.get("/escola/:id_escola", urlcodedParser, (req, res) => {
+router.get("/:id_escola", urlcodedParser, (req, res) => {
     const id_escola = req.params.id_escola;
 
     const query = "SELECT rowid, * FROM escola WHERE id_escola = ?";
@@ -69,7 +69,7 @@ app.get("/escola/:id_escola", urlcodedParser, (req, res) => {
 })
 
 // DELETE /escola/:id_escola
-app.delete("/escola/:id_escola", urlcodedParser, (req, res) => {
+router.delete("/:id_escola", urlcodedParser, (req, res) => {
     const id_escola = req.params.id_escola;
 
     const query_selecao = "SELECT rowid, * FROM escola WHERE id_escola = ?";
@@ -95,3 +95,5 @@ app.delete("/escola/:id_escola", urlcodedParser, (req, res) => {
         })
     })
 })
+
+module.exports = router;

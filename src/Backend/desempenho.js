@@ -6,18 +6,18 @@ const bodyParser = require("body-parser");
 const urlcodedParser = bodyParser.urlencoded({ extended: true })
 
 // Inicializando a aplicação.
-const app = express();
+const router = express.Router();
 
 // Definindo regras gerais da aplicação.
-app.use(express.json())
-app.use(cors());
+router.use(express.json())
+router.use(cors());
 
 // Importando o banco.
 const DBPATH = 'bd_nova_freire.db'
 
 // Iniciando a construção de endpoints
 // POST /desempenho
-app.post("/desempenho", urlcodedParser, (req, res) => {
+router.post("/desempenho", urlcodedParser, (req, res) => {
     const {valor_desempenho, id_aluno, id_habilidade} = req.body;
 
     const query = "INSERT INTO desempenho (valor_desempenho, id_aluno, id_habilidade) VALUES (?, ?, ?)";
@@ -35,7 +35,7 @@ app.post("/desempenho", urlcodedParser, (req, res) => {
 
 
 // GET /desempenho/id_desempenho
-app.get("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
+router.get("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
     const id_desempenho = req.params.id_desempenho;
 
     const query = "SELECT rowid, * FROM desempenho WHERE id_desempenho = ?";
@@ -54,7 +54,7 @@ app.get("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
 
 
 // PUT /desempenho/:id_desempenho
-app.put("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
+router.put("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
     const id_desempenho = req.params.id_desempenho;
     const {valor_desempenho, id_aluno, id_habilidade} = req.body
 
@@ -72,7 +72,7 @@ app.put("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
 })
 
 // DELETE /desempenho/:id_desempenho
-app.delete("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
+router.delete("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
     const id_desempenho = req.params.id_desempenho;
 
     const query_selecao = "SELECT rowid, * FROM desempenho WHERE id_desempenho = ?";
@@ -98,3 +98,5 @@ app.delete("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
         })
     })
 })
+
+module.exports = router;

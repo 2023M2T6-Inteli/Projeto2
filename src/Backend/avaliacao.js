@@ -6,24 +6,24 @@ const bodyParser = require("body-parser");
 const urlcodedParser = bodyParser.urlencoded({ extended: true })
 
 // Inicializando a aplicação.
-const app = express();
+const router = express.Router();
 
 // Definindo regras gerais da aplicação.
-app.use(express.json())
-app.use(cors());
+router.use(express.json())
+router.use(cors());
 
 // Importando o banco.
 const DBPATH = 'bd_nova_freire.db'
 
 // Iniciando a construção de endpoints
 // POST avaliacao
-app.post("/avaliacao", urlcodedParser, (req, res) => {
-    const {nome_avaliacao, data} = req.body;
+router.post("/", urlcodedParser, (req, res) => {
+    const {nome_avaliacao, data, id_turma} = req.body;
 
-    const query = "INSERT INTO avaliacao(nome_avaliacao, data) VALUES (?, ?)";
+    const query = "INSERT INTO avaliacao(nome_avaliacao, data, id_turma) VALUES (?, ?, ?)";
     let db = new sqlite3.Database(DBPATH);
 
-    db.run(query, [nome_avaliacao, data], (error) => {
+    db.run(query, [nome_avaliacao, data, id_turma], (error) => {
         if(error) {
             throw new Error(error)
         }
@@ -34,7 +34,7 @@ app.post("/avaliacao", urlcodedParser, (req, res) => {
 })
 
 // PUT avaliacao/:id_avaliacao
-app.put("/avaliacao/:id_avaliacao", urlcodedParser, (req, res) => {
+router.put("/:id_avaliacao", urlcodedParser, (req, res) => {
     const {nome_avaliacao, data} = req.body;
     const id_habilidade = req.params.id_avaliacao;
 
@@ -54,7 +54,7 @@ app.put("/avaliacao/:id_avaliacao", urlcodedParser, (req, res) => {
 })
 
 // GET /avaliacao/:id_avaliacao
-app.get("/avaliacao/:id_avaliacao", urlcodedParser, (req, res) => {
+router.get("/:id_avaliacao", urlcodedParser, (req, res) => {
     const id_avaliacao = req.params.id_avaliacao;
 
     const query = "SELECT rowid, * FROM avaliacao WHERE id_avaliacao = ?"
@@ -72,13 +72,13 @@ app.get("/avaliacao/:id_avaliacao", urlcodedParser, (req, res) => {
 })
 
 // GET /avaliacao
-app.get("/avaliacao", urlcodedParser, (req, res) => {
+router.get("/", urlcodedParser, (req, res) => {
     const id_avaliacao = req.params.id_avaliacao;
 
     const query = "SELECT * FROM avaliacao";
     let db = new sqlite3.Database(DBPATH);
 
-    db.run(query, [id_avaliacao], (error, rows) => {
+    db.all(query, [id_avaliacao], (error, rows) => {
         if(error) {
             res.status(500).json({ error: error })
         }
@@ -90,7 +90,7 @@ app.get("/avaliacao", urlcodedParser, (req, res) => {
 })
 
 // DELETE /avaliacao/:id_avaliacao
-app.delete("/avaliacao/:id_avaliacao", urlcodedParser, (req, res) => {
+router.delete("/:id_avaliacao", urlcodedParser, (req, res) => {
     const id_avaliacao = req.params.id_avaliacao;
 
     const query_selecao = "SELECT rowid, * FROM avaliacao WHERE id_avaliacao = ?"
@@ -119,3 +119,5 @@ app.delete("/avaliacao/:id_avaliacao", urlcodedParser, (req, res) => {
         })
     })
 })
+
+module.exports = router;

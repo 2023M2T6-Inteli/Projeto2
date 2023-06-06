@@ -6,18 +6,18 @@ const bodyParser = require("body-parser");
 const urlcodedParser = bodyParser.urlencoded({ extended: true })
 
 // Inicializando a aplicação.
-const app = express();
+const router = express.Router();
 
 // Definindo regras gerais da aplicação.
-app.use(express.json())
-app.use(cors());
+router.use(express.json())
+router.use(cors());
 
 // Importando o banco.
 const DBPATH = 'bd_nova_freire.db'
 
 // Iniciando a construção de endpoints
 // POST /nota
-app.post("/nota", urlcodedParser, (req, res) => {
+router.post("/", urlcodedParser, (req, res) => {
     const {valor_nota, id_aluno, id_questao} = req.body
 
     const query = "INSERT INTO nota(valor_nota, id_aluno, id_questao) VALUES(?, ?, ?)";
@@ -35,7 +35,7 @@ app.post("/nota", urlcodedParser, (req, res) => {
 
 
 // PUT /nota/:id_nota
-app.put("/nota/:id_nota", urlcodedParser, (req, res) => {
+router.put("/:id_nota", urlcodedParser, (req, res) => {
     const id_nota = req.params.id_nota;
     const {valor_nota, id_aluno, id_questao} = req.body;
 
@@ -53,7 +53,7 @@ app.put("/nota/:id_nota", urlcodedParser, (req, res) => {
 })
 
 // GET /nota
-app.get("/nota", urlcodedParser, (req, res) => {
+router.get("/", urlcodedParser, (req, res) => {
     const query = "SELECT * FROM alunos";
 
     db.all(query, [], (error, rows) => {
@@ -67,7 +67,7 @@ app.get("/nota", urlcodedParser, (req, res) => {
     })
 })
 
-app.get("/nota/:valor_nota", urlcodedParser, (req, res) => {
+router.get("/:valor_nota", urlcodedParser, (req, res) => {
     const valor_nota = req.params.valor_nota;
 
     const query = "SELECT valor_nota >= valor_nota FROM nota";
@@ -84,8 +84,9 @@ app.get("/nota/:valor_nota", urlcodedParser, (req, res) => {
     })
 })
 
+
 // DELETE /nota/:id_nota
-app.delete("/nota/:id_nota", urlcodedParser, (req, res) => {
+router.delete("/:id_nota", urlcodedParser, (req, res) => {
     const id_nota = req.params.id_nota;
 
     const query_selecao = "SELECT rowid, * FROM nota WHERE id_nota = ?";
@@ -112,3 +113,6 @@ app.delete("/nota/:id_nota", urlcodedParser, (req, res) => {
         })
     })
 })
+
+
+module.exports = router;

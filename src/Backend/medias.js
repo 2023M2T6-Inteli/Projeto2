@@ -16,20 +16,28 @@ router.use(cors());
 const DBPATH = 'bd_nova_freire.db'
 
 // Iniciando a construção de endpoints
-// GET /questao-habilidade/:id_questao_habilidade
-router.get("/:id_questao_habilidade", urlcodedParser, (req, res) =>{
-    let db = new sqlite3.Database(DBPATH);
-    const query = "SELECT questao_habilidade.id_questao_habilidade, habilidade.id_habilidade, questao.id_questao FROM questao_habilidade JOIN habilidade ON questao_habilidade.id_habilidade = habilidade.id_habilidade JOIN questao ON questao_habilidade.id_questao = questao.id_questao WHERE id_questao_habilidade = ?";
+// GET /medias/:id_turma
+router.get('/medias/:id_turma', (req, res) => {
+    const id_turma = req.params.id_turma;
 
-    db.all(query, [req.params.id_questao_habilidade], (error, rows) => {
+    const query = `SELECT av.data, AVG(n.valor_nota) AS media_notas
+    FROM nota n
+    JOIN questao q ON n.id_questao = q.id_questao
+    JOIN avaliacao av ON q.id_avaliacao = av.id_avaliacao
+    JOIN turma t ON av.id_turma = t.id_turma
+    WHERE t.id_turma = ?
+    GROUP BY av.id_avaliacao`;
+
+    let db = new sqlite3.Database(DBPATH);
+
+    db.all(query, [id_turma], (error, rows) => {
         if (error) {
             res.json({ error: error });
         }
         return res.status(200).json({
-            title: "Questão habilidade pego com sucesso.",
             data: rows
-        });
-    });
-});
+        })
+    })
+})
 
 module.exports = router;

@@ -6,18 +6,18 @@ const bodyParser = require("body-parser");
 const urlcodedParser = bodyParser.urlencoded({ extended: true })
 
 // Inicializando a aplicação.
-const app = express();
+const router = express.Router();
 
 // Definindo regras gerais da aplicação.
-app.use(express.json())
-app.use(cors());
+router.use(express.json())
+router.use(cors());
 
 // Importando o banco.
 const DBPATH = 'bd_nova_freire.db'
 
 // Iniciando a construção de endpoints
 // POST /alocacao
-app.post("/alocacao", urlcodedParser, (req, res) => {
+router.post("/", urlcodedParser, (req, res) => {
     const {id_professor, id_escola, id_turma} = req.body;
 
     const query = "INSERT INTO alocacao(id_professor, id_escola, id_turma) VALUES = (?, ?, ?)";
@@ -33,7 +33,7 @@ app.post("/alocacao", urlcodedParser, (req, res) => {
     })
 })
 // GET /alocacao/:id_alocacao
-app.get("/alocacao/:id_alocacao", urlcodedParser, (req, res) => {
+router.get("/:id_alocacao", urlcodedParser, (req, res) => {
     const id_alocacao = req.params.id_alocacao;
 
     const query = "SELECT rowid, * FROM alocacao WHERE id_alocacao = ?";
@@ -49,3 +49,6 @@ app.get("/alocacao/:id_alocacao", urlcodedParser, (req, res) => {
         })
     })
 })
+
+
+module.exports = router;

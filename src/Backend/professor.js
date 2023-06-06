@@ -5,19 +5,20 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const urlcodedParser = bodyParser.urlencoded({ extended: true })
 
+
 // Inicializando a aplicação.
-const app = express();
+const router = express.Router();
 
 // Definindo regras gerais da aplicação.
-app.use(express.json())
-app.use(cors());
+router.use(express.json())
+router.use(cors());
 
 // Importando o banco.
 const DBPATH = 'bd_nova_freire.db'
 
 // Iniciando a construção de endpoints
 // POST professor
-app.post("/professor", urlcodedParser, (req, res) => {
+router.post("/", urlcodedParser, (req, res) => {
     const {nome_professor, email, senha, cargo, celular, cep, idade} = req.body;
 
     const query = "INSERT INTO professor(nome_professor, email, senha, cargo, celular, cep, idade) VALUES(?, ?, ?, ?, ?, ?, ?)"
@@ -35,7 +36,7 @@ app.post("/professor", urlcodedParser, (req, res) => {
 
 
 // PUT /professor/:id_professor
-app.put("/professor/:id_professor", urlcodedParser, (req, res) => {
+router.put("/:id_professor", urlcodedParser, (req, res) => {
     const {nome_professor, email, senha, cargo, celular, cep, idade} = req.body;
     const id_professor = req.params.id_professor;
 
@@ -50,10 +51,11 @@ app.put("/professor/:id_professor", urlcodedParser, (req, res) => {
             title: "Perfil atualizado com sucesso."
         })
     })
+    db.close()
 })
 
 // GET /professor/:id_professor
-app.get("/professor/:id_professor", (req, res) => {
+router.get("/:id_professor", (req, res) => {
     const id_professor = req.params.id_professor;
 
     const query = "SELECT rowid, * FROM professor WHERE id_professor = ?";
@@ -71,7 +73,7 @@ app.get("/professor/:id_professor", (req, res) => {
 });
 
 // DELETE /professor/:id_professor
-app.delete("/professor/:id_professor", urlcodedParser, (req, res) => {
+router.delete("/:id_professor", urlcodedParser, (req, res) => {
     const id_professor = req.params.id_professor;
 
     const query_selecao = "SELECT rowid, * FROM professor WHERE id_professor = ?";
@@ -98,3 +100,5 @@ app.delete("/professor/:id_professor", urlcodedParser, (req, res) => {
         })
     })
 })
+
+module.exports = router;

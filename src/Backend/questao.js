@@ -6,18 +6,18 @@ const bodyParser = require("body-parser");
 const urlcodedParser = bodyParser.urlencoded({ extended: true })
 
 // Inicializando a aplicação.
-const app = express();
+const router = express.Router();
 
 // Definindo regras gerais da aplicação.
-app.use(express.json())
-app.use(cors());
+router.use(express.json())
+router.use(cors());
 
 // Importando o banco.
 const DBPATH = 'bd_nova_freire.db'
 
 // Iniciando a construção de endpoints
 // POST /questao
-app.post("/questao", urlcodedParser, (req, res) => {
+router.post("/", urlcodedParser, (req, res) => {
     const {numero, id_avaliacao} = req.body;
     
     const query = "INSERT INTO questao(numero, id_avaliacao) VALUES(?, ?)";
@@ -34,7 +34,7 @@ app.post("/questao", urlcodedParser, (req, res) => {
 });
 
 // PUT /questao/id_questao
-app.put("/questao/:id_questao", urlcodedParser, (req, res) => {
+router.put("/:id_questao", urlcodedParser, (req, res) => {
     const {numero} = req.body;
     const id_questao = req.params.id_questao;
 
@@ -53,7 +53,7 @@ app.put("/questao/:id_questao", urlcodedParser, (req, res) => {
 
 
 // GET /questão/:id_questao
-app.get("/questao/:id_questao", urlcodedParser, (req, res) => {
+router.get("/:id_questao", urlcodedParser, (req, res) => {
     const id_questao = req.params.id_questao;
 
     const query = "SELECT rowid, * FROM questao WHERE id_questao = ?";
@@ -71,7 +71,7 @@ app.get("/questao/:id_questao", urlcodedParser, (req, res) => {
 })
 
 // GET /questão/:id_questao
-app.get("/questao", urlcodedParser, (req, res) => {
+router.get("/", urlcodedParser, (req, res) => {
 
     const query = "SELECT * FROM questao";
     let db = new sqlite3.Database(DBPATH);
@@ -88,7 +88,7 @@ app.get("/questao", urlcodedParser, (req, res) => {
 })
 
 // DELETE /questao/:id_questao
-app.delete("/questao/:id_questao", urlcodedParser, (req, res) => {
+router.delete("/:id_questao", urlcodedParser, (req, res) => {
     const id_questao = req.params.id_questao;
 
     const query_selecao = "SELECT rowid, * FROM questao WHERE id_questao = ?";
@@ -115,3 +115,5 @@ app.delete("/questao/:id_questao", urlcodedParser, (req, res) => {
         })
     })
 })
+
+module.exports = router;
