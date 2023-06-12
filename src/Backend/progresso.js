@@ -31,5 +31,5 @@ router.get('/', (req, res) =>{
     })
 })
 
-
+// Exportando os endpoints de progresso.js.
 module.exports = router;

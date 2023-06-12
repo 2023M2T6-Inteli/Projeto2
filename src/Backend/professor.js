@@ -101,4 +101,5 @@ router.delete("/:id_professor", urlcodedParser, (req, res) => {
     })
 })
 
+// Exportando os endpoints de professor.js.
 module.exports = router;

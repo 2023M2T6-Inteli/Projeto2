@@ -67,6 +67,7 @@ router.get("/", urlcodedParser, (req, res) => {
     })
 })
 
+// GET /nota/:valor_nota
 router.get("/:valor_nota", urlcodedParser, (req, res) => {
     const valor_nota = req.params.valor_nota;
 
@@ -114,5 +115,5 @@ router.delete("/:id_nota", urlcodedParser, (req, res) => {
     })
 })
 
-
+// Exportando os endpoints de nota.js.
 module.exports = router;

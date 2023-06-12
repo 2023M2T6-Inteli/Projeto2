@@ -36,4 +36,5 @@ router.get('/', (req, res) =>{
     }) 
 })
 
+// Exportando os endpoints de alunos.js.
 module.exports = router;

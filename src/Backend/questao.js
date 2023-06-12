@@ -116,4 +116,5 @@ router.delete("/:id_questao", urlcodedParser, (req, res) => {
     })
 })
 
+// Exportando os endpoints de questao.js.
 module.exports = router;

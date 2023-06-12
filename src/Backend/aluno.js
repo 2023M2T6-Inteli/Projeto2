@@ -125,4 +125,5 @@ router.delete("/:id_aluno", urlcodedParser, (req, res) => {
     })
 })
 
+// Exportando os endpoints de aluno.js.
 module.exports = router;

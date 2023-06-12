@@ -120,4 +120,5 @@ router.delete("/:id_avaliacao", urlcodedParser, (req, res) => {
     })
 })
 
+// Exportando os endpoints de avaliacao.js.
 module.exports = router;

@@ -36,4 +36,5 @@ router.get("/", urlcodedParser, (req, res) =>{
     });
 })
 
+// Exportando os endpoints de medias_habilidades.js.
 module.exports = router;
