@@ -7,18 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="alunos.css" />
     <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="pop_up_alunos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@400&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="sidebar.js"></script>
+    <script src="pop_up_alunos.js"></script>
     <script src="Integracao/alunos.js"></script>
 
     <title>NovaFreire</title>
 </head>
 
 <body>
-    <div id="darkOverlay" onclick="closeNav()"></div>
+    <div id="darkOverlay"></div>
     <header>
         <nav class="navegacao" id="navegacao">
             <div id="barraSuperior"> <!-- barra menu lateral-->
@@ -48,8 +50,30 @@
         </nav>
     </header>
 
-    <p id="turmas"> <u style="text-decoration-color: #FF1D5C">Turma 1</u> | Turma 2 | Turma 3<button
-            class="mais">+</button></p>
+    <p id="turmas"> <u style="text-decoration-color: #FF1D5C">Turma 1</u> | Turma 2 | Turma 3<button class="mais">+</button></p>
+   
+    <div id="pop_up_alunos">
+        <div id="pop_up_alunos_content">
+            <div id="pop_up_alunos_header">
+                <h2>Adicionar Aluno</h2>
+                <span class="close" onclick="popUpClose()">&times;</span>
+            </div>
+            <div id="pop_up_alunos_body">
+                <form action="">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Nome do aluno">
+                    <br>
+                    <label for="turma">Turma</label>
+                    <select name="turma" id="turma">
+                        <option value="turma1">Turma 1</option>
+                        <option value="turma2">Turma 2</option>
+                        <option value="turma3">Turma 3</option>
+                    </select>
+                    <input class="botao" type="submit" value="Adicionar" onclick="alunos.insert()">
+                </form>
+            </div>
+        </div>
+    </div>
 
     <div class="titulo-alunos">Alunos</div>
 

@@ -1,0 +1,48 @@
+#pop_up_alunos{
+    text-align: center;
+    background-color: #D9D9D9;
+    width: 80vw;
+    height: 50vw;
+    position: absolute;
+    left: 50px;
+    z-index: 1;
+    border-radius: 10px;
+    display: none;
+    opacity: 1;
+    -webkit-transition: opacity 0.1s ease-in-out;
+    -moz-transition: opacity 0.1s ease-in-out;
+    -ms-transition: opacity 0.1s ease-in-out;
+    -o-transition: opacity 0.1s ease-in-out;
+    transition: opacity 0.1s ease-in-out;
+}
+
+#pop_up_alunos.fade{
+    
+}
+
+.close{
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    font-size: 35px;
+}
+
+input { /*adiciona posicionamento e tamanho em radiano do botão e coloração*/
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.botao{ /*adiciona posicionamento e tamanho em radiano do botão e coloração*/
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #FF1D5C;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+label,
+#nome{
+    margin-bottom: 15px;
+}
