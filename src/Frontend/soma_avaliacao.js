@@ -1,4 +1,5 @@
 
+
 function calcularTotal() {
   // Obtém a tabela e as linhas com a classe "valor"
   var table = document.getElementById("notas");
@@ -23,3 +24,4 @@ function calcularTotal() {
     cells[cells.length - 2].innerText = total; // Define o total na célula da coluna "Total"
   }
 }
+
