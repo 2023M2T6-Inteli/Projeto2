@@ -17,15 +17,20 @@ const DBPATH = 'bd_nova_freire.db'
 
 // Criando os endpoints
 // GET /aluno
-router.get('/', (req, res) =>{
+router.get('/:id_turma', (req, res) =>{
     const query = `SELECT AVG(n.valor_nota) AS media_aluno, a.nome_aluno
     FROM aluno a
     JOIN nota n ON a.id_aluno = n.id_aluno
+    JOIN registro r ON a.id_aluno = r.id_aluno
+    JOIN turma t ON r.id_turma = t.id_turma
+    WHERE t.id_turma = ?
     GROUP BY nome_aluno`;
+
+    const id_turma = req.params.id_turma;
 
     let db = new sqlite3.Database(DBPATH);
 
-    db.all(query, [], (error, rows) => {
+    db.all(query, [id_turma], (error, rows) => {
         if (error) {
             res.status(500).json({ error: error });
         }
