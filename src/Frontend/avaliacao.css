@@ -170,6 +170,14 @@ td#total{
     padding:8px;
     border-color: #000;
 }
+td#media{
+    width: 35px;
+    height: 20px;
+    border-radius: 10px;
+    background-color:#ddd;
+    padding:8px;
+    border-color: #000;
+}
 
 
 .navegacao{
