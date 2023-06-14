@@ -3,15 +3,18 @@ const express = require("express");
 const sqlite3 = require("sqlite3");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
-const port = 3000
+const path = require("path");
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
+const port = 3000;
 
 // Inicializando a aplicação.
 const app = express();
 
 // Definindo regras gerais da aplicação.
-app.use(express.json())
+app.use(express.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "/../Frontend")));
+
 
 // Puxando os endpoints de alocacao.js.
 const alocacao_endpoints = require("./alocacao.js");
@@ -77,7 +80,6 @@ app.use("/defasagens", defasagens_endpoints);
 const alunos_endpoints = require("./alunos.js");
 app.use("/alunos", alunos_endpoints);
 
-
 // Puxando os endpoints de medias_habilidade.js.
 const medias_habilidade = require("./medias_habilidade.js");
 app.use("/medias_habilidade", medias_habilidade);
@@ -86,7 +88,12 @@ app.use("/medias_habilidade", medias_habilidade);
 const medias = require("./medias.js");
 app.use("/medias", medias);
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../Frontend/login.html"));
+});
 // Inicializando o servidor.
 app.listen(port, () => {
-    console.log("Servidor iniciado com sucesso. Escutando a porta http://localhost:"+ port)
-})
+  console.log(
+    "Servidor iniciado com sucesso. Escutando a porta http://localhost:" + port
+  );
+});
