@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/takeoraca/Projeto-2-depoly.git"
+    "url": "https://github.com/2023M2T6-Inteli/Projeto2"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/takeoraca/Projeto-2-depoly/issues"
+    "url": "https://github.com/2023M2T6-Inteli/Projeto2"
   },
-  "homepage": "https://github.com/takeoraca/Projeto-2-depoly#readme"
+  "homepage": "https://github.com/2023M2T6-Inteli/Projeto2"
 }
