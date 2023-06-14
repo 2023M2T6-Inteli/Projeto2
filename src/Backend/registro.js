@@ -33,4 +33,5 @@ router.get("/:id_registro", urlcodedParser, (req, res) => { // Iniciando o camin
     })
 })
 
+// Exportando os endpoints de registro.js.
 module.exports = router;

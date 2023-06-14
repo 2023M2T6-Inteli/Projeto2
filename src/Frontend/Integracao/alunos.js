@@ -5,7 +5,7 @@ $(document).ready(() => {
 var alunos = {
     list() {
         $.ajax({
-            url: 'http://127.0.0.1:3000/alunos',
+            url: 'http://127.0.0.1:3000/alunos/1',
             type: 'GET',
             success: function(response) {
                 var data = response.data;
@@ -21,12 +21,11 @@ var alunos = {
                 console.log(alunos_nome);
                 console.log(media);
 
-                var tx = `
-                    <div class="item">
-                        <p class="nome"><strong>Nome</strong><button class="mais">+</button></p>
-                        <div class="situacao" style="padding-top: 10px"><strong>Situação</strong></div>
-                        <div class="progresso" style="padding-top: 10px">Média</div>
-                    </div>`;
+                var tx = `<div class="item">
+                <p class="nome"><strong>Aluno</strong><button class="mais" id="mais_alunos" onclick="popUpOpen()">+</button></p>
+                <div class="situacao" style="padding-top: 10px"><strong>Situação</strong></div>
+                <div class="progresso" style="padding-top: 10px">Média</div>
+            </div>`;
 
                 alunos_nome.forEach(function(element, index) {
                     var ballClass, barClass;
@@ -60,5 +59,28 @@ var alunos = {
                 $('.row').html(tx);
             }
         });
-    }
+    },
+
+    insert(){
+        var nome_aluno = req.body.nome_aluno;
+        var id_turma = req.body.id_turma;
+
+        console.log(`${nome_aluno} - ${id_turma}`);
+
+        if (nome_aluno && id_turma){
+            if (nome_aluno.trim() != '' && id_turma.trim() != ''){
+                $.ajax({
+                    url: 'http://127.0.0.1:3000/aluno',
+                    type: 'POST',
+                    data: {nome_aluno: nome_aluno, id_turma: id_turma},
+                }).done(function () {
+                    alunos.list();
+                }).fail(function (){
+                    console.log('FAIL');
+                }).always(function (){
+                    console.log('ALWAYS');
+                })
+            }
+            }
+        }
 };

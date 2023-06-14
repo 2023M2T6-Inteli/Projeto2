@@ -129,5 +129,5 @@ router.delete("/:id_habilidade", urlcodedParser, (req, res) => {
     })
 });
 
-
+// Exportando os endpoints de habilidade.js.
 module.exports = router;

@@ -40,4 +40,5 @@ router.get('/', (req, res) =>{
     })
 })
 
+// Exportando os endpoints de defasagens.js.
 module.exports = router;

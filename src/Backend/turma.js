@@ -56,6 +56,7 @@ router.get("/:id_turma", urlcodedParser,(req, res) => {
   });
 });
 
+// GET /turma
 router.get("/", urlcodedParser,(req, res) => {
   const query = "SELECT * FROM turma";
   let db = new sqlite3.Database(DBPATH);
@@ -125,4 +126,5 @@ router.delete("/:id_turma", urlcodedParser,(req, res) => {
   db.close()
 });
 
+// Exportando os endpoints de turma.js.
 module.exports = router;

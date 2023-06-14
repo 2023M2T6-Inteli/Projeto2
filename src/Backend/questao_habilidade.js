@@ -16,6 +16,7 @@ router.use(cors());
 const DBPATH = 'bd_nova_freire.db'
 
 // Iniciando a construção de endpoints
+
 // GET /questao-habilidade/:id_questao_habilidade
 router.get("/:id_questao_habilidade", urlcodedParser, (req, res) =>{
     let db = new sqlite3.Database(DBPATH);
@@ -32,4 +33,5 @@ router.get("/:id_questao_habilidade", urlcodedParser, (req, res) =>{
     });
 });
 
+// Exportando os endpoints de questao_habilidade.js.
 module.exports = router;

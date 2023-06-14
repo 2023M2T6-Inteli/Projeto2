@@ -31,5 +31,5 @@ router.get("/", urlcodedParser,(req, res) =>{
     });
 });
 
-
+// Exportando os endpoints de turmas.js.
 module.exports = router;

@@ -96,4 +96,5 @@ router.delete("/:id_escola", urlcodedParser, (req, res) => {
     })
 })
 
+// Exportando os endpoints de escola.js.
 module.exports = router;

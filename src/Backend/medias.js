@@ -40,4 +40,5 @@ router.get('/:id_turma', (req, res) => {
     })
 })
 
+// Exportando os endpoints de medias.js.
 module.exports = router;

@@ -50,5 +50,5 @@ router.get("/:id_alocacao", urlcodedParser, (req, res) => {
     })
 })
 
-
+// Exportando os endpoints de alocacao.js.
 module.exports = router;

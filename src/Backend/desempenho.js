@@ -99,4 +99,5 @@ router.delete("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
     })
 })
 
+// Exportando os endpoints de desempenho.js.
 module.exports = router;

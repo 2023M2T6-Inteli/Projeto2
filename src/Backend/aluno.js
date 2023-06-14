@@ -18,21 +18,38 @@ const DBPATH = 'bd_nova_freire.db'
 // Criando os endpoints
 
 // POST /aluno
-router.post("/", urlcodedParser, (req, res) => {
-    const {nome_aluno} = req.body;
-    console.log(nome_aluno);
-    const query = "INSERT INTO aluno(nome_aluno) VALUES (?)";
+router.post('/', urlcodedParser, (req, res) => {
+    const nome_aluno = req.body.nome_aluno;
+    const id_turma = req.body.id_turma;
+    let id_aluno; 
+  
+    const queryAluno = 'INSERT INTO aluno(nome_aluno) VALUES (?)';
+    const queryRegistro = 'INSERT INTO registro(id_turma, id_aluno) VALUES (?, ?)';
+  
     let db = new sqlite3.Database(DBPATH);
-
-    db.run(query, [nome_aluno], (error) => {
+  
+    db.run(queryAluno, [nome_aluno], function (error) {
+      if (error) {
+        res.status(500).json({ error: error });
+        return;
+      }
+  
+      id_aluno = this.lastID; // Assign this.lastID to the id_aluno variable
+  
+      db.run(queryRegistro, [id_turma, id_aluno], function (error) {
         if (error) {
-            res.status(500).json({ error: error });
+          res.status(500).json({ error: error });
+          return;
         }
-        return res.status(200).json({
-            title: "Aluno criado com sucesso."
-        })
-    })
-})
+  
+        res.status(200).json({
+          title: 'Aluno e Registro criados com sucesso.',
+        });
+      });
+    });
+  });
+  
+  
 
 // GET /aluno/:id_aluno
 router.get("/:id_aluno", urlcodedParser, (req, res) => {
@@ -125,4 +142,5 @@ router.delete("/:id_aluno", urlcodedParser, (req, res) => {
     })
 })
 
+// Exportando os endpoints de aluno.js.
 module.exports = router;
