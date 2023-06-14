@@ -7,4 +7,3 @@ function popUpClose(){
     document.getElementById("pop_up_alunos").style.display = "none";
     document.getElementById("darkOverlay").style.display = "none";
 }
-

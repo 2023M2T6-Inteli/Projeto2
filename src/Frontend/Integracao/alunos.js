@@ -21,7 +21,7 @@ var alunos = {
                 console.log(alunos_nome);
                 console.log(media);
 
-                var tx = `<div class="item">
+                var tx1 = `<div class="item">
                 <p class="nome"><strong>Aluno</strong><button class="mais" id="mais_alunos" onclick="popUpOpen()">+</button></p>
                 <div class="situacao" style="padding-top: 10px"><strong>Situação</strong></div>
                 <div class="progresso" style="padding-top: 10px">Média</div>
@@ -41,7 +41,7 @@ var alunos = {
                         barClass = "redBar";
                     }
 
-                    tx += `
+                    tx1 += `
                         <hr>
                         <div class="item">
                             <p class="nome">${element}</p>
@@ -54,9 +54,9 @@ var alunos = {
                         </div>
                         `;
                 });
-                tx += `<br>`
+                tx1 += `<br>`
 
-                $('.row').html(tx);
+                $('.row').html(tx1);
             }
         });
     },
@@ -84,3 +84,9 @@ var alunos = {
             }
         }
 };
+
+var turmas = {
+    list() {
+        
+    }
+}
