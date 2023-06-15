@@ -88,6 +88,9 @@ app.use("/medias_habilidade", medias_habilidade);
 const medias = require("./medias.js");
 app.use("/medias", medias);
 
+const forcas = require("./forcas.js");
+app.use("/forcas", forcas);
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../Frontend/login.html"));
 });

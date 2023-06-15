@@ -70,7 +70,7 @@
                         <option value="turma3">Turma 3</option>
                     </select>
                     <br>
-                    <input class="botao" type="submit" value="Adicionar" onclick="alunos.insert()">
+                    <input id="botao_adicionar" class="botao" type="submit" value="Adicionar" onclick="alunos.insert()">
                 </form>
             </div>
         </div>
@@ -80,6 +80,28 @@
 
     <section>
         <div class="row"> <!-- barra sobre situação, progresso e nome dos alunos -->
+            <hr>
+                        <div class="aluno_container">
+                            <div class="item" id="item1"> 
+                                <p class="nome">Teste</p>
+                                <div class="situacao">
+                                    <div class="greenBall"></div>
+                                </div>
+                                <div class="progresso">
+                                    <div style="font-size: 18px" id="porcentagem">90%</div>
+                                </div>
+                            </div>
+                            <div id="sobre_aluno">
+                                <br>
+                                <div id="forcas"> <strong>Forças</strong>: EF05MA1, EF05MA2, EF05MA3</div>
+                                <br>
+                                <div id="defasagens"><strong>Defasagens</strong>: EF05MA4, EF05MA5, EF05MA6</div>   
+                                <br>
+                                <button id="deletar_aluno">Deletar Aluno</button>
+                            </div>
+                        </div>
+                        <button class="toggle" id="botao_sobre" onclick="abrir()">+</button>
+                        <br>
         </div>
     </section>
     <br><br>

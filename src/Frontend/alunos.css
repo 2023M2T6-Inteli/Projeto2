@@ -117,6 +117,7 @@ img#lupa {
 
 /* tamanho, posição e coloração da section*/
 section {
+    position: relative;
     font-size: 17px;
     background-color: #D9D9D9;
     width: 375px;
@@ -127,23 +128,53 @@ section {
     margin-right: auto;
     overflow-y: auto;
     text-align: center;
+    z-index: 1;
 }
 
 /* posição dos itens nome, situação e progresso*/
 .nome,
 .situacao,
 .progresso {
+    position: relative;
     padding-top: 0px;
     padding-bottom: 0px;
     display: inline-block;
     margin-top: auto;
     margin-bottom: auto;
+    z-index: 10;
 }
 
 .item {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-left: auto;
+    overflow: hidden;
+    max-height: 75px;
+    z-index: 10;
+}
+
+.sobre_aluno{
+    max-height: 0;
+    position: relative;
+    font-size: 14px;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    text-align: left;
+    padding-left: 10px;
+    z-index: 1;
+}
+
+.deletar{
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #ff4c4c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
 }
 
 
@@ -151,6 +182,7 @@ section {
 .row {
     width: 375px;
     text-align: center;
+    z-index: 1;
 
 }
 
@@ -226,5 +258,26 @@ section {
     background-color: var(--yellow);
     display: inline-block;
 
+}
+
+#porcentagem{
+    position: relative;
+    height: max-content
+}
+
+.toggle{
+    
+    color: gray;
+    display: inline;
+    position: relative;
+    font-size: 23px;
+    left: 170px;
+    transition: top 0.2s ease-out;
+    z-index: 10;
+}
+
+.aluno_container{
+    position: relative;
+    z-index: 10;
 }
 

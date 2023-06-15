@@ -50,6 +50,7 @@ router.get("/:id_turma", urlcodedParser,(req, res) => {
       console.log(rows)
       res.status(200).json({
         title: "Turma selecionada com sucesso.",
+        data: rows
       });
     }
     db.close()
