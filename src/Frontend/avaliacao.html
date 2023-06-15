@@ -30,7 +30,7 @@
         </button>
         <div id="mySidebar" class="sidebar">
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-          <img src="assets/logo.png" alt="Logo" class="logo">          
+          <img src="assets/logo.png" alt="Logo" class="logo">
           <a href="./perfil.html">Perfil</a>
           <hr>
           <a href="turma.html">Turmas</a>
@@ -51,8 +51,8 @@
   </header>
 
   <p id="turmas"> <u style="text-decoration-color: #FF1D5C">Turma 1</u> | Turma 2 | Turma 3 <!-- botão turma -->
-  <br>
-  <br>
+    <br>
+    <br>
   <p id="nota"> Avaliação</p>
   <br>
 
@@ -63,17 +63,17 @@
         <th><button class="q"> Q1 </button></th> <!-- botões de adicionar questões  -->
         <th><button class="q"> Q2 </button></th>
         <th><button class="q"> Q3 </button></th>
-        <th> <button  id="addButton"class="questao" onclick="addColumn()"> +</button></th>
+        <th> <button id="addButton" class="questao" onclick="addColumn()"> +</button></th>
         <th><strong>Total</strong></th>
         <th><strong>Média</strong></th>
-         
+
       </tr>
       <tbody>
         <tr class="valor">
           <td>Aluno1</td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"></td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"></td>
           <td></td>
           <td id="total"></td>
           <td id="media"></td>
@@ -82,9 +82,9 @@
         </tr>
         <tr class="valor">
           <td>Aluno2</td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
           <td></td>
           <td id="total"></td>
           <td id="media"></td>
@@ -92,9 +92,9 @@
         </tr>
         <tr class="valor">
           <td>Aluno3</td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"></td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"></td>
           <td></td>
           <td id="total"></td>
           <td id="media"></td>
@@ -103,9 +103,9 @@
         </tr>
         <tr class="valor">
           <td>Aluno4</td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"></td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"></td>
           <td></td>
           <td id="total"></td>
           <td id="media"></td>
@@ -114,9 +114,9 @@
         </tr>
         <tr class="valor">
           <td>Aluno5</td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
           <td></td>
           <td id="total"></td>
           <td id="media"></td>
@@ -125,9 +125,9 @@
         </tr>
         <tr class="valor">
           <td>Aluno6</td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"></td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"></td>
           <td></td>
           <td id="total"></td>
           <td id="media"></td>
@@ -135,9 +135,9 @@
         </tr>
         <tr class="valor">
           <td>Aluno7</td>
-          <td contenteditable="true" oninput="calcularTotal()"></td>
-          <td contenteditable="true" oninput="calcularTotal()"></td>
-          <td contenteditable="true" oninput="calcularTotal()"></td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"></td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"></td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"></td>
           <td></td>
           <td id="total"></td>
           <td id="media"></td>
@@ -145,20 +145,20 @@
         </tr>
         <tr class="valor">
           <td>Aluno8</td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
           <td contenteditable="true" oninput="calcularTotal()"> </td>
           <td></td>
           <td id="total"></td>
           <td id="media"></td>
-        
+
 
         </tr>
         <tr class="valor">
           <td>Aluno9</td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
           <td></td>
           <td id="total"></td>
           <td id="media"></td>
@@ -166,9 +166,9 @@
         </tr>
         <tr class="valor">
           <td>Aluno10 </td>
-          <td contenteditable="true" oninput="calcularTotal()"> </td>
-          <td contenteditable="true" oninput="calcularTotal()"></td>
-          <td contenteditable="true" oninput="calcularTotal()"></td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"> </td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"></td>
+          <td contenteditable="true" oninput="calcularTotal(); calcularMedia()"></td>
           <td></td>
           <td id="total"></td>
           <td id="media"></td>
@@ -179,7 +179,7 @@
           <td id="media-aluno1"></td>
           <td id="media-aluno2"></td>
           <td id="media-aluno3"></td>
-          
+
         </tr>
       </tbody>
     </table>

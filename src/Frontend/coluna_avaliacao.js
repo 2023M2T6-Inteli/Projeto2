@@ -15,7 +15,8 @@
       var valueRow = rows[i];
       var newCell = document.createElement("td");
       newCell.contentEditable = "true" ;
-      newCell.setAttribute("oninput", "calcularTotal()");
+      newCell.setAttribute("oninput", "calcularTotal(); calcularMedia()");
+      
       valueRow.insertBefore(newCell, valueRow.children[valueRow.childElementCount - 3]);
     }
   }
