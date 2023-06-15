@@ -1,14 +1,11 @@
 // Importando as bibliotecas que serão utilizadas.
 const express = require("express");
 const sqlite3 = require("sqlite3");
-const jwt = require("jsonwebtoken");
-const secretKey = "1234"
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const port = 3000;
-const DBPATH = 'bd_nova_freire.db';
 
 // Inicializando a aplicação.
 const app = express();
@@ -94,39 +91,12 @@ app.use("/medias", medias);
 const forcas = require("./forcas.js");
 app.use("/forcas", forcas);
 
-//Iniciar na página de login
+const login = require("./login.js");
+app.use("/login", login)
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../Frontend/login.html"));
 });
-
-//Validação de login
-app.post ("/login", (req, res) => {
-  let email = req.body.email
-  let senha = req.body.senha
-
-  console.log(email, senha);
-
-  const query = "SELECT email, senha FROM professor WHERE email = ? AND senha = ?";
-  let db = new sqlite3.Database(DBPATH);
-
-  db.get(query, [email, senha], (error, row) => {
-      if(error) {
-          res.status(500).json({ error: error })
-          return res.end();
-      }
-      console.log(row)
-      if(typeof row == "undefined") {
-        res.status(401).json({ error: error})
-        return res.end();
-      }
-      let token = jwt.sign({ data: email}, secretKey, {expiresIn: 60*60*3})
-      return res.status(200).json({
-          token: token
-      });
-  });
-})
-
-
 // Inicializando o servidor.
 app.listen(port, () => {
   console.log(

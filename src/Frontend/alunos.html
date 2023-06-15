@@ -65,9 +65,9 @@
                     <br>
                     <label for="turma">Turma</label>
                     <select name="turma" id="id_turma">
-                        <option value="turma1">Turma 1</option>
-                        <option value="turma2">Turma 2</option>
-                        <option value="turma3">Turma 3</option>
+                        <option value="turma1"></option>
+                        <option value="turma2"></option>
+                        <option value="turma3"></option>
                     </select>
                     <br>
                     <input id="botao_adicionar" class="botao" type="submit" value="Adicionar" onclick="alunos.insert()">
@@ -76,35 +76,29 @@
         </div>
     </div>
 
+    <div id="pop_up_deletar">
+        <div id="pop_up_deletar_content">
+            <div id="pop_up_deletar_header">
+                <h2>Deletar Aluno</h2>
+                <span class="close" onclick="popUpCloseDeletar()">&times;</span>
+            </div>
+            <div id="pop_up_deletar_body">
+                <form action="">
+                    <p id="aviso">Deseja realmente deletar o aluno? Essa é uma ação irreversível que removerá todos os dados registrados do aluno.</p>
+                    <input id="botao_deletar" class="botao" type="submit" value="Deletar" onclick="alunos.delete()">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="titulo-alunos">Alunos</div>
 
     <section>
         <div class="row"> <!-- barra sobre situação, progresso e nome dos alunos -->
-            <hr>
-                        <div class="aluno_container">
-                            <div class="item" id="item1"> 
-                                <p class="nome">Teste</p>
-                                <div class="situacao">
-                                    <div class="greenBall"></div>
-                                </div>
-                                <div class="progresso">
-                                    <div style="font-size: 18px" id="porcentagem">90%</div>
-                                </div>
-                            </div>
-                            <div id="sobre_aluno">
-                                <br>
-                                <div id="forcas"> <strong>Forças</strong>: EF05MA1, EF05MA2, EF05MA3</div>
-                                <br>
-                                <div id="defasagens"><strong>Defasagens</strong>: EF05MA4, EF05MA5, EF05MA6</div>   
-                                <br>
-                                <button id="deletar_aluno">Deletar Aluno</button>
-                            </div>
-                        </div>
-                        <button class="toggle" id="botao_sobre" onclick="abrir()">+</button>
-                        <br>
         </div>
     </section>
-    <br><br>
 
 </body>
 

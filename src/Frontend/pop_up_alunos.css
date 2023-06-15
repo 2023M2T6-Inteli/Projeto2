@@ -1,4 +1,6 @@
-#pop_up_alunos{
+#pop_up_alunos,
+#pop_up_deletar
+{
     text-align: center;
     background-color: #D9D9D9;
     width: 80vw;
@@ -9,6 +11,10 @@
     border-radius: 10px;
     display: none;
     
+}
+
+#aviso{
+    padding: 15px;
 }
 
 .close{
@@ -31,10 +37,19 @@ select{
     border: 1px solid #ccc;
 }
 
-.botao{ /*adiciona posicionamento e tamanho em radiano do botão e coloração*/
+#botao_adicionar{ /*adiciona posicionamento e tamanho em radiano do botão e coloração*/
     padding: 5px 10px;
     border-radius: 4px;
     background-color: #FF1D5C;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#botao_deletar{
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #ff4c4c;
     color: #fff;
     border: none;
     cursor: pointer;

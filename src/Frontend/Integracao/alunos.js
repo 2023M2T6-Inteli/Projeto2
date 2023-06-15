@@ -41,7 +41,6 @@ var alunos = {
                     return item.id_aluno;
                 })
 
-                console.log(alunos_nome)
 
                 var tx1 = `<div class="item">
                 <p class="nome"><strong>Aluno</strong><button class="mais" id="mais_alunos" onclick="popUpOpen()">+</button></p>
@@ -81,11 +80,10 @@ var alunos = {
                             <br>
                             <div id="defasagens"><strong>Defasagens</strong>: EF05MA4, EF05MA5, EF05MA6</div>   
                             <br>
-                            <button class="deletar" id="deletar_aluno${id_aluno[index]}">Deletar Aluno</button>
+                            <button class="deletar" id="deletar_aluno${id_aluno[index]}" onclick="popUpOpenDeletar()">Deletar Aluno</button>
                         </div>
                     </div>
-                    <button class="toggle" id="botao_sobre${id_aluno[index]}" onclick="abrir(${id_aluno[index]})">+</button>
-                        `;
+                    <button class="toggle" id="botao_sobre${id_aluno[index]}" onclick="abrir(${id_aluno[index]})">+</button>`;
                 });
                 tx1 += `<br>`
 
@@ -115,6 +113,9 @@ var alunos = {
                 })
             }
             }
+        },
+        delete(){
+            
         }
 };
 
