@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Estabelece uma pré-conexão com o servidor de fontes do Google -->
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@500&display=swap" rel="stylesheet"><!-- Importa a fonte Inter do Google Fonts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="login.js"></script>
     <title>NovaFreire</title> <!-- Define o título da página como "NovaFreire" -->
 </head>
 
@@ -30,7 +29,7 @@
             <label for="password">Senha:</label> <!-- Rótulo para o campo de senha -->
             <input type="password" id="senha" name="password" required class="input-field"> <!-- Campo de entrada para a senha -->
             
-            <button type="button" class="button-enter" id="enviar" onclick="redirecionar()">Entrar</button> <!-- Botão de entrar -->
+            <button type="button" class="button-enter" id="enviar">Entrar</button> <!-- Botão de entrar -->
         </form>
         <div class="links">
             <br>
@@ -41,12 +40,8 @@
         </div>
     </section>
 
-    <script>
-
-        function redirecionar(){
-            window.location.href = "./turma.html"
-        }
-    </script>
+    <script src="login.js"></script>
+    
 </body>
 
 </html>
