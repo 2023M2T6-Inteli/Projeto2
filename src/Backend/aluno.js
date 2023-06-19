@@ -69,7 +69,21 @@ router.get("/:id_aluno", urlcodedParser, (req, res) => {
     })
 })
 
+// GET /aluno
+router.get("/", urlcodedParser, (req, res) => {
+    const query = "SELECT * FROM aluno";
+    let db = new sqlite3.Database(DBPATH);
 
+    db.all(query, [], (err, rows) => {
+        if(err) {
+            console.log("Erro ao pegar os dados do banco.");
+        }
+        return res.status(200).json({
+            title: "Alunos pegos com sucesso.",
+            data: rows
+        })
+    })
+})
 // GET /nota/aluno/:id_aluno
 router.get("/nota/:id_nota", urlcodedParser, (req, res) => {
     const id_nota = req.params.id_nota;
