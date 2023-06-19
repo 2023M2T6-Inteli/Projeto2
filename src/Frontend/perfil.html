@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@400&display=swap" rel="stylesheet">
+    <script src="perfil.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>NovaFreire</title>
     <link rel="stylesheet" href="./sidebar.css">
@@ -39,8 +40,9 @@
                 </div>
             </div>
             <div id="busca"> <!-- barra de busca -->
-                <input type="text" placeholder="Buscar">
+                <input type="search" placeholder="Buscar" id="buscar" onkeyup="searchAluno()">
             </div>
+            <div id="searchResults">jk</div>
         </nav>
         <br>
         <div class="Nome" id="Nome">Maria Cecília</div>
