@@ -172,10 +172,11 @@ section {
     color: #fff;
     border: none;
     cursor: pointer;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 140px;
     margin-top: 10px;
+    display: inline-block;
 }
+
 
 
 

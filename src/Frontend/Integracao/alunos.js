@@ -1,6 +1,6 @@
 $(document).ready(() => {
     alunos.list();
-    turmas.list()
+    turmas.list();
 });
 
 var coll = document.getElementById("botao_sobre");
@@ -47,7 +47,7 @@ var alunos = {
                 <div class="situacao" style="padding-top: 10px"><strong>Situação</strong></div>
                 <div class="progresso" style="padding-top: 10px">Média</div>
             </div>`;
-
+            
                 alunos_nome.forEach(function(element, index) {
                     var ballClass, barClass;
 
@@ -80,14 +80,18 @@ var alunos = {
                             <br>
                             <div id="defasagens"><strong>Defasagens</strong>: EF05MA4, EF05MA5, EF05MA6</div>   
                             <br>
-                            <button class="deletar" id="deletar_aluno${id_aluno[index]}" onclick="popUpOpenDeletar()">Deletar Aluno</button>
+                            <button class="deletar" id="deletar_aluno${id_aluno[index]}" onclick="popUpOpenDeletar(${id_aluno[index]})">Deletar Aluno</button>
                         </div>
                     </div>
                     <button class="toggle" id="botao_sobre${id_aluno[index]}" onclick="abrir(${id_aluno[index]})">+</button>`;
+
+                    
+                    
                 });
                 tx1 += `<br>`
 
                 $('.row').html(tx1);
+                
             }
         });
     },
@@ -114,9 +118,19 @@ var alunos = {
             }
             }
         },
-        delete(){
-            
+        delete(id_aluno){
+            $.ajax({
+                url: 'http://127.0.0.1:3000/aluno/' + id_aluno,
+                type: 'DELETE',
+            }).done(function (){
+                //alunos.list();
+            }).fail(function (){
+                console.log('FAIL');
+            }).always(function (){
+                console.log('ALWAYS');
+            })
         }
+        
 };
 
 var turmas = {
@@ -142,6 +156,7 @@ var turmas = {
                 })
 
                 $('#id_turma').html(tx2)
+                
             }
         })
         
