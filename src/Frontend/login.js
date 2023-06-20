@@ -19,3 +19,7 @@ button.addEventListener("click", async (event, err) => {
         
     })
 })
+
+function redirecionar(){
+    window.location.href = "./turma.html"
+}
