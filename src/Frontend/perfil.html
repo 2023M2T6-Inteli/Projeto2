@@ -13,6 +13,47 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>NovaFreire</title>
     <link rel="stylesheet" href="./sidebar.css">
+
+    <script>
+    // Função para salvar os dados no armazenamento local
+    function salvarDados() {
+        var nome = document.getElementById("nome").value;
+        var email = document.getElementById("email").value;
+        var ocupacao = document.getElementById("ocupacao").value;
+        var telefone = document.getElementById("telefone").value;
+        var materias = document.getElementById("materias").value;
+
+        // Salvar os dados no armazenamento local
+        localStorage.setItem("nome", nome);
+        localStorage.setItem("email", email);
+        localStorage.setItem("ocupacao", ocupacao);
+        localStorage.setItem("telefone", telefone);
+        localStorage.setItem("materias", materias);
+    }
+
+    // Função para preencher os campos com os dados salvos
+    function preencherCampos() {
+        var nome = localStorage.getItem("nome");
+        var email = localStorage.getItem("email");
+        var ocupacao = localStorage.getItem("ocupacao");
+        var telefone = localStorage.getItem("telefone");
+        var materias = localStorage.getItem("materias");
+
+        // Preencher os campos com os dados salvos, se existirem
+        document.getElementById("nome").value = nome || "";
+        document.getElementById("email").value = email || "";
+        document.getElementById("ocupacao").value = ocupacao || "";
+        document.getElementById("telefone").value = telefone || "";
+        document.getElementById("materias").value = materias || "";
+    }
+
+    // Chamar a função para preencher os campos ao carregar a página
+    window.onload = preencherCampos;
+</script>
+
+
+    </script>
+
 </head>
 
 <body>
@@ -45,7 +86,7 @@
             <div id="searchResults">jk</div>
         </nav>
         <br>
-        <div class="Nome" id="Nome">Maria Cecília</div>
+        <div class="Nome" id="Nome"></div>
     </header>
 
     <section>
@@ -54,19 +95,19 @@
         </div>
     </section>
     <br>
-    <input type="nome" id="nome" name="nome" required class="input-field" placeholder="Nome Completo">
+    <input type="nome" id="nome" name="nome" required class="input-field" placeholder="Nome Completo"  onchange="salvarDados()">
     <!-- Campo de entrada para o nome -->
     <br>
     <br>
-    <input type="email" id="email" name="email" required class="input-field" placeholder="Email">
+    <input type="email" id="email" name="email" required class="input-field" placeholder="Email"  onchange="salvarDados()">
     <!-- Campo de entrada para o email -->
     <br>
     <br>
-    <input type="ocupacao" id="ocupacao" name="ocupacao" required class="input-field" placeholder="Ocupação">
+    <input type="ocupacao" id="ocupacao" name="ocupacao" required class="input-field" placeholder="Ocupação" onchange="salvarDados()">
     <!-- Campo de entrada para a ocupação -->
     <br>
     <br>
-    <input type="telefone" id="telefone" name="telefone" required class="input-field" placeholder="Telefone">
+    <input type="telefone" id="telefone" name="telefone" required class="input-field" placeholder="Telefone" onchange="salvarDados()">
     <!-- Campo de entrada para o telefone -->
     <br>
     <br>
