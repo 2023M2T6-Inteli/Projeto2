@@ -10,37 +10,36 @@
     padding: 0;
     font-family: 'Nunito', sans-serif;
 }
-
-
-button {
+button{
     display: block;
     position: relative;
-    border: none;
+    border: 0px;                          /* define a cor do botão*/
     background-color: transparent;
     cursor: pointer;
 }
 
-aside {
-    height: 60px;
-}
 
-#perfil {
+/* Estilos da barra lateral */
+
+#perfil{
     display: flex;
     width: 30px;
     height: 30px;
     background-color: #FF1D5C;
     border-radius: 100%;
+
 }
 
-button#sidebar {
-    padding: 0;
+button#sidebar{
+    padding: 0px;
     padding-top: 5px;
 }
 
-.barra {
+.barra{
     background-color: #D9D9D9;
     width: 24px;
     height: 5px;
+    display: flex;
     margin: 2px;
     margin-top: 3px;
 }
@@ -58,40 +57,42 @@ div#busca input[type="text"] {
     border: none;
     background-color: transparent;
     width: 100%;
-    padding: 4px;
+    padding: 5px;
 }
 input[type="text"]:focus{
     outline-color: #ff1d5dbd;
 }
 
-img#circulo {
+img#circulo{
     width: 36px;
     height: auto;
 }
 
 section {
-    font-size: 17px;
+    font-size: 14px;
     background-color: #D9D9D9;
-    width: 350px;
-    height: 400px;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto auto;
-    grid-gap: 20px;
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
     grid-template-areas:
-      "conteudo1 conteudo2"
-      "conteudo3 conteudo4";
+      "conteudo1"
+      "conteudo2"
+      "conteudo3"
+      "conteudo4";
     margin: 0 auto;
-    padding: 20px;
+    padding: 15px;
     border-radius: 5px;
 }
 
 h2 {
-    margin-bottom: 10px;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 18px;
 }
 
 .conteudo-recomendado {
-    padding: 40px 20px;
+    padding: 15px;
     background-color: #F2F2F2;
     border-radius: 4px;
     height: 100%;
@@ -106,27 +107,6 @@ h2 {
     font-size: 14px;
     color: #777777;
 }
-
-.conteudo-recomendado[style*="grid-area: conteudo1;"] {
-    grid-area: conteudo1;
-}
-
-.conteudo-recomendado[style*="grid-area: conteudo2;"] {
-    grid-area: conteudo2;
-}
-
-.conteudo-recomendado[style*="grid-area: conteudo3;"] {
-    grid-area: conteudo3;
-}
-
-.conteudo-recomendado[style*="grid-area: conteudo4;"] {
-    grid-area: conteudo4;
-}
-h2 {
-    text-align: center;
-    margin-top: 20px;
-}
-
 .navegacao{
     display: flex;
     align-items: center;
