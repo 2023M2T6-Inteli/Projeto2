@@ -41,7 +41,7 @@ const desempenho_endpoints = require("./desempenho");
 app.use("/desempenho", desempenho_endpoints);
 
 // Puxando os endpoints de escola.js.
-const escola_endpoints = require("./desempenho.js");
+const escola_endpoints = require("./escola.js");
 app.use("/escola", escola_endpoints);
 
 // Puxando os endpoints de habilidades.js.
