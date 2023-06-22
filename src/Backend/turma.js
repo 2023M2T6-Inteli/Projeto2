@@ -43,14 +43,17 @@ router.get("/:id_turma", urlcodedParser,(req, res) => {
   const query_selecao = "SELECT rowid, * FROM turma WHERE id_turma = ?";
   let db = new sqlite3.Database(DBPATH); // Abrindo o banco.
 
-  db.all(query_selecao, [id_turma], (error, rows) => {
+  db.run(query_selecao, [id_turma], (error, rows) => {
     if (error) {
       res.status(500).json({ error: "Não foi possível selecionar a turma." });
+    } else {
+      console.log(rows)
+      res.status(200).json({
+        title: "Turma selecionada com sucesso.",
+        data: rows
+      });
     }
-    return res.status(200).json({
-      title: "Turma selecionada com sucesso.",
-      data: rows
-    })
+    db.close()
   });
 });
 

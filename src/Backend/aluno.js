@@ -34,7 +34,7 @@ router.post('/', urlcodedParser, (req, res) => {
         return;
       }
   
-      id_aluno = this.lastID; // Coloca o this.lastID to o id_aluno
+      id_aluno = this.lastID; // Assign this.lastID to the id_aluno variable
   
       db.run(queryRegistro, [id_turma, id_aluno], function (error) {
         if (error) {
@@ -84,6 +84,25 @@ router.get("/", urlcodedParser, (req, res) => {
         })
     })
 })
+// GET /nota/aluno/:id_aluno
+router.get("/nota/:id_nota", urlcodedParser, (req, res) => {
+    const id_nota = req.params.id_nota;
+
+    const query = "SELECT aluno.valor_nota, habilidade.id_habilidade FROM desempenho JOIN aluno ON aluno.id_aluno = desempenho.id_aluno JOIN habilidade ON habilidade.id_habilidade = desempenho.id_habilidade WHERE desempenho.id_nota = ?";
+    let db = new sqlite3.Database(DBPATH);
+
+    db.all(query, [id_nota], (error, rows) => {
+        if (error) {
+            return res.json({ error: error });
+        }
+        return res.status(200).json({
+            title: "Lista de alunos com notas.",
+            data: rows
+        });
+    });
+});
+
+
 
 // PUT /aluno/:id_aluno
 router.put("/:id_aluno", urlcodedParser, (req, res) => {

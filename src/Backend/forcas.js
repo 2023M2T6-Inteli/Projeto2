@@ -15,7 +15,6 @@ router.use(cors());
 // Importando o banco.
 const DBPATH = 'bd_nova_freire.db'
 
-// GET /forcas/:id_aluno
 router.get('/:id_aluno', (req, res) =>{
 
     const query = `SELECT h.tipo_habilidade, a.nome_aluno, n.valor_nota AS media

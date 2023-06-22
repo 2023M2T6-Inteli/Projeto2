@@ -17,7 +17,7 @@ const DBPATH = 'bd_nova_freire.db'
 
 // Iniciando a construção de endpoints
 // POST /desempenho
-router.post("/", urlcodedParser, (req, res) => {
+router.post("/desempenho", urlcodedParser, (req, res) => {
     const {valor_desempenho, id_aluno, id_habilidade} = req.body;
 
     const query = "INSERT INTO desempenho (valor_desempenho, id_aluno, id_habilidade) VALUES (?, ?, ?)";
@@ -35,7 +35,7 @@ router.post("/", urlcodedParser, (req, res) => {
 
 
 // GET /desempenho/id_desempenho
-router.get("/:id_desempenho", urlcodedParser, (req, res) => {
+router.get("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
     const id_desempenho = req.params.id_desempenho;
 
     const query = "SELECT rowid, * FROM desempenho WHERE id_desempenho = ?";
@@ -54,28 +54,25 @@ router.get("/:id_desempenho", urlcodedParser, (req, res) => {
 
 
 // PUT /desempenho/:id_desempenho
-router.put("/:id_desempenho", urlcodedParser, (req, res) => {
-    const { valor_desempenho, id_aluno, id_habilidade } = req.body;
+router.put("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
     const id_desempenho = req.params.id_desempenho;
+    const {valor_desempenho, id_aluno, id_habilidade} = req.body
 
-    const query = "UPDATE desempenho SET valor_desempenho = ?, id_aluno = ?, id_habilidade = ? WHERE id_desempenho = ?";
+    const query = "UPDATE desempenho SET valor_desempenho = ? id_aluno = ? id_habilidade = ?";
     let db = new sqlite3.Database(DBPATH);
 
     db.run(query, [valor_desempenho, id_aluno, id_habilidade, id_desempenho], (error) => {
-        if (error) {
-            return res.status(500).json({
-                title: "Erro em atualizar desempenho."
-            });
+        if(error) {
+            res.status(500).json({ error: error })
         }
         return res.status(200).json({
             title: "Desempenho atualizado com sucesso."
-        });
-    });
-});
-
+        })
+    })
+})
 
 // DELETE /desempenho/:id_desempenho
-router.delete("/:id_desempenho", urlcodedParser, (req, res) => {
+router.delete("/desempenho/:id_desempenho", urlcodedParser, (req, res) => {
     const id_desempenho = req.params.id_desempenho;
 
     const query_selecao = "SELECT rowid, * FROM desempenho WHERE id_desempenho = ?";

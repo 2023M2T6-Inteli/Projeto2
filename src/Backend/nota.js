@@ -37,58 +37,53 @@ router.post("/", urlcodedParser, (req, res) => {
 // PUT /nota/:id_nota
 router.put("/:id_nota", urlcodedParser, (req, res) => {
     const id_nota = req.params.id_nota;
-    const { valor_nota, id_aluno, id_questao } = req.body;
+    const {valor_nota, id_aluno, id_questao} = req.body;
 
-    const query = "UPDATE nota SET valor_nota = ?, id_aluno = ?, id_questao = ? WHERE id_nota = ?";
+    const query = "UPDATE nota SET valor_nota = ? id_aluno = ? id_questao = ?";
     let db = new sqlite3.Database(DBPATH);
 
     db.run(query, [valor_nota, id_aluno, id_questao, id_nota], (error) => {
         if (error) {
-            return res.status(500).json({ error: error });
+            res.json({ error: error });
         }
         return res.status(200).json({
             title: "Nota atualizada com sucesso."
-        });
-    });
-});
-
+        })
+    })
+})
 
 // GET /nota
 router.get("/", urlcodedParser, (req, res) => {
-    const query = "SELECT * FROM nota";
-    let db = new sqlite3.Database(DBPATH);
+    const query = "SELECT * FROM alunos";
 
     db.all(query, [], (error, rows) => {
         if (error) {
-            return res.status(400).json({ error: error });
+            res.json({ error: error });
         }
-
         return res.status(200).json({
             title: "Lista de alunos com notas.",
             data: rows
-        });
-    });
-});
-
+        })
+    })
+})
 
 // GET /nota/:valor_nota
 router.get("/:valor_nota", urlcodedParser, (req, res) => {
     const valor_nota = req.params.valor_nota;
 
-    const query = "SELECT * FROM nota WHERE valor_nota >= ?";
+    const query = "SELECT valor_nota >= valor_nota FROM nota";
     let db = new sqlite3.Database(DBPATH);
 
     db.all(query, [valor_nota], (error, rows) => {
         if (error) {
-            return res.status(500).json({ error: error });
+            res.json({ error: error });
         }
         return res.status(200).json({
             title: "Lista de alunos com notas.",
             data: rows
-        });
-    });
-});
-
+        })
+    })
+})
 
 
 // DELETE /nota/:id_nota
