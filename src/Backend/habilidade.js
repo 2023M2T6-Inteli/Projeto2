@@ -39,23 +39,25 @@ router.post("/", urlcodedParser, (req, res) => {
 
 // PUT /habilidade/:id_habilidade
 router.put("/:id_habilidade", urlcodedParser, (req, res) => {
-    const {tipo_habilidade, ano_habilidade} = req.body;
+    const { tipo_habilidade, ano_habilidade } = req.body;
     const id_habilidade = req.params.id_habilidade;
 
-    const query = "UPDATE habilidade SET tipo_habilidade = ? ano_habilidade = ? WHERE id_habilidade = ?"
+    const query = "UPDATE habilidade SET tipo_habilidade = ?, ano_habilidade = ? WHERE id_habilidade = ?";
     let db = new sqlite3.Database(DBPATH);
 
     db.run(query, [tipo_habilidade, ano_habilidade, id_habilidade], (error) => {
-        if(error) {
-            res.status(400).json({
+        if (error) {
+            return res.status(400).json({
                 error: error
-            })
+            });
         }
+        
         return res.status(200).json({
             title: "Habilidade atualizada com sucesso."
         });
     });
 });
+
 
 // GET /habilidade/:id_habilidade
 router.get("/:id_habilidade", urlcodedParser, (req, res) => {
@@ -112,7 +114,7 @@ router.delete("/:id_habilidade", urlcodedParser, (req, res) => {
         }
         else if(!rows) {
             res.status(500).json({
-                title: "Usuário não encontrado."
+                title: "Habilidade não encontrado."
             })
         }
     });
@@ -120,11 +122,11 @@ router.delete("/:id_habilidade", urlcodedParser, (req, res) => {
     db.run(query, [id_habilidade], (error) => {
         if(error) {
             res.status(500).json({
-                title: "Erro em deletar o usuário."
+                title: "Erro em deletar o habilidade."
             })
         }
         return res.status(200).json({
-            title: "Usuário deletado com sucesso."
+            title: "Habilidade deletado com sucesso."
         })
     })
 });

@@ -20,15 +20,15 @@ const DBPATH = 'bd_nova_freire.db'
 router.post("/", urlcodedParser, (req, res) => {
     const {id_professor, id_escola, id_turma} = req.body;
 
-    const query = "INSERT INTO alocacao(id_professor, id_escola, id_turma) VALUES = (?, ?, ?)";
+    const query = "INSERT INTO alocacao(id_professor, id_escola, id_turma) VALUES(?, ?, ?)";
     let db = new sqlite3.Database(DBPATH);
 
-    db.run(query, [id_professor, id_escola, id_turma], (error) => {
-        if(error) {
-            res.status(500).json({ error: error })
+    db.all(query, [id_professor, id_escola, id_turma], (error) => {
+        if(error){
+            res.status(500).json({error: error})
         }
         return res.status(200).json({
-            title: "Alocação adicionada com sucesso."
+            title: "Alocacação criada com sucesso."
         })
     })
 })

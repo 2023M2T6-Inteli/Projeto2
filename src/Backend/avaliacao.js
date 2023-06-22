@@ -33,25 +33,6 @@ router.post("/", urlcodedParser, (req, res) => {
     })
 })
 
-// PUT avaliacao/:id_avaliacao
-router.put("/:id_avaliacao", urlcodedParser, (req, res) => {
-    const {nome_avaliacao, data} = req.body;
-    const id_habilidade = req.params.id_avaliacao;
-
-    const query = "UPDATE avaliacao SET nome_avaliacao = ? data = ? WHERE id_avaliacao = ?"
-    let db = new sqlite3.Database(DBPATH);
-
-    db.run(query, [nome_avaliacao, data, id_habilidade], (error) => {
-        if(error) {
-            res.status(500).json({
-                title: "Não foi possível atualizar o usuário."
-            })
-        }
-        return res.status(200).json({
-            title: "Usuário atualizado com sucesso."
-        })
-    })
-})
 
 // GET /avaliacao/:id_avaliacao
 router.get("/:id_avaliacao", urlcodedParser, (req, res) => {
@@ -111,11 +92,11 @@ router.delete("/:id_avaliacao", urlcodedParser, (req, res) => {
     db.run(query, [id_avaliacao], (error) => {
         if(error) {
             res.status(500).json({
-                title: "Impossivel deletar usuário."
+                title: "Impossivel deletar avaliação."
             })
         }
         return res.status(200).json({
-            title: "Usuário deletado com sucesso."
+            title: "Avaliação deletado com sucesso."
         })
     })
 })

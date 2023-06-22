@@ -5,7 +5,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
-const port = 3000;
+const port = 1234;
 
 // Inicializando a aplicação.
 const app = express();
