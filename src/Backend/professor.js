@@ -37,22 +37,23 @@ router.post("/", urlcodedParser, (req, res) => {
 
 // PUT /professor/:id_professor
 router.put("/:id_professor", urlcodedParser, (req, res) => {
-    const {nome_professor, email, senha, cargo, celular, cep, idade} = req.body;
+    const { nome_professor, email, senha, cargo, celular, cep, idade } = req.body;
     const id_professor = req.params.id_professor;
 
-    const query = "UPDATE professor SET nome_professor = ? email = ? senha = ? cargo = ? celular = ? cep = ? idade = ? WHERE id_professor = ?"
+    const query = "UPDATE professor SET nome_professor = ?, email = ?, senha = ?, cargo = ?, celular = ?, cep = ?, idade = ? WHERE id_professor = ?";
     let db = new sqlite3.Database(DBPATH);
 
     db.run(query, [nome_professor, email, senha, cargo, celular, cep, idade, id_professor], (error) => {
-        if(error) {
-            res.status(500).json({ error: error })
+        if (error) {
+            return res.status(500).json({ error: error });
         }
         return res.status(200).json({
             title: "Perfil atualizado com sucesso."
-        })
-    })
-    db.close()
-})
+        });
+    });
+    db.close();
+});
+
 
 // GET /professor/:id_professor
 router.get("/:id_professor", (req, res) => {
@@ -79,7 +80,7 @@ router.delete("/:id_professor", urlcodedParser, (req, res) => {
     const query_selecao = "SELECT rowid, * FROM professor WHERE id_professor = ?";
     let db = new sqlite3.Database(DBPATH);
 
-    db.all(query, [id_professor], (error, rows) => {
+    db.all(query_selecao, [id_professor], (error, rows) => {
         if(error) {
             res.status(500).json({ error: error });
         }

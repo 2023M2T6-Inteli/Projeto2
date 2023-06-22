@@ -18,20 +18,24 @@ const DBPATH = 'bd_nova_freire.db'
 // Iniciando a construção de endpoints
 // POST escola
 router.post("/", urlcodedParser, (req, res) => {
-    const {nome_escola} = req.body;
-    
+    const { nome_escola } = req.body;
+
     const query = "INSERT INTO escola(nome_escola) VALUES(?)";
     let db = new sqlite3.Database(DBPATH);
 
     db.run(query, [nome_escola], (error) => {
-        if(error) {
-            res.status(500).json({ error: error })
+        if (error) {
+            console.error("Erro ao inserir a nova Escola:", error);
+            return res.status(500).json({
+                title: "Erro ao inserir a nova Escola."
+            });
         }
         return res.status(200).json({
             title: "Escola criada com sucesso."
-        })
-    })
-})
+        });
+    });
+});
+
 
 // PUT /escola/:id_escola
 router.put("/:id_escola", urlcodedParser, (req, res) => {
