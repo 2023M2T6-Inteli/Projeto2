@@ -1,5 +1,5 @@
 $.ajax({
-  url: 'http://127.0.0.1:3000/medias_habilidade',
+  url: 'http://127.0.0.1:1234/medias_habilidade',
   method: 'GET',
 
   success: function(response) {

@@ -1,7 +1,7 @@
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id")
-const url = "http://localhost:3000/turma/" + id;
+const url = "http://localhost:1234/turma/" + id;
 
 
 function getUser(){

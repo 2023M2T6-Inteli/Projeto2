@@ -3,7 +3,7 @@ function searchAluno() {
     var results = document.getElementById("searchResults");
     results.innerHTML = ""; // Limpar os resultados anteriores
   
-    fetch('http://127.0.0.1:3000/aluno')
+    fetch('http://127.0.0.1:1234/aluno')
       .then(function(response) {
         return response.json();
       })

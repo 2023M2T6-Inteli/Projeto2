@@ -1,5 +1,5 @@
 $.ajax({
-  url: 'http://127.0.0.1:3000/progresso',
+  url: 'http://127.0.0.1:1234/progresso',
   method: 'GET',
   success: function(response){
     var data = response.data;

@@ -1,5 +1,5 @@
 $.ajax({
-  url: 'http://127.0.0.1:3000/defasagens',
+  url: 'http://127.0.0.1:1234/defasagens',
   method: 'GET',
   success: function (response) {
 

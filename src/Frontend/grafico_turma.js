@@ -3,7 +3,7 @@ const yellow = '#F2A413';
 const red = '#F55353';
 
 $.ajax({
-  url: 'http://127.0.0.1:3000/medias/1',
+  url: 'http://127.0.0.1:1234/medias/1',
   method: 'GET',
   success: function(response) { 
     var data = response.data;

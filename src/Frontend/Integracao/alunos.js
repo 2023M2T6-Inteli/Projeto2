@@ -24,7 +24,7 @@ function abrir(id_aluno) {
 var alunos = {
     list() {
         $.ajax({
-            url: 'http://127.0.0.1:3000/alunos/1',
+            url: 'http://127.0.0.1:1234/alunos/1',
             type: 'GET',
             success: function(response) {
                 var data = response.data;
@@ -105,7 +105,7 @@ var alunos = {
         if (nome_aluno && id_turma){
             if (nome_aluno.trim() != '' && id_turma.trim() != ''){
                 $.ajax({
-                    url: 'http://127.0.0.1:3000/aluno',
+                    url: 'http://127.0.0.1:1234/aluno',
                     type: 'POST',
                     data: {nome_aluno: nome_aluno, id_turma: id_turma},
                 }).done(function () {
@@ -120,7 +120,7 @@ var alunos = {
         },
         delete(id_aluno){
             $.ajax({
-                url: 'http://127.0.0.1:3000/aluno/' + id_aluno,
+                url: 'http://127.0.0.1:1234/aluno/' + id_aluno,
                 type: 'DELETE',
             }).done(function (){
                 //alunos.list();
@@ -136,7 +136,7 @@ var alunos = {
 var turmas = {
     list() {
         $.ajax({
-            url: "http://127.0.0.1:3000/turma",
+            url: "http://127.0.0.1:1234/turma",
             type: "GET",
             success: function(response) {
                 var data = response.data;

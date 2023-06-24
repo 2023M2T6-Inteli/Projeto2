@@ -6,7 +6,7 @@ const button = document.querySelector("#enviar")
 const url = ''
 
 button.addEventListener("click", async (event, err) => {
-    axios.post(`http://localhost:3000/login`, {
+    axios.post(`http://localhost:1234/login`, {
         email: email.value,
         senha: senha.value
     }).then(function(res) {
