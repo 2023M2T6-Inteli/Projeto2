@@ -9,13 +9,10 @@ $.ajax({
       return item.media_habilidade;
     });
 
-    console.log(habilidades_nota)
 
     var habilidades_nome = data.map(function(item) {
       return item.tipo_habilidade;
     });
-
-    console.log(habilidades_nome)
 
     grafico_habilidades(habilidades_nome, habilidades_nota);
     
