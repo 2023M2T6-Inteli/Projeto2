@@ -17,6 +17,9 @@
 - <a href="https://www.linkedin.com/in/anna-aragao/">Anna Carolina Silva Aragão</a> 
 - <a href="https://www.linkedin.com/in/gustavo-gouveia-583185271/">Gustavo Gouveia</a>
 
+## Orientador:
+- <a href="https://www.linkedin.com/in/fabiana-martins-de-oliveira-8993b0b2/">Fabiana Martins de Oliveira</a>
+
 ## 📝 Descrição
 
 A nossa solução é uma plataforma intuitiva que resgata os dados de alunos com base na BNCC para traduzir as forças e defasagens do aluno em uma única turma para o professor. Dessa forma, trazemos uma aprendizagem com o aluno como protagonista e uma metodologia direta em relação às suas dificuldades. Além disso, direcionamos conteúdos pedagógicos exclusivos conforme a necessidade da turma para o professor aplicar em sua sala de aula de forma colaborativa. 
